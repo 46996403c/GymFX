@@ -17,7 +17,6 @@
     <children>
         <TabPane prefHeight="433.0" prefWidth="512.0" tabClosingPolicy="UNAVAILABLE">
             <tabs>
-
                 <Tab text="Inicio">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
@@ -59,6 +58,71 @@
                 </Tab>
                 <Tab fx:id="clienteTAB" disable="true" text="Cliente">
                     <content></content>
+                </Tab>
+                <Tab fx:id="empleadoTAB" disable="true" text="Empleado">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <TabPane prefHeight="404.0" prefWidth="512.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <tabs>
+                                        <Tab text="Añadir Empleado">
+                                            <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                    <children>
+                                                        <TextField fx:id="nombreCrearEmpleadoTF" layoutX="14.0" layoutY="14.0" promptText="Nombre" />
+                                                        <TextField fx:id="primerApellidoCrearEmpleadoTF" layoutX="174.0" layoutY="14.0" prefHeight="25.0" prefWidth="163.0" promptText="Primer Apellido" />
+                                                        <TextField fx:id="segundoApellidoCrearEmpleadoTF" layoutX="346.0" layoutY="14.0" promptText="Segundo Apellido" />
+                                                        <TextField fx:id="direccionCrearEmpleadoTF" layoutX="14.0" layoutY="49.0" prefHeight="25.0" prefWidth="480.0" promptText="Direccion" />
+                                                        <TextField fx:id="emailCrearEmpleadoTF" layoutX="15.0" layoutY="85.0" prefHeight="25.0" prefWidth="319.0" promptText="Correo Electronico" />
+                                                        <TextField fx:id="telefonoCrearEmpleadoTF" layoutX="180.0" layoutY="120.0" prefHeight="25.0" prefWidth="167.0" promptText="Telefono" />
+                                                        <TextField fx:id="dniCrearEmpleadoTF" layoutX="14.0" layoutY="120.0" promptText="DNI" />
+                                                        <MenuButton fx:id="sexoCrearEmpleadoTF" layoutX="436.0" layoutY="120.0" mnemonicParsing="false" text="Sexo">
+                                                            <items>
+                                                                <MenuItem fx:id="maculinoCrearEmpleadoMI" mnemonicParsing="false" text="Masculino" />
+                                                                <MenuItem fx:id="femeninoCrearEmpleadoMI" mnemonicParsing="false" text="Feminino" />
+                                                            </items>
+                                                        </MenuButton>
+                                                        <TextField fx:id="edadCrearEmpleadoTF" layoutX="362.0" layoutY="120.0" prefHeight="25.0" prefWidth="64.0" promptText="Edad" />
+                                                        <Button fx:id="crearEmpleado" layoutX="400.0" layoutY="175.0" mnemonicParsing="false" text="Crear Empleado" />
+                                                        <TextField fx:id="numEmpeladoCrearEmpleadoTF" layoutX="346.0" layoutY="85.0" promptText="Nº Empleado" />
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </Tab>
+                                        <Tab text="Ver Empleado">
+                                            <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                            </content>
+                                        </Tab>
+                                        <Tab text="Ver mi ficha">
+                                            <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                    <children>
+                                                        <TextField fx:id="nombreModificarEmpleadoTF" editable="false" layoutX="14.0" layoutY="14.0" promptText="Nombre" />
+                                                        <TextField fx:id="primerApellidoModificarEmpleadoTF" editable="false" layoutX="174.0" layoutY="14.0" prefHeight="25.0" prefWidth="163.0" promptText="Primer Apellido" />
+                                                        <TextField fx:id="segundoApellidoModificarEmpleadoTF" editable="false" layoutX="346.0" layoutY="14.0" promptText="Segundo Apellido" />
+                                                        <TextField fx:id="direccionModificarEmpleadoTF" editable="false" layoutX="14.0" layoutY="49.0" prefHeight="25.0" prefWidth="480.0" promptText="Direccion" />
+                                                        <TextField fx:id="emailModificarEmpleadoTF" editable="false" layoutX="15.0" layoutY="85.0" prefHeight="25.0" prefWidth="319.0" promptText="Correo Electronico" />
+                                                        <TextField fx:id="telefonoModificarEmpleadoTF" editable="false" layoutX="180.0" layoutY="120.0" prefHeight="25.0" prefWidth="167.0" promptText="Telefono" />
+                                                        <TextField fx:id="dniModificarEmpleadoTF" editable="false" layoutX="14.0" layoutY="120.0" promptText="DNI" />
+                                                        <MenuButton fx:id="sexoModificarEmpleadoMB" disable="true" layoutX="436.0" layoutY="120.0" mnemonicParsing="false" text="Sexo">
+                                                            <items>
+                                                                <MenuItem fx:id="maculinoModificarEmpleadoMI" mnemonicParsing="false" text="Masculino" />
+                                                                <MenuItem fx:id="femeninoModificarEmpleadoMI" mnemonicParsing="false" text="Feminino" />
+                                                            </items>
+                                                        </MenuButton>
+                                                        <TextField fx:id="edadModificarEmpleadoTF" editable="false" layoutX="362.0" layoutY="120.0" prefHeight="25.0" prefWidth="64.0" promptText="Edad" />
+                                                        <Button fx:id="ModificarFichaBT" layoutX="400.0" layoutY="175.0" mnemonicParsing="false" text="Modificar Ficha" />
+                                                        <TextField fx:id="numEmpeladoModificarEmpleadoTF" editable="false" layoutX="346.0" layoutY="85.0" promptText="Nº Empleado" />
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </Tab>
+                                    </tabs>
+                                </TabPane>
+                            </children>
+                        </AnchorPane>
+                    </content>
                 </Tab>
             </tabs>
         </TabPane>
