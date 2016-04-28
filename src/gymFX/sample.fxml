@@ -30,7 +30,7 @@
                                           </AnchorPane>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="56.0" prefWidth="542.0">
                                              <children>
-                                                <Button layoutX="30.0" layoutY="15.0" mnemonicParsing="false" onAction="#funcion" text="Loggin" />
+                                                <Button layoutX="30.0" layoutY="15.0" mnemonicParsing="false" onAction="#funLogin" text="Acceder" />
                                                 <Text fx:id="Bienvenido" layoutX="376.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
                                              </children>
                                           </AnchorPane>
