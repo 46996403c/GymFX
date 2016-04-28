@@ -30,7 +30,8 @@ public class Controller {
     public TextField emailCrearClienteTF;
     public TextField telefonoCrearClienteTF;
     public TextField dniCrearClienteTF;
-    public   TextField edadCrearClienteTF;
+    public TextField edadCrearClienteTF;
+    public TextField numSocioCrearClienteTF;
 
     public void initialize(){
         final WebEngine webEngine = webView.getEngine();
@@ -185,7 +186,7 @@ public class Controller {
                 cliente.setEdad(Integer.parseInt(edadCrearClienteTF.getText()));
                 cliente.setEmail(emailCrearClienteTF.getText());
                 cliente.setTelf(telefonoCrearClienteTF.getText());
-                cliente.setnSocio("1546");
+                cliente.setnSocio(numSocioCrearClienteTF.getText());
                 cref.push().setValue(cliente);
             }
 
