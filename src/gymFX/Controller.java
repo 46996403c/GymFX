@@ -11,6 +11,7 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.util.Pair;
 
+import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicBoolean;
 //Firebase pruebas sandra
@@ -21,6 +22,16 @@ public class Controller {
     public Text Bienvenido;
     Empleado empleado;
     boolean equivocado = false;
+
+    public TextField nombreCrearClienteTF;
+    public TextField primerApellidoCrearClienteTF;
+    public TextField segundoApellidoCrearClienteTF;
+    public TextField direccionCrearCLienteTF;
+    public TextField emailCrearClienteTF;
+    public TextField telefonoCrearClienteTF;
+    public TextField dniCrearClienteTF;
+    public TextField edadCrearClienteTF;
+    public TextField numSocioCrearClienteTF;
 
     public void initialize(){
         final WebEngine webEngine = webView.getEngine();
@@ -90,7 +101,7 @@ public class Controller {
         final String[] userid = new String[1];
 
         result.ifPresent(usernamePassword -> {
-            ref.authWithPassword(username.getText(), "1correcthorsebatterystaple", new Firebase.AuthResultHandler() {
+            ref.authWithPassword(username.getText(), password.getText(), new Firebase.AuthResultHandler() {
                 @Override
                 public void onAuthenticated(AuthData authData) {
                     System.out.println("User ID: " + authData.getUid() + ", Provider: " + authData.getProvider());
@@ -147,7 +158,45 @@ public class Controller {
 
             if (done2.get()){
                 Bienvenido.setText("Bienvenido, "+ empleado.getNombre());
+                System.out.println("ghy");
             }
+
+            //1correcthorsebatterystaple
         }
+    }
+
+
+    public void funCrearClie(){
+        Cliente cliente = new Cliente();
+
+        Firebase ref = new Firebase("https://fiery-inferno-9835.firebaseio.com/");
+        Firebase cref = ref.child("Clientes");
+
+        Firebase.ValueResultHandler<Map<String, Object>> handler = new Firebase.ValueResultHandler<Map<String, Object>>() {
+            @Override
+            public void onSuccess(Map<String, Object> result) {
+                System.out.println("Successfully created user account with uid: " + result.get("uid"));
+                String a = (String) result.get("uid");
+                cliente.setUID(a);
+                cliente.setNombre(nombreCrearClienteTF.getText());
+                cliente.setApellido(primerApellidoCrearClienteTF.getText());
+                cliente.setApellido2(segundoApellidoCrearClienteTF.getText());
+                cliente.setDni(dniCrearClienteTF.getText()+"4");
+                cliente.setDireccion(direccionCrearCLienteTF.getText());
+                cliente.setEdad(Integer.parseInt(edadCrearClienteTF.getText()));
+                cliente.setEmail(emailCrearClienteTF.getText());
+                cliente.setTelf(telefonoCrearClienteTF.getText());
+                cliente.setnSocio(numSocioCrearClienteTF.getText());
+                cref.push().setValue(cliente);
+            }
+
+            @Override
+            public void onError(FirebaseError firebaseError) {
+                System.out.println(firebaseError);
+            }
+        };
+        ref.createUser(emailCrearClienteTF.getText(),"test1", handler);
+
+
     }
 }
