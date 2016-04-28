@@ -1,44 +1,29 @@
 package gymFX;
 
 /**
- * Created by 47993849w on 28/04/16.
+ * Created by oscarXIII on 28/04/2016.
  */
-public class Cliente {
-
+public class Empleado{
     private String nombre;
     private String apellido;
-
-    public String getApellido2() {
-        return apellido2;
-    }
-
-    public void setApellido2(String apellido2) {
-        this.apellido2 = apellido2;
-    }
-
-    public String getDni() {
-        return dni;
-    }
-
-    public void setDni(String dni) {
-        this.dni = dni;
-    }
-
     private String apellido2;
     private String dni;
     private String UID;
     private String email;
     private String foto;
-    private String nSocio;
+    private String nEmpleado;
     private int edad;
     //private String fecha de nacimiento
     private String direccion;
     private String telf;
     private String sexo;
 
+    public String getSexo() {
+        return sexo;
+    }
 
-    public Cliente() {
-
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
 
     public String getNombre() {
@@ -55,6 +40,22 @@ public class Cliente {
 
     public void setApellido(String apellido) {
         this.apellido = apellido;
+    }
+
+    public String getApellido2() {
+        return apellido2;
+    }
+
+    public void setApellido2(String apellido2) {
+        this.apellido2 = apellido2;
+    }
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
     }
 
     public String getUID() {
@@ -81,12 +82,12 @@ public class Cliente {
         this.foto = foto;
     }
 
-    public String getnSocio() {
-        return nSocio;
+    public String getnEmpleado() {
+        return nEmpleado;
     }
 
-    public void setnSocio(String nSocio) {
-        this.nSocio = nSocio;
+    public void setnEmpleado(String nEmpleado) {
+        this.nEmpleado = nEmpleado;
     }
 
     public int getEdad() {
@@ -113,11 +114,4 @@ public class Cliente {
         this.telf = telf;
     }
 
-    public String getSexo() {
-        return sexo;
-    }
-
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
-    }
 }

@@ -1,66 +1,103 @@
-<?import javafx.scene.web.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<GridPane fx:controller="gymFX.Controller" xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
-    <columnConstraints>
-        <ColumnConstraints />
-    </columnConstraints>
-    <rowConstraints>
-        <RowConstraints />
-    </rowConstraints>
-    <children>
-        <TabPane prefHeight="433.0" prefWidth="512.0" tabClosingPolicy="UNAVAILABLE">
-            <tabs>
+<?xml version="1.0" encoding="UTF-8"?>
 
-                <Tab text="Inicio">
-                    <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                            <children>
-                                <SplitPane dividerPositions="0.1791044776119403" layoutX="132.0" layoutY="57.0" orientation="VERTICAL" prefHeight="404.0" prefWidth="512.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                    <items>
-                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                                            <children>
-                                                <SplitPane dividerPositions="0.6259842519685039" layoutX="14.0" layoutY="-45.0" prefHeight="69.0" prefWidth="510.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                    <items>
-                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="67.0" prefWidth="183.0">
-                                                            <children>
-                                                                <Button layoutX="25.0" layoutY="21.0" mnemonicParsing="false" text="Home" />
-                                                                <Button layoutX="83.0" layoutY="21.0" mnemonicParsing="false" text="Atras" />
-                                                            </children>
-                                                        </AnchorPane>
-                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-                                                            <children>
-                                                                <Button layoutX="94.0" layoutY="21.0" mnemonicParsing="false" text="Loggin" />
-                                                            </children>
-                                                        </AnchorPane>
-                                                    </items>
-                                                </SplitPane>
-                                            </children>
-                                        </AnchorPane>
-                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                                            <children>
-                                                <WebView fx:id="webView" layoutX="119.0" layoutY="57.0" prefHeight="327.0" prefWidth="510.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                            </children>
-                                        </AnchorPane>
-                                    </items>
-                                </SplitPane>
-                            </children>
-                        </AnchorPane>
-                    </content>
-                </Tab>
-                <Tab fx:id="infoTAB" disable="true" text="InfoGym">
-                    <content></content>
-                </Tab>
-                <Tab fx:id="clienteTAB" disable="true" text="Cliente">
-                    <content></content>
-                </Tab>
-            </tabs>
-        </TabPane>
-    </children>
-</GridPane>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.web.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.web.WebView?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gymFX.Controller">
+   <children>
+      <TabPane layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <tabs>
+            <Tab text="Inicio">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <SplitPane dividerPositions="0.07167630057803469" layoutX="132.0" layoutY="57.0" orientation="VERTICAL" prefHeight="404.0" prefWidth="512.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <items>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                 <children>
+                                    <SplitPane dividerPositions="0.5081453634085213" layoutX="14.0" layoutY="-45.0" prefHeight="69.0" prefWidth="510.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <items>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="67.0" prefWidth="183.0">
+                                             <children>
+                                                <Button layoutX="25.0" layoutY="21.0" mnemonicParsing="false" text="Home" />
+                                                <Button layoutX="83.0" layoutY="21.0" mnemonicParsing="false" text="Atras" />
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="56.0" prefWidth="542.0">
+                                             <children>
+                                                <Button layoutX="30.0" layoutY="15.0" mnemonicParsing="false" onAction="#funLogin" text="Acceder" />
+                                                <Text fx:id="Bienvenido" layoutX="376.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                                             </children>
+                                          </AnchorPane>
+                                       </items>
+                                    </SplitPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                 <children>
+                                    <WebView fx:id="webView" layoutX="119.0" layoutY="57.0" prefHeight="327.0" prefWidth="510.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                           </items>
+                        </SplitPane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab fx:id="infoTAB" disable="true" text="InfoGym" />
+            <Tab fx:id="clienteTAB" disable="false" text="Cliente">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TabPane prefHeight="404.0" prefWidth="512.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <tabs>
+                              <Tab text="Añadir Cliente">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TextField fx:id="nombreCrearClienteTF" layoutX="14.0" layoutY="14.0" promptText="Nombre" />
+                                          <TextField fx:id="primerApellidoCrearClienteTF" layoutX="174.0" layoutY="14.0" prefHeight="25.0" prefWidth="163.0" promptText="Primer Apellido" />
+                                          <TextField fx:id="segundoApellidoCrearClienteTF" layoutX="346.0" layoutY="14.0" promptText="Segundo Apellido" />
+                                          <TextField fx:id="direccionCrearCLienteTF" layoutX="14.0" layoutY="49.0" prefHeight="25.0" prefWidth="480.0" promptText="Direccion" />
+                                          <TextField fx:id="emailCrearClienteTF" layoutX="15.0" layoutY="85.0" prefHeight="25.0" prefWidth="480.0" promptText="Correo Electronico" />
+                                          <TextField fx:id="telefonoCrearClienteTF" layoutX="180.0" layoutY="120.0" prefHeight="25.0" prefWidth="167.0" promptText="Telefono" />
+                                          <TextField fx:id="dniCrearClienteTF" layoutX="14.0" layoutY="120.0" promptText="DNI" />
+                                          <MenuButton fx:id="sexoCrearClienteMB" layoutX="436.0" layoutY="120.0" mnemonicParsing="false" text="Sexo">
+                                             <items>
+                                                <MenuItem fx:id="maculinoCrearClienteMI" mnemonicParsing="false" text="Masculino" />
+                                                <MenuItem fx:id="femeninoCrearClienteMI" mnemonicParsing="false" text="Feminino" />
+                                             </items>
+                                          </MenuButton>
+                                          <TextField fx:id="edadCrearClienteTF" layoutX="362.0" layoutY="120.0" prefHeight="25.0" prefWidth="64.0" promptText="Edad" />
+                                          <Button layoutX="14.0" layoutY="209.0" mnemonicParsing="false" onAction="#funCrearClie" text="Crear Socio" />
+                                          <TextField fx:id="numSocioCrearClienteTF" layoutX="14.0" layoutY="157.0" promptText="Num Cliente" />
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab text="Ver Ciente">
+
+                              </Tab>
+                           </tabs>
+                        </TabPane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
