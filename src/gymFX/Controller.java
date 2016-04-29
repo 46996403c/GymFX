@@ -19,11 +19,11 @@ import java.util.concurrent.atomic.AtomicBoolean;
 //Firebase refw = new Firebase("https://testgimmapp.firebaseio.com/");
 
 public class Controller {
-
     Empleado empleado;
     boolean equivocado = false;
     DataSnapshot snapshot1;
-
+    boolean errorBusqueda = false;
+    Alert alertError = new Alert(Alert.AlertType.ERROR);
 
     public WebView webView = new WebView();
     public Text Bienvenido;
@@ -151,41 +151,29 @@ public class Controller {
                 }
 
                 @Override
-                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-                }
+                public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
 
                 @Override
-                public void onChildRemoved(DataSnapshot dataSnapshot) {
-                }
+                public void onChildRemoved(DataSnapshot dataSnapshot) {}
 
                 @Override
-                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-                }
+                public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
 
                 @Override
-                public void onCancelled(FirebaseError firebaseError) {
-                }
-
+                public void onCancelled(FirebaseError firebaseError) {}
             });
-
             while (!done2.get());
-
             if (done2.get()){
                 Bienvenido.setText("Bienvenido, "+ empleado.getNombre());
-                System.out.println("ghy");
             }
-
-            //1correcthorsebatterystaple
         }
     }
 
 
     public void funCrearClie(){
         Cliente cliente = new Cliente();
-
         Firebase ref = new Firebase("https://fiery-inferno-9835.firebaseio.com/");
         Firebase cref = ref.child("Clientes");
-
         Firebase.ValueResultHandler<Map<String, Object>> handler = new Firebase.ValueResultHandler<Map<String, Object>>() {
             @Override
             public void onSuccess(Map<String, Object> result) {
@@ -203,24 +191,32 @@ public class Controller {
                 cliente.setnSocio(numSocioCrearClienteTF.getText());
                 cref.push().setValue(cliente);
             }
-
             @Override
             public void onError(FirebaseError firebaseError) {
                 System.out.println(firebaseError);
             }
         };
         ref.createUser(emailCrearClienteTF.getText(),"test1", handler);
-
-
     }
 
     public void funBuscarClie(){
-
+        AtomicBoolean hechoBCNS = new AtomicBoolean(false);
+        errorBusqueda = false;
         Firebase ref = new Firebase("https://fiery-inferno-9835.firebaseio.com/");
-
         Firebase cref = ref.child("Clientes");
-
         Query queryRef = cref.orderByChild("nSocio").equalTo(numSocioVerClienteTF1.getText());
+        queryRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.getValue()==null){
+                    errorBusqueda = true;
+                    hechoBCNS.set(true);
+                }
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {}
+        });
 
         queryRef.addChildEventListener(new ChildEventListener() {
             @Override
@@ -229,47 +225,98 @@ public class Controller {
                 Cliente cliente = snapshot.getValue(Cliente.class);
                 nombreVerClienteTF1.setText(cliente.getNombre());
                 primerApellidoVerClienteTF1.setText(cliente.getApellido());
+                segundoApellidoVerClienteTF1.setText(cliente.getApellido2());
                 direccionVerClienteTF1.setText(cliente.getDireccion());
                 emailVerClienteTF1.setText(cliente.getEmail());
                 dniVerClienteTF1.setText(cliente.getDni());
                 telefonoVerClienteTF1.setText(cliente.getTelf());
                 edadVerClienteTF1.setText(String.valueOf(cliente.getEdad()));
-
+                hechoBCNS.set(true);
             }
 
             @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
 
             @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
+            public void onChildRemoved(DataSnapshot dataSnapshot) {}
 
             @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
 
             @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
+            public void onCancelled(FirebaseError firebaseError) {}
         });
+        while (!hechoBCNS.get());
+        if (errorBusqueda){
+            alertError.setTitle("Error Busqueda Num Socio");
+            alertError.setHeaderText(null);
+            alertError.setContentText("No hay ningun cliente con este Numero de Socio!");
+            alertError.showAndWait();
+        }
+    }
 
+    public void funBuscarClieDNI(){
+        AtomicBoolean hechoBCDNI = new AtomicBoolean(false);
+        errorBusqueda = false;
+        Firebase ref = new Firebase("https://fiery-inferno-9835.firebaseio.com/");
+        Firebase cref = ref.child("Clientes");
+        Query queryRef = cref.orderByChild("dni").equalTo(dniVerClienteTF1.getText());
+        queryRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.getValue()==null){
+                    errorBusqueda = true;
+                    hechoBCDNI.set(true);
+                }
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {}
+        });
+        queryRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot snapshot, String previousChild) {
+                snapshot1=snapshot;
+                Cliente cliente = snapshot.getValue(Cliente.class);
+                nombreVerClienteTF1.setText(cliente.getNombre());
+                primerApellidoVerClienteTF1.setText(cliente.getApellido());
+                segundoApellidoVerClienteTF1.setText(cliente.getApellido2());
+                direccionVerClienteTF1.setText(cliente.getDireccion());
+                emailVerClienteTF1.setText(cliente.getEmail());
+                telefonoVerClienteTF1.setText(cliente.getTelf());
+                edadVerClienteTF1.setText(String.valueOf(cliente.getEdad()));
+                numSocioVerClienteTF1.setText(cliente.getnSocio());
+                hechoBCDNI.set(true);
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {}
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {}
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {}
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {}
+        });
+        while (!hechoBCDNI.get());
+        if (errorBusqueda){
+            alertError.setTitle("Error Busqueda DNI");
+            alertError.setHeaderText(null);
+            alertError.setContentText("No hay ningun cliente con este DNI!");
+            alertError.showAndWait();
+        }
     }
 
     public void funEditClie(){
         Firebase ref = new Firebase("https://fiery-inferno-9835.firebaseio.com/");
-
         Firebase cref = ref.child("Clientes");
-
         Firebase editRef = cref.child(snapshot1.getKey());
         Map<String, Object> nickname = new HashMap<String, Object>();
         nickname.put("apellido", primerApellidoVerClienteTF1.getText());
         editRef.updateChildren(nickname);
         funBuscarClie();
-
     }
 }
