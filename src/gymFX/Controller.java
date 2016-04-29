@@ -36,6 +36,7 @@ public class Controller {
     public TextField dniCrearClienteTF;
     public TextField edadCrearClienteTF;
     public TextField numSocioCrearClienteTF;
+    public Button EditarDatosCliente;
 
     public TextField nombreVerClienteTF1;
     public TextField primerApellidoVerClienteTF1;
@@ -51,6 +52,18 @@ public class Controller {
         final WebEngine webEngine = webView.getEngine();
         webEngine.load("http://bacderodasport.com");
         Bienvenido.setText("Sin Loggear");
+
+        nombreVerClienteTF1.setEditable(false);
+        primerApellidoVerClienteTF1.setEditable(false);
+        segundoApellidoVerClienteTF1.setEditable(false);
+        direccionVerClienteTF1.setEditable(false);
+        emailVerClienteTF1.setEditable(false);
+        telefonoVerClienteTF1.setEditable(false);
+        edadVerClienteTF1.setEditable(false);
+
+
+
+
     }
 
     public void funLogin(){
@@ -200,6 +213,7 @@ public class Controller {
     }
 
     public void funBuscarClie(){
+
         AtomicBoolean hechoBCNS = new AtomicBoolean(false);
         errorBusqueda = false;
         Firebase ref = new Firebase("https://fiery-inferno-9835.firebaseio.com/");
@@ -311,12 +325,45 @@ public class Controller {
     }
 
     public void funEditClie(){
-        Firebase ref = new Firebase("https://fiery-inferno-9835.firebaseio.com/");
-        Firebase cref = ref.child("Clientes");
-        Firebase editRef = cref.child(snapshot1.getKey());
-        Map<String, Object> nickname = new HashMap<String, Object>();
-        nickname.put("apellido", primerApellidoVerClienteTF1.getText());
-        editRef.updateChildren(nickname);
-        funBuscarClie();
+        if (EditarDatosCliente.getText().equals("Editar datos")) {
+            nombreVerClienteTF1.setEditable(true);
+            primerApellidoVerClienteTF1.setEditable(true);
+            segundoApellidoVerClienteTF1.setEditable(true);
+            direccionVerClienteTF1.setEditable(true);
+            emailVerClienteTF1.setEditable(true);
+            telefonoVerClienteTF1.setEditable(true);
+            edadVerClienteTF1.setEditable(true);
+            EditarDatosCliente.setText("Aplicar Cambios");
+
+        } else {
+            Firebase ref = new Firebase("https://fiery-inferno-9835.firebaseio.com/");
+            Firebase cref = ref.child("Clientes");
+            Firebase editRef = cref.child(snapshot1.getKey());
+            Map<String, Object> cl = new HashMap<String, Object>();
+            cl.put("apellido", primerApellidoVerClienteTF1.getText());
+            cl.put("apellido2", segundoApellidoVerClienteTF1.getText());
+            cl.put("nombre", primerApellidoVerClienteTF1.getText());
+            cl.put("edad", edadVerClienteTF1.getText());
+            cl.put("direccion", direccionVerClienteTF1.getText());
+            cl.put("email", emailVerClienteTF1.getText());
+            cl.put("dni", dniVerClienteTF1.getText());
+
+            cl.put("telf", telefonoVerClienteTF1.getText());
+            cl.put("apellido", primerApellidoVerClienteTF1.getText());
+
+
+
+
+            editRef.updateChildren(cl);
+            funBuscarClie();
+            nombreVerClienteTF1.setEditable(false);
+            primerApellidoVerClienteTF1.setEditable(false);
+            segundoApellidoVerClienteTF1.setEditable(false);
+            direccionVerClienteTF1.setEditable(false);
+            emailVerClienteTF1.setEditable(false);
+            telefonoVerClienteTF1.setEditable(false);
+            edadVerClienteTF1.setEditable(false);
+            EditarDatosCliente.setText("Editar datos");
+        }
     }
 }
