@@ -11,6 +11,7 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.util.Pair;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -18,11 +19,14 @@ import java.util.concurrent.atomic.AtomicBoolean;
 //Firebase refw = new Firebase("https://testgimmapp.firebaseio.com/");
 
 public class Controller {
-    public WebView webView = new WebView();
-    public Text Bienvenido;
+
     Empleado empleado;
     boolean equivocado = false;
+    DataSnapshot snapshot1;
 
+
+    public WebView webView = new WebView();
+    public Text Bienvenido;
     public TextField nombreCrearClienteTF;
     public TextField primerApellidoCrearClienteTF;
     public TextField segundoApellidoCrearClienteTF;
@@ -32,6 +36,16 @@ public class Controller {
     public TextField dniCrearClienteTF;
     public TextField edadCrearClienteTF;
     public TextField numSocioCrearClienteTF;
+
+    public TextField nombreVerClienteTF1;
+    public TextField primerApellidoVerClienteTF1;
+    public TextField segundoApellidoVerClienteTF1;
+    public TextField direccionVerClienteTF1;
+    public TextField emailVerClienteTF1;
+    public TextField telefonoVerClienteTF1;
+    public TextField dniVerClienteTF1;
+    public TextField edadVerClienteTF1;
+    public TextField numSocioVerClienteTF1;
 
     public void initialize(){
         final WebEngine webEngine = webView.getEngine();
@@ -197,6 +211,65 @@ public class Controller {
         };
         ref.createUser(emailCrearClienteTF.getText(),"test1", handler);
 
+
+    }
+
+    public void funBuscarClie(){
+
+        Firebase ref = new Firebase("https://fiery-inferno-9835.firebaseio.com/");
+
+        Firebase cref = ref.child("Clientes");
+
+        Query queryRef = cref.orderByChild("nSocio").equalTo(numSocioVerClienteTF1.getText());
+
+        queryRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot snapshot, String previousChild) {
+                snapshot1=snapshot;
+                Cliente cliente = snapshot.getValue(Cliente.class);
+                nombreVerClienteTF1.setText(cliente.getNombre());
+                primerApellidoVerClienteTF1.setText(cliente.getApellido());
+                direccionVerClienteTF1.setText(cliente.getDireccion());
+                emailVerClienteTF1.setText(cliente.getEmail());
+                dniVerClienteTF1.setText(cliente.getDni());
+                telefonoVerClienteTF1.setText(cliente.getTelf());
+                edadVerClienteTF1.setText(String.valueOf(cliente.getEdad()));
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+
+    }
+
+    public void funEditClie(){
+        Firebase ref = new Firebase("https://fiery-inferno-9835.firebaseio.com/");
+
+        Firebase cref = ref.child("Clientes");
+
+        Firebase editRef = cref.child(snapshot1.getKey());
+        Map<String, Object> nickname = new HashMap<String, Object>();
+        nickname.put("apellido", primerApellidoVerClienteTF1.getText());
+        editRef.updateChildren(nickname);
+        funBuscarClie();
 
     }
 }
