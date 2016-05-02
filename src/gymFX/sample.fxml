@@ -11,6 +11,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.web.WebView?>
 
+<?import javafx.scene.image.ImageView?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gymFX.Controller">
    <children>
       <TabPane layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -199,7 +200,23 @@
                      </AnchorPane>
                  </content>
              </Tab>
-            <Tab fx:id="infoTAB" disable="true" text="InfoGym" />
+             <Tab fx:id="infoTAB" text="InfoGym">
+                 <content>
+                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                         <children>
+                             <TextField fx:id="horarioLunesViernesTF" layoutX="37.0" layoutY="124.0" promptText="Horario Lunes a Viernes" />
+                             <TextField fx:id="horarioSabadoTF" layoutX="195.0" layoutY="124.0" promptText="Horario Sabado" />
+                             <TextField fx:id="horarioDomingoTF" layoutX="353.0" layoutY="124.0" promptText="Horario Domingo" />
+                             <Button fx:id="editarInfoGymBT" layoutX="62.0" layoutY="168.0" mnemonicParsing="false" text="Subir Info" />
+                             <TextField fx:id="nombreGymTF" layoutX="37.0" layoutY="14.0" prefHeight="25.0" prefWidth="215.0" promptText="Nombre Gym" />
+                             <TextField fx:id="direccionGymTF" layoutX="37.0" layoutY="51.0" prefHeight="25.0" prefWidth="464.0" promptText="Direccion" />
+                             <TextField fx:id="telefonoGymTF" layoutX="269.0" layoutY="14.0" prefHeight="25.0" prefWidth="227.0" promptText="Telefono Gym" />
+                             <TextField fx:id="correoElectronicoGymTF" layoutX="37.0" layoutY="89.0" prefHeight="25.0" prefWidth="465.0" promptText="Correo electronico" />
+                             <ImageView fx:id="logoInfoGymIV" fitHeight="150.0" fitWidth="287.0" layoutX="536.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+                         </children>
+                     </AnchorPane>
+                 </content>
+             </Tab>
          </tabs>
       </TabPane>
    </children>
