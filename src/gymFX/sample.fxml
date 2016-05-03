@@ -7,6 +7,8 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.web.WebView?>
@@ -199,7 +201,26 @@
                      </AnchorPane>
                  </content>
              </Tab>
-            <Tab fx:id="infoTAB" disable="true" text="InfoGym" />
+             <Tab fx:id="infoTAB" text="InfoGym">
+                 <content>
+                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                         <children>
+                             <TextField fx:id="horarioLunesViernesTF" layoutX="37.0" layoutY="124.0" promptText="Horario Lunes a Viernes" />
+                             <TextField fx:id="horarioSabadoTF" layoutX="195.0" layoutY="124.0" promptText="Horario Sabado" />
+                             <TextField fx:id="horarioDomingoTF" layoutX="353.0" layoutY="124.0" promptText="Horario Domingo" />
+                             <Button fx:id="editarInfoGymBT" layoutX="62.0" layoutY="168.0" mnemonicParsing="false" onAction="#funEditGym" text="Subir Info" />
+                             <TextField fx:id="nombreGymTF" layoutX="37.0" layoutY="14.0" prefHeight="25.0" prefWidth="215.0" promptText="Nombre Gym" />
+                             <TextField fx:id="direccionGymTF" layoutX="37.0" layoutY="51.0" prefHeight="25.0" prefWidth="464.0" promptText="Direccion" />
+                             <TextField fx:id="telefonoGymTF" layoutX="269.0" layoutY="14.0" prefHeight="25.0" prefWidth="227.0" promptText="Telefono Gym" />
+                             <TextField fx:id="correoElectronicoGymTF" layoutX="37.0" layoutY="89.0" prefHeight="25.0" prefWidth="465.0" promptText="Correo electronico" />
+                             <ImageView fx:id="logoInfoGymIV" fitHeight="150.0" fitWidth="287.0" layoutX="536.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="https://pbs.twimg.com/profile_images/646190693/BAC_LOGO.JPG" />
+                           </image></ImageView>
+                         </children>
+                     </AnchorPane>
+                 </content>
+             </Tab>
          </tabs>
       </TabPane>
    </children>

@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.scene.web.WebEngine;
@@ -23,11 +24,14 @@ public class Controller {
     Empleado empleado;
     boolean equivocado = false;
     DataSnapshot snapshot1;
+    DataSnapshot snapshot2;
     boolean errorBusqueda = false;
     Alert alertError = new Alert(Alert.AlertType.ERROR);
 
     public WebView webView = new WebView();
     public Text Bienvenido;
+
+
     public TextField nombreCrearClienteTF;
     public TextField primerApellidoCrearClienteTF;
     public TextField segundoApellidoCrearClienteTF;
@@ -80,6 +84,17 @@ public class Controller {
     public TextField edadFichaPropiaTF;
     public TextField numEmpeladoFichaPropiaTF;
 
+    public TextField horarioLunesViernesTF;
+    public TextField horarioSabadoTF;
+    public TextField horarioDomingoTF;
+    public TextField nombreGymTF;
+    public TextField direccionGymTF;
+    public TextField telefonoGymTF;
+    public TextField correoElectronicoGymTF;
+    public ImageView logoInfoGymIV;
+    public Button editarInfoGymBT;
+
+
 
     public void initialize(){
         final WebEngine webEngine = webView.getEngine();
@@ -101,6 +116,80 @@ public class Controller {
         emailVerEmpleadoTF.setEditable(false);
         telefonoVerEmpleadoTF.setEditable(false);
         edadVerEmpleadoTF.setEditable(false);
+
+
+/*
+        InfoGym infoGym = new InfoGym();
+
+
+        infoGym.setIdGym(1);
+
+        infoGym.setCorreoElectronicoGym("test@gym.es");
+        infoGym.setDireccionGym("C/ falsa 465465");
+        infoGym.setTelefonoGym(936569859);
+        infoGym.setNombreGym("Test");
+        String horario[] = new String[3];
+
+        horario[0]="9:00 - 22:30";
+
+        horario[1]="9:30 - 21:30";
+
+        horario[2]="11:00 - 18:30";
+
+
+        infoGym.setHorarioGym(horario);
+
+
+        Firebase ref = new Firebase("https://fiery-inferno-9835.firebaseio.com/");
+
+        Firebase cref = ref.child("Infogym");
+
+        cref.push().setValue(infoGym);
+*/
+
+
+
+
+        Firebase ref = new Firebase("https://fiery-inferno-9835.firebaseio.com/");
+        Firebase cref = ref.child("Infogym");
+        Query queryRef = cref.orderByChild("idGym").equalTo(1);
+        queryRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                InfoGym infoGym = dataSnapshot.getValue(InfoGym.class);
+                snapshot2=dataSnapshot;
+
+                horarioLunesViernesTF.setText((infoGym.getHorarioGym())[0]);
+                horarioSabadoTF.setText((infoGym.getHorarioGym())[1]);
+                horarioDomingoTF.setText((infoGym.getHorarioGym())[2]);
+                nombreGymTF.setText(infoGym.getNombreGym());
+                direccionGymTF.setText(infoGym.getDireccionGym());
+                telefonoGymTF.setText(String.valueOf(infoGym.getTelefonoGym()));
+                correoElectronicoGymTF.setText(infoGym.getCorreoElectronicoGym());
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+
+
     }
 
     public void funLogin(){
@@ -596,5 +685,20 @@ public class Controller {
             edadVerEmpleadoTF.setEditable(false);
             EditarDatosEmpleado.setText("Editar datos");
         }
+    }
+
+    public void funEditGym(){
+        Firebase ref = new Firebase("https://fiery-inferno-9835.firebaseio.com/");
+        Firebase cref = ref.child("Infogym");
+        Firebase editRef = cref.child(snapshot2.getKey());
+        Map<String, Object> cl = new HashMap<String, Object>();
+        cl.put("telefonoGym", telefonoGymTF.getText());
+        cl.put("nombreGym", nombreGymTF.getText());
+        cl.put("direccionGym", direccionGymTF.getText());
+        cl.put("correoElectronicoGym", correoElectronicoGymTF.getText());
+        cl.put("horarioGym/0", horarioLunesViernesTF.getText());
+
+        editRef.updateChildren(cl);
+
     }
 }

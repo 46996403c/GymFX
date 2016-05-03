@@ -4,6 +4,10 @@ package gymFX;
  * Created by oscarXIII on 28/04/2016.
  */
 public class InfoGym {
+
+
+
+    int idGym;
     String nombreGym;
     String direccionGym;
     int telefonoGym;
@@ -12,6 +16,18 @@ public class InfoGym {
     long longitudGym;
     String horarioGym[];
 
+
+
+
+
+
+    public int getIdGym() {
+        return idGym;
+    }
+
+    public void setIdGym(int idGym) {
+        this.idGym = idGym;
+    }
     public String getNombreGym() {
         return nombreGym;
     }
