@@ -2,11 +2,16 @@ package gymFX;
 
 import com.firebase.client.*;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.scene.web.WebEngine;
@@ -94,6 +99,21 @@ public class Controller {
     public ImageView logoInfoGymIV;
     public Button editarInfoGymBT;
 
+    public ListView<Maquina> maquinasLV;
+    public ListView<Step> pasosLV;
+    public TextField idMaquinaVer;
+    public TextField nombreMaquinaVer;
+    public TextField FechaInstMaquinaVer;
+    public TextArea descMaquinaVer;
+    public TextField nStepVerStep;
+    public TextField nombreStepVerStep;
+    public TextField fotoStepVerStep;
+    public TextArea descStepVerStep;
+    public ImageView imVerS;
+
+    public Maquina maquina1;
+    public int step1;
+
 
 
     public void initialize(){
@@ -117,6 +137,138 @@ public class Controller {
         telefonoVerEmpleadoTF.setEditable(false);
         edadVerEmpleadoTF.setEditable(false);
 
+
+
+        Firebase refv = new Firebase("https://testgimmapp.firebaseio.com/");
+
+
+
+        Firebase crefv = refv.child("Maquines");
+
+        // Attach an listener to read the data at our posts reference
+        crefv.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                ObservableList<Maquina> items = FXCollections.observableArrayList();
+
+                System.out.println("There are " + snapshot.getChildrenCount() + " blog posts");
+                for (DataSnapshot postSnapshot: snapshot.getChildren()) {
+                    Maquina maquina = postSnapshot.getValue(Maquina.class);
+                    System.out.println(maquina.getDescripcio() + " - " + maquina.getNom());
+                    items.add(maquina);
+
+                }
+                maquinasLV.setItems(items);
+
+            }
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+                System.out.println("The read failed: " + firebaseError.getMessage());
+            }
+        });
+
+
+
+
+        maquinasLV.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (event.getClickCount() == 2){
+                    Maquina m=  maquinasLV.getFocusModel().getFocusedItem();
+                    System.out.println(maquinasLV.getFocusModel().getFocusedIndex());
+                    ObservableList<Step> items2 = FXCollections.observableArrayList();
+                    nombreMaquinaVer.setText(m.getNom());
+                    descMaquinaVer.setText(m.getDescripcio());
+                    idMaquinaVer.setText(m.getId());
+                    FechaInstMaquinaVer.setText(m.getDataInstalacio());
+                    maquina1 = m;
+
+
+                    for (int i = 0; i < m.getSteps().size(); i++){
+                        items2.add(m.getSteps().get(i));
+                    }
+
+                    pasosLV.setItems(items2);
+
+
+
+
+                }
+
+
+            }
+        });
+
+        pasosLV.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (event.getClickCount()==2){
+                    Step s = pasosLV.getFocusModel().getFocusedItem();
+                    nStepVerStep.setText(String.valueOf(s.getnStep()));
+                    fotoStepVerStep.setText(s.getFoto());
+                    nombreStepVerStep.setText(s.getAnotacio());
+                    descStepVerStep.setText(s.getDescripcio());
+                    descStepVerStep.setWrapText(true);
+                    imVerS.setImage(new Image(s.getFoto()));
+                    step1 = pasosLV.getFocusModel().getFocusedIndex();
+                }
+
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+        Firebase ref3 = new Firebase("https://fiery-inferno-9835.firebaseio.com/");
+        Firebase cref3 = ref3.child("Maquinas");
+        Query queryRef3 = cref3.orderByChild("id").equalTo("s");
+
+
+        queryRef3.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                ms=dataSnapshot;
+                Firebase editRef = cref3.child(ms.getKey());
+                Map<String, Object> cl = new HashMap<String, Object>();
+                cl.put("steps/0/descripcio", "h");
+                editRef.updateChildren(cl);
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+*/
 
 /*
         InfoGym infoGym = new InfoGym();
@@ -701,4 +853,82 @@ public class Controller {
         editRef.updateChildren(cl);
 
     }
+    public void funEditMaq(){
+
+        Firebase ref3 = new Firebase("https://testgimmapp.firebaseio.com/");
+        Firebase cref3 = ref3.child("Maquines");
+        Query queryRef3 = cref3.orderByChild("id").equalTo(maquina1.getId());
+        queryRef3.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Firebase editRef = cref3.child(dataSnapshot.getKey());
+                Map<String, Object> cl = new HashMap<String, Object>();
+                cl.put("descripcio", descMaquinaVer.getText());
+                editRef.updateChildren(cl);
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+
+    }
+    public void funEditSt(){
+
+        Firebase ref3 = new Firebase("https://testgimmapp.firebaseio.com/");
+        Firebase cref3 = ref3.child("Maquines");
+        Query queryRef3 = cref3.orderByChild("id").equalTo(maquina1.getId());
+        queryRef3.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Firebase editRef = cref3.child(dataSnapshot.getKey());
+                Map<String, Object> cl = new HashMap<String, Object>();
+                cl.put("steps/"+step1+"/descripcio", "h");
+                editRef.updateChildren(cl);
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+
+
+
+    }
+
+
+
+
 }

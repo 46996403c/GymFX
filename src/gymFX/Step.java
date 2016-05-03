@@ -42,4 +42,9 @@ public class Step {
     public void setAnotacio(String anotacio) {
         this.anotacio = anotacio;
     }
+
+
+    public String toString(){
+        return String.valueOf(getnStep());
+    }
 }

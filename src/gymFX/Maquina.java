@@ -52,4 +52,9 @@ public class Maquina {
         this.steps = steps;
     }
 
+
+    public String toString(){
+        return getNom();
+    }
+
 }
