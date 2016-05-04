@@ -62,4 +62,11 @@ public class Incidencia {
     public void setRevisat(boolean revisat) {
         this.revisat = revisat;
     }
+
+    public String toString(){
+        return getIncidencia();
+    }
+
+
+
 }

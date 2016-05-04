@@ -18,6 +18,7 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.util.Pair;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -36,6 +37,9 @@ public class Controller {
     public WebView webView = new WebView();
     public Text Bienvenido;
 
+    //*
+    public Button Button;
+    //*
 
     public TextField nombreCrearClienteTF;
     public TextField primerApellidoCrearClienteTF;
@@ -111,12 +115,24 @@ public class Controller {
     public TextArea descStepVerStep;
     public ImageView imVerS;
 
+    public TextField idMaquinaVerIncidencia;
+    public TextField tipoVerIncidencia;
+    public TextField incidenciaVerIncidencia;
+    public TextField ususarioVerIncidencia;
+    public TextField fechaVerIncidencia;
+    public CheckBox solucionadaVerIncidencia;
+    public ListView<Incidencia> incidenciasListV;
+    public ListView<Incidencia> incidenciasResueltasListV;
+
+
+
     public Maquina maquina1;
     public int step1;
 
 
 
     public void initialize(){
+
         final WebEngine webEngine = webView.getEngine();
         webEngine.load("http://bacderodasport.com");
         Bienvenido.setText("Sin Loggear");
@@ -136,6 +152,78 @@ public class Controller {
         emailVerEmpleadoTF.setEditable(false);
         telefonoVerEmpleadoTF.setEditable(false);
         edadVerEmpleadoTF.setEditable(false);
+
+
+
+
+
+        Firebase refd = new Firebase("https://testgimmapp.firebaseio.com/");
+
+
+
+        Firebase crefd = refd.child("Incidencias");
+
+        // Attach an listener to read the data at our posts reference
+        crefd.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                ObservableList<Incidencia> items = FXCollections.observableArrayList();
+                ObservableList<Incidencia> items2 = FXCollections.observableArrayList();
+
+
+                System.out.println("There are " + snapshot.getChildrenCount() + " blog posts");
+                for (DataSnapshot postSnapshot: snapshot.getChildren()) {
+                    Incidencia incidencia2 = postSnapshot.getValue(Incidencia.class);
+                    if (!incidencia2.isRevisat())
+                        items.add(incidencia2);
+                    else{
+                        items2.add(incidencia2);
+                    }
+
+                }
+                incidenciasListV.setItems(items);
+                incidenciasResueltasListV.setItems(items2);
+
+            }
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+                System.out.println("The read failed: " + firebaseError.getMessage());
+            }
+        });
+
+        incidenciasListV.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (event.getClickCount() == 2){
+                    Incidencia ia=  incidenciasListV.getFocusModel().getFocusedItem();
+                    ObservableList<Step> items2 = FXCollections.observableArrayList();
+                    idMaquinaVerIncidencia.setText(ia.getIdMaquina());
+                    ususarioVerIncidencia.setText(ia.getUser());
+                    tipoVerIncidencia.setText(ia.getTipusIncidencia());
+                    fechaVerIncidencia.setText(ia.getData());
+                    incidenciaVerIncidencia.setText(ia.getIncidencia());
+                    solucionadaVerIncidencia.setSelected(ia.isRevisat());
+                }
+
+
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -849,6 +937,8 @@ public class Controller {
         cl.put("direccionGym", direccionGymTF.getText());
         cl.put("correoElectronicoGym", correoElectronicoGymTF.getText());
         cl.put("horarioGym/0", horarioLunesViernesTF.getText());
+        cl.put("horarioGym/0", horarioLunesViernesTF.getText());
+        cl.put("horarioGym/0", horarioLunesViernesTF.getText());
 
         editRef.updateChildren(cl);
 
@@ -926,6 +1016,45 @@ public class Controller {
 
 
 
+    }
+
+
+    public TextField nombre;
+    public TextField idpaso;
+
+
+    Maquina maquina = new Maquina();
+    Step step = new Step();
+    ArrayList<Step> aS = new ArrayList<Step>();
+
+
+
+    public void funGuardarPaso(){
+
+       // Maquina maquina = new Maquina();
+
+
+
+
+       // ArrayList<Step> aS = new ArrayList<Step>();
+
+        step.setnStep(Integer.parseInt(idpaso.getText()));
+        step.setDescripcio(nombre.getText());
+
+        aS.add(step);
+
+    }
+
+
+    public void funGuardarMaquina(){
+        Firebase ref = new Firebase("https://fiery-inferno-9835.firebaseio.com/");
+
+        Firebase cref = ref.child("Maquinas");
+        maquina.setNom("hola");
+
+        maquina.setSteps(aS);
+
+        cref.push().setValue(maquina);
     }
 
 
