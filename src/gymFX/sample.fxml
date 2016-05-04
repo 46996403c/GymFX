@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.web.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ListView?>
@@ -16,7 +22,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gymFX.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gymFX.Controller">
    <children>
       <TabPane layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <tabs>
@@ -204,15 +210,15 @@
                          </children>
                      </AnchorPane>
                  </content>
-             </Tab><Tab text="Mauinas">
+             </Tab><Tab text="Maquinas">
              <content>
                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <TabPane prefHeight="867.0" prefWidth="1600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <tabs>
-                            <Tab text="Untitled Tab 1">
+                            <Tab text="Ver Maquina">
                                  <content>
-                                     <SplitPane dividerPositions="0.5" prefHeight="371.0" prefWidth="600.0">
+                                     <SplitPane dividerPositions="0.11" prefHeight="371.0" prefWidth="600.0">
                                          <items>
                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                                  <children>
@@ -234,27 +240,34 @@
                                              </AnchorPane>
                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                                  <children>
-                                                     <Text fx:id="descripcionPasoMaquina" layoutX="756.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DESCRICION MAQUINA" />
+                                                     <Text fx:id="descripcionPasoMaquina" layoutX="244.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripcion Maquina" />
                                                      <ImageView fx:id="fotoMaquinaIV" fitHeight="150.0" fitWidth="200.0" layoutX="169.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true" />
-                                                <TextField fx:id="idMaquinaVer" layoutX="73.0" layoutY="49.0" />
-                                                <TextField fx:id="nombreMaquinaVer" layoutX="421.0" layoutY="49.0" />
-                                                <TextField fx:id="FechaInstMaquinaVer" layoutX="73.0" layoutY="124.0" />
-                                                <TextField layoutX="421.0" layoutY="124.0" />
-                                                <TextArea fx:id="descMaquinaVer" layoutX="730.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" />
-                                                <TextField fx:id="nStepVerStep" layoutX="73.0" layoutY="487.0" />
-                                                <TextField fx:id="nombreStepVerStep" layoutX="421.0" layoutY="487.0" />
-                                                <TextField fx:id="fotoStepVerStep" layoutX="73.0" layoutY="576.0" />
-                                                <TextArea fx:id="descStepVerStep" layoutX="730.0" layoutY="465.0" prefHeight="200.0" prefWidth="200.0" />
-                                                <ImageView fx:id="imVerS" fitHeight="150.0" fitWidth="200.0" layoutX="407.0" layoutY="550.0" pickOnBounds="true" preserveRatio="true" />
-                                                <Button layoutX="407.0" layoutY="355.0" mnemonicParsing="false" onAction="#funEditMaq" text="Editar Maquina" />
-                                                <Button layoutX="435.0" layoutY="782.0" mnemonicParsing="false" onAction="#funEditSt" text="Editar Paso" />
+                                                <TextField fx:id="idMaquinaVer" layoutX="20.0" layoutY="49.0" />
+                                                <TextField fx:id="nombreMaquinaVer" layoutX="20.0" layoutY="189.0" />
+                                                <TextField fx:id="FechaInstMaquinaVer" layoutX="20.0" layoutY="124.0" />
+                                                <TextArea fx:id="descMaquinaVer" layoutX="240.0" layoutY="41.0" prefHeight="352.0" prefWidth="872.0" />
+                                                <TextField fx:id="nStepVerStep" layoutX="20.0" layoutY="456.0" />
+                                                <TextField fx:id="nombreStepVerStep" layoutX="20.0" layoutY="519.0" />
+                                                <TextField fx:id="fotoStepVerStep" layoutX="20.0" layoutY="577.0" />
+                                                <TextArea fx:id="descStepVerStep" layoutX="348.0" layoutY="437.0" prefHeight="368.0" prefWidth="762.0" />
+                                                <ImageView fx:id="imVerS" fitHeight="178.0" fitWidth="316.0" layoutX="20.0" layoutY="617.0" pickOnBounds="true" preserveRatio="true" />
+                                                <Button layoutX="37.0" layoutY="239.0" mnemonicParsing="false" onAction="#funEditMaq" text="Editar Maquina" />
+                                                <Button layoutX="232.0" layoutY="519.0" mnemonicParsing="false" onAction="#funEditSt" text="Editar Paso" />
+                                                <Separator layoutX="128.0" layoutY="420.0" prefHeight="3.0" prefWidth="1421.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="419.5" />
+                                                <Text layoutX="24.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID Maquina" />
+                                                <Text layoutX="24.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha Instalacion Maquina" />
+                                                <Text layoutX="26.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre Maquina" />
+                                                <Text layoutX="34.0" layoutY="442.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nº Step" />
+                                                <Text layoutX="37.0" layoutY="506.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre Step" />
+                                                <Text layoutX="40.0" layoutY="564.0" strokeType="OUTSIDE" strokeWidth="0.0" text="URL Step" />
+                                                <Text layoutX="233.0" layoutY="450.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripcion Step" />
                                                  </children>
                                              </AnchorPane>
                                          </items>
                                      </SplitPane>
                                  </content>
                             </Tab>
-                            <Tab text="Untitled Tab 2">
+                            <Tab text="Crear Maquina">
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
