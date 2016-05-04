@@ -10,6 +10,16 @@ public class Incidencia {
     private String user;
     private boolean revisat;
     private String data;
+    private String id;
+
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public Incidencia(){
 

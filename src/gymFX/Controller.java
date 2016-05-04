@@ -129,6 +129,8 @@ public class Controller {
     public Maquina maquina1;
     public int step1;
 
+    public Incidencia incidencia0;
+
 
 
     public void initialize(){
@@ -157,57 +159,51 @@ public class Controller {
 
 
 
-        Firebase refd = new Firebase("https://testgimmapp.firebaseio.com/");
 
 
-
-        Firebase crefd = refd.child("Incidencias");
-
-        // Attach an listener to read the data at our posts reference
-        crefd.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                ObservableList<Incidencia> items = FXCollections.observableArrayList();
-                ObservableList<Incidencia> items2 = FXCollections.observableArrayList();
-
-
-                System.out.println("There are " + snapshot.getChildrenCount() + " blog posts");
-                for (DataSnapshot postSnapshot: snapshot.getChildren()) {
-                    Incidencia incidencia2 = postSnapshot.getValue(Incidencia.class);
-                    if (!incidencia2.isRevisat())
-                        items.add(incidencia2);
-                    else{
-                        items2.add(incidencia2);
-                    }
-
-                }
-                incidenciasListV.setItems(items);
-                incidenciasResueltasListV.setItems(items2);
-
-            }
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-                System.out.println("The read failed: " + firebaseError.getMessage());
-            }
-        });
-
-        incidenciasListV.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        solucionadaVerIncidencia.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                if (event.getClickCount() == 2){
-                    Incidencia ia=  incidenciasListV.getFocusModel().getFocusedItem();
-                    ObservableList<Step> items2 = FXCollections.observableArrayList();
-                    idMaquinaVerIncidencia.setText(ia.getIdMaquina());
-                    ususarioVerIncidencia.setText(ia.getUser());
-                    tipoVerIncidencia.setText(ia.getTipusIncidencia());
-                    fechaVerIncidencia.setText(ia.getData());
-                    incidenciaVerIncidencia.setText(ia.getIncidencia());
-                    solucionadaVerIncidencia.setSelected(ia.isRevisat());
-                }
+                Firebase ref3 = new Firebase("https://testgimmapp.firebaseio.com/");
+                Firebase cref3 = ref3.child("Incidencias");
+                Query queryRef3 = cref3.orderByChild("id").equalTo(incidencia0.getId());
+
+                queryRef3.addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                        Firebase editRef = cref3.child(dataSnapshot.getKey());
+                        Map<String, Object> cl = new HashMap<String, Object>();
+                        cl.put("revisat", true);
+                        editRef.updateChildren(cl);
+                    }
+
+                    @Override
+                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                    }
+
+                    @Override
+                    public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                    }
+
+                    @Override
+                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(FirebaseError firebaseError) {
+
+                    }
+                });
 
 
             }
         });
+
+
+
 
 
 
@@ -310,6 +306,7 @@ public class Controller {
 
 
 
+        incidencias();
 
 
 
@@ -430,6 +427,82 @@ public class Controller {
         });
 
 
+    }
+
+
+    public void incidencias(){
+        Firebase refd = new Firebase("https://testgimmapp.firebaseio.com/");
+
+
+
+        Firebase crefd = refd.child("Incidencias");
+
+        // Attach an listener to read the data at our posts reference
+        crefd.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                ObservableList<Incidencia> items = FXCollections.observableArrayList();
+                ObservableList<Incidencia> items2 = FXCollections.observableArrayList();
+
+
+                System.out.println("There are " + snapshot.getChildrenCount() + " blog posts");
+                for (DataSnapshot postSnapshot: snapshot.getChildren()) {
+                    Incidencia incidencia2 = postSnapshot.getValue(Incidencia.class);
+                    if (!incidencia2.isRevisat())
+                        items.add(incidencia2);
+                    else{
+                        items2.add(incidencia2);
+                    }
+
+                }
+                incidenciasListV.setItems(items);
+                incidenciasResueltasListV.setItems(items2);
+
+            }
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+                System.out.println("The read failed: " + firebaseError.getMessage());
+            }
+        });
+
+        incidenciasListV.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (event.getClickCount() == 2){
+                    Incidencia ia=  incidenciasListV.getFocusModel().getFocusedItem();
+                    ObservableList<Step> items2 = FXCollections.observableArrayList();
+                    idMaquinaVerIncidencia.setText(ia.getIdMaquina());
+                    ususarioVerIncidencia.setText(ia.getUser());
+                    tipoVerIncidencia.setText(ia.getTipusIncidencia());
+                    fechaVerIncidencia.setText(ia.getData());
+                    incidenciaVerIncidencia.setText(ia.getIncidencia());
+                    solucionadaVerIncidencia.setSelected(ia.isRevisat());
+                    incidencia0 = ia;
+                }
+
+
+            }
+        });
+
+        incidenciasResueltasListV.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (event.getClickCount() == 2){
+                    Incidencia ia=  incidenciasResueltasListV.getFocusModel().getFocusedItem();
+                    ObservableList<Step> items2 = FXCollections.observableArrayList();
+                    idMaquinaVerIncidencia.setText(ia.getIdMaquina());
+                    ususarioVerIncidencia.setText(ia.getUser());
+                    tipoVerIncidencia.setText(ia.getTipusIncidencia());
+                    fechaVerIncidencia.setText(ia.getData());
+                    incidenciaVerIncidencia.setText(ia.getIncidencia());
+                    solucionadaVerIncidencia.setSelected(ia.isRevisat());
+                    incidencia0 = ia;
+
+                }
+
+
+            }
+        });
     }
 
     public void funLogin(){
@@ -943,6 +1016,7 @@ public class Controller {
         editRef.updateChildren(cl);
 
     }
+
     public void funEditMaq(){
 
         Firebase ref3 = new Firebase("https://testgimmapp.firebaseio.com/");
@@ -979,6 +1053,7 @@ public class Controller {
         });
 
     }
+
     public void funEditSt(){
 
         Firebase ref3 = new Firebase("https://testgimmapp.firebaseio.com/");
