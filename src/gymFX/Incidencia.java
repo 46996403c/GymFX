@@ -11,7 +11,15 @@ public class Incidencia {
     private boolean revisat;
     private String data;
     private String id;
+    private String coment;
 
+    public String getComent() {
+        return coment;
+    }
+
+    public void setComent(String coment) {
+        this.coment = coment;
+    }
 
     public String getId() {
         return id;

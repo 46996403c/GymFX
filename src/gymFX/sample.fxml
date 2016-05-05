@@ -338,7 +338,7 @@
                         <TextArea fx:id="incidenciaVerIncidencia" layoutX="249.0" layoutY="106.0" prefHeight="278.0" prefWidth="810.0" />
                         <TextArea fx:id="comentarioIncidenciaTA" layoutX="248.0" layoutY="424.0" prefHeight="352.0" prefWidth="813.0" />
                         <Text layoutX="248.0" layoutY="420.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Comenario Respuesta" />
-                        <Button fx:id="cerrarIncidenciaBT" layoutX="500.0" layoutY="810.0" mnemonicParsing="false" text="Cerrar Incidencia" />
+                        <Button fx:id="cerrarIncidenciaBT" layoutX="500.0" layoutY="810.0" mnemonicParsing="false" text="Cerrar Incidencia" onAction="#funSolInc" />
                      </children>
                   </AnchorPane>
               </content>

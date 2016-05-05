@@ -116,12 +116,13 @@ public class Controller {
 
     public TextField idMaquinaVerIncidencia;
     public TextField tipoVerIncidencia;
-    public TextField incidenciaVerIncidencia;
+    public TextArea incidenciaVerIncidencia;
     public TextField ususarioVerIncidencia;
     public TextField fechaVerIncidencia;
     public CheckBox solucionadaVerIncidencia;
     public ListView<Incidencia> incidenciasListV;
     public ListView<Incidencia> incidenciasResueltasListV;
+    public TextArea comentarioIncidenciaTA;
 
     public TextField idmaquina;
     public TextField nombrem;
@@ -131,6 +132,8 @@ public class Controller {
     public TextArea descStep;
     public TextField linkStep;
 
+
+    public Tab infoTAB;
 
 
     public Maquina maquina1;
@@ -162,84 +165,7 @@ public class Controller {
         telefonoVerEmpleadoTF.setEditable(false);
         edadVerEmpleadoTF.setEditable(false);
 
-
-        Firebase f = new Firebase("https://fiery-inferno-9835.firebaseio.com/");
-
-        Firebase ff = f.child("ultimoValor");
-
-        ff.setValue("0002");
-
-
-
-
-
-
-
-        solucionadaVerIncidencia.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                Firebase ref3 = new Firebase("https://testgimmapp.firebaseio.com/");
-                Firebase cref3 = ref3.child("Incidencias");
-                Query queryRef3 = cref3.orderByChild("id").equalTo(incidencia0.getId());
-
-                queryRef3.addChildEventListener(new ChildEventListener() {
-                    @Override
-                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                        Firebase editRef = cref3.child(dataSnapshot.getKey());
-                        Map<String, Object> cl = new HashMap<String, Object>();
-                        cl.put("revisat", true);
-                        editRef.updateChildren(cl);
-                    }
-
-                    @Override
-                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-                    }
-
-                    @Override
-                    public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-                    }
-
-                    @Override
-                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-                    }
-
-                    @Override
-                    public void onCancelled(FirebaseError firebaseError) {
-
-                    }
-                });
-
-
-            }
-        });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         Firebase refv = new Firebase("https://testgimmapp.firebaseio.com/");
-
-
 
         Firebase crefv = refv.child("Maquines");
 
@@ -451,6 +377,16 @@ public class Controller {
         });
 
 
+    }
+
+    private static ImageView buildImage(String imgPatch) {
+        Image i = new Image(imgPatch);
+        ImageView imageView = new ImageView();
+        //You can set width and height
+        imageView.setFitHeight(16);
+        imageView.setFitWidth(16);
+        imageView.setImage(i);
+        return imageView;
     }
 
 
@@ -893,6 +829,7 @@ public class Controller {
             @Override
             public void onCancelled(FirebaseError firebaseError) {}
         });
+
         while (!hechoBCNS.get());
         if (errorBusqueda){
             alertError.setTitle("Error Busqueda Num Empleado");
@@ -1171,6 +1108,44 @@ public class Controller {
         cref.push().setValue(maquina);
 
         aS.clear();
+
+    }
+
+    public void funSolInc(){
+        Firebase ref3 = new Firebase("https://testgimmapp.firebaseio.com/");
+        Firebase cref3 = ref3.child("Incidencias");
+        Query queryRef3 = cref3.orderByChild("id").equalTo(incidencia0.getId());
+
+        queryRef3.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                Firebase editRef = cref3.child(dataSnapshot.getKey());
+                Map<String, Object> cl = new HashMap<String, Object>();
+                cl.put("revisat", true);
+                cl.put("coment", comentarioIncidenciaTA.getText());
+                editRef.updateChildren(cl);
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
 
     }
 
