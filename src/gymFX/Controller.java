@@ -134,6 +134,7 @@ public class Controller {
 
 
     public Tab infoTAB;
+    public Tab InicidenciasTAB;
 
 
     public Maquina maquina1;
@@ -408,8 +409,17 @@ public class Controller {
                 System.out.println("There are " + snapshot.getChildrenCount() + " blog posts");
                 for (DataSnapshot postSnapshot: snapshot.getChildren()) {
                     Incidencia incidencia2 = postSnapshot.getValue(Incidencia.class);
-                    if (!incidencia2.isRevisat())
+                    if (!incidencia2.isRevisat()) {
                         items.add(incidencia2);
+                        Platform.runLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                InicidenciasTAB.setGraphic(buildImage("https://static-secure.guim.co.uk/sys-images/Guardian/Pix/pictures/2009/4/29/1240996556472/exclamation-001.jpg"));
+
+
+                            }
+                        });
+                    }
                     else{
                         items2.add(incidencia2);
                     }
@@ -420,7 +430,12 @@ public class Controller {
                     @Override
                     public void run() {
                         incidenciasListV.setItems(items);
-                        incidenciasResueltasListV.setItems(items2);                    }
+                        incidenciasResueltasListV.setItems(items2);
+                        if (incidenciasListV.getItems().isEmpty()){
+                            InicidenciasTAB.setGraphic(null);
+                        }
+
+                    }
                 });
 
 
@@ -469,6 +484,7 @@ public class Controller {
 
             }
         });
+
     }
 
     public void funLogin(){
@@ -1146,6 +1162,7 @@ public class Controller {
 
             }
         });
+
 
     }
 
