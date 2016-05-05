@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.web.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -22,7 +17,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gymFX.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gymFX.Controller">
    <children>
       <TabPane layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <tabs>
@@ -280,10 +275,10 @@
                                           <Text layoutX="57.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre Maquina" />
                                           <Text layoutX="57.0" layoutY="433.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID Step" />
                                           <Text layoutX="57.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre Step" />
-                                          <TextArea layoutX="57.0" layoutY="166.0" prefHeight="195.0" prefWidth="448.0" promptText="Descripcion Maquina" />
+                                          <TextArea fx:id="descm" layoutX="57.0" layoutY="166.0" prefHeight="195.0" prefWidth="448.0" promptText="Descripcion Maquina" />
                                           <Text layoutX="57.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripcion Maquina" />
-                                          <TextArea layoutX="57.0" layoutY="572.0" prefHeight="218.0" prefWidth="447.0" promptText="Descripcion Step" />
-                                          <TextField layoutX="57.0" layoutY="526.0" prefHeight="25.0" prefWidth="445.0" promptText="URL Imagen Step" />
+                                          <TextArea fx:id="descStep" layoutX="57.0" layoutY="572.0" prefHeight="218.0" prefWidth="447.0" promptText="Descripcion Step" />
+                                          <TextField fx:id="linkStep" layoutX="57.0" layoutY="526.0" prefHeight="25.0" prefWidth="445.0" promptText="URL Imagen Step" />
                                           <Text layoutX="57.0" layoutY="522.0" strokeType="OUTSIDE" strokeWidth="0.0" text="URL Imagen Step" />
                                           <Text layoutX="57.0" layoutY="568.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripcion Step" />
                                        </children>
