@@ -23,7 +23,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gymFX.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="704.0" prefWidth="1060.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gymFX.Controller">
    <children>
       <TabPane layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <tabs>
@@ -218,7 +218,7 @@
                           <tabs>
                             <Tab text="Ver Maquina">
                                  <content>
-                                     <SplitPane dividerPositions="0.11" prefHeight="371.0" prefWidth="600.0">
+                                     <SplitPane dividerPositions="0.16792452830188678" prefHeight="371.0" prefWidth="600.0">
                                          <items>
                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                                  <children>
@@ -242,25 +242,26 @@
                                                  <children>
                                                      <Text fx:id="descripcionPasoMaquina" layoutX="244.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripcion Maquina" />
                                                      <ImageView fx:id="fotoMaquinaIV" fitHeight="150.0" fitWidth="200.0" layoutX="169.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true" />
-                                                    <TextField fx:id="idMaquinaVer" layoutX="20.0" layoutY="49.0" />
-                                                    <TextField fx:id="nombreMaquinaVer" layoutX="20.0" layoutY="189.0" />
-                                                    <TextField fx:id="FechaInstMaquinaVer" layoutX="20.0" layoutY="124.0" />
-                                                    <TextArea fx:id="descMaquinaVer" layoutX="240.0" layoutY="41.0" prefHeight="352.0" prefWidth="872.0" />
-                                                    <TextField fx:id="nStepVerStep" layoutX="20.0" layoutY="456.0" />
-                                                    <TextField fx:id="nombreStepVerStep" layoutX="20.0" layoutY="519.0" />
-                                                    <TextField fx:id="fotoStepVerStep" layoutX="20.0" layoutY="577.0" />
-                                                    <TextArea fx:id="descStepVerStep" layoutX="348.0" layoutY="437.0" prefHeight="368.0" prefWidth="762.0" />
-                                                    <ImageView fx:id="imVerS" fitHeight="178.0" fitWidth="316.0" layoutX="20.0" layoutY="617.0" pickOnBounds="true" preserveRatio="true" />
+                                                    <TextField fx:id="idMaquinaVer" layoutX="20.0" layoutY="49.0" prefHeight="25.0" prefWidth="201.0" />
+                                                    <TextField fx:id="nombreMaquinaVer" layoutX="20.0" layoutY="189.0" prefHeight="25.0" prefWidth="201.0" />
+                                                    <TextField fx:id="FechaInstMaquinaVer" layoutX="20.0" layoutY="124.0" prefHeight="25.0" prefWidth="199.0" />
+                                                    <TextArea fx:id="descMaquinaVer" layoutX="244.0" layoutY="38.0" prefHeight="253.0" prefWidth="605.0" />
+                                                    <TextField fx:id="nStepVerStep" layoutX="20.0" layoutY="344.0" prefHeight="25.0" prefWidth="193.0" />
+                                                    <TextField fx:id="nombreStepVerStep" layoutX="20.0" layoutY="400.0" prefHeight="25.0" prefWidth="194.0" />
+                                                    <TextField fx:id="fotoStepVerStep" layoutX="20.0" layoutY="459.0" prefHeight="25.0" prefWidth="195.0" />
+                                                    <TextArea fx:id="descStepVerStep" layoutX="244.0" layoutY="342.0" prefHeight="277.0" prefWidth="602.0" />
+                                                    <ImageView fx:id="imVerS" fitHeight="138.0" fitWidth="200.0" layoutX="11.0" layoutY="494.0" pickOnBounds="true" preserveRatio="true" />
                                                     <Button layoutX="37.0" layoutY="239.0" mnemonicParsing="false" onAction="#funEditMaq" text="Editar Maquina" />
-                                                    <Button layoutX="232.0" layoutY="519.0" mnemonicParsing="false" onAction="#funEditSt" text="Editar Paso" />
-                                                    <Separator layoutX="128.0" layoutY="420.0" prefHeight="3.0" prefWidth="1421.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="419.5" />
+                                                    <Button layoutX="772.0" layoutY="315.0" mnemonicParsing="false" onAction="#funEditSt" text="Editar Step" />
+                                                    <Separator layoutX="128.0" layoutY="302.0" prefHeight="15.0" prefWidth="940.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="302.0" />
                                                     <Text layoutX="24.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID Maquina" />
                                                     <Text layoutX="24.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha Instalacion Maquina" />
                                                     <Text layoutX="26.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre Maquina" />
-                                                    <Text layoutX="34.0" layoutY="442.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nº Step" />
-                                                    <Text layoutX="37.0" layoutY="506.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre Step" />
-                                                    <Text layoutX="40.0" layoutY="564.0" strokeType="OUTSIDE" strokeWidth="0.0" text="URL Step" />
-                                                    <Text layoutX="233.0" layoutY="450.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripcion Step" />
+                                                    <Text layoutX="25.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nº Step" />
+                                                    <Text layoutX="19.0" layoutY="396.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre Step" />
+                                                    <Text layoutX="21.0" layoutY="455.0" strokeType="OUTSIDE" strokeWidth="0.0" text="URL Imagen Step" />
+                                                    <Text layoutX="244.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripcion Step" />
+                                                <Button layoutX="634.0" layoutY="315.0" mnemonicParsing="false" text="Actualizar Imagen" />
                                                  </children>
                                              </AnchorPane>
                                          </items>
@@ -338,7 +339,7 @@
                         <TextArea fx:id="incidenciaVerIncidencia" layoutX="249.0" layoutY="106.0" prefHeight="278.0" prefWidth="810.0" />
                         <TextArea fx:id="comentarioIncidenciaTA" layoutX="248.0" layoutY="424.0" prefHeight="352.0" prefWidth="813.0" />
                         <Text layoutX="248.0" layoutY="420.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Comenario Respuesta" />
-                        <Button fx:id="cerrarIncidenciaBT" layoutX="500.0" layoutY="810.0" mnemonicParsing="false" text="Cerrar Incidencia" onAction="#funSolInc" />
+                        <Button fx:id="cerrarIncidenciaBT" layoutX="500.0" layoutY="810.0" mnemonicParsing="false" onAction="#funSolInc" text="Cerrar Incidencia" />
                      </children>
                   </AnchorPane>
               </content>
