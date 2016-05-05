@@ -10,6 +10,24 @@ public class Incidencia {
     private String user;
     private boolean revisat;
     private String data;
+    private String id;
+    private String coment;
+
+    public String getComent() {
+        return coment;
+    }
+
+    public void setComent(String coment) {
+        this.coment = coment;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public Incidencia(){
 
@@ -62,4 +80,11 @@ public class Incidencia {
     public void setRevisat(boolean revisat) {
         this.revisat = revisat;
     }
+
+    public String toString(){
+        return getIncidencia();
+    }
+
+
+
 }
