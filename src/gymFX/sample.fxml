@@ -31,11 +31,11 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <SplitPane dividerPositions="0.07167630057803469" layoutX="132.0" layoutY="57.0" orientation="VERTICAL" prefHeight="404.0" prefWidth="512.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <SplitPane dividerPositions="0.10549777117384844" layoutX="132.0" layoutY="57.0" orientation="VERTICAL" prefHeight="404.0" prefWidth="512.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <items>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                  <children>
-                                    <SplitPane dividerPositions="0.5081453634085213" layoutX="14.0" layoutY="-45.0" prefHeight="69.0" prefWidth="510.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <SplitPane dividerPositions="0.4952651515151515" layoutX="14.0" layoutY="-45.0" prefHeight="69.0" prefWidth="510.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <items>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="67.0" prefWidth="183.0">
                                              <children>
@@ -74,22 +74,32 @@
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <TextField fx:id="nombreCrearClienteTF" layoutX="14.0" layoutY="14.0" promptText="Nombre" />
-                                          <TextField fx:id="primerApellidoCrearClienteTF" layoutX="174.0" layoutY="14.0" prefHeight="25.0" prefWidth="163.0" promptText="Primer Apellido" />
-                                          <TextField fx:id="segundoApellidoCrearClienteTF" layoutX="346.0" layoutY="14.0" promptText="Segundo Apellido" />
-                                          <TextField fx:id="direccionCrearCLienteTF" layoutX="14.0" layoutY="49.0" prefHeight="25.0" prefWidth="480.0" promptText="Direccion" />
-                                          <TextField fx:id="emailCrearClienteTF" layoutX="15.0" layoutY="85.0" prefHeight="25.0" prefWidth="480.0" promptText="Correo Electronico" />
-                                          <TextField fx:id="telefonoCrearClienteTF" layoutX="180.0" layoutY="120.0" prefHeight="25.0" prefWidth="167.0" promptText="Telefono" />
-                                          <TextField fx:id="dniCrearClienteTF" layoutX="14.0" layoutY="120.0" promptText="DNI" />
-                                          <MenuButton fx:id="sexoCrearClienteMB" layoutX="436.0" layoutY="120.0" mnemonicParsing="false" text="Sexo">
+                                          <TextField fx:id="nombreCrearClienteTF" layoutX="290.0" layoutY="46.0" prefHeight="25.0" prefWidth="554.0" promptText="Nombre" />
+                                          <TextField fx:id="primerApellidoCrearClienteTF" layoutX="291.0" layoutY="84.0" prefHeight="25.0" prefWidth="554.0" promptText="Primer Apellido" />
+                                          <TextField fx:id="segundoApellidoCrearClienteTF" layoutX="290.0" layoutY="120.0" prefHeight="25.0" prefWidth="554.0" promptText="Segundo Apellido" />
+                                          <TextField fx:id="direccionCrearCLienteTF" layoutX="290.0" layoutY="306.0" prefHeight="25.0" prefWidth="554.0" promptText="Direccion" />
+                                          <TextField fx:id="dniCrearClienteTF" layoutX="288.0" layoutY="345.0" prefHeight="25.0" prefWidth="554.0" promptText="DNI" />
+                                          <TextField fx:id="telefonoCrearClienteTF" layoutX="290.0" layoutY="269.0" prefHeight="25.0" prefWidth="554.0" promptText="Telefono" />
+                                          <TextField fx:id="emailCrearClienteTF" layoutX="290.0" layoutY="233.0" prefHeight="25.0" prefWidth="554.0" promptText="Correo Electronico" />
+                                          <MenuButton fx:id="sexoCrearClienteMB" alignment="CENTER" contentDisplay="CENTER" layoutX="293.0" layoutY="196.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="554.0" text="Sexo" textAlignment="CENTER">
                                              <items>
                                                 <MenuItem fx:id="maculinoCrearClienteMI" mnemonicParsing="false" text="Masculino" />
                                                 <MenuItem fx:id="femeninoCrearClienteMI" mnemonicParsing="false" text="Feminino" />
                                              </items>
                                           </MenuButton>
-                                          <TextField fx:id="edadCrearClienteTF" layoutX="362.0" layoutY="120.0" prefHeight="25.0" prefWidth="64.0" promptText="Edad" />
-                                          <Button layoutX="14.0" layoutY="209.0" mnemonicParsing="false" onAction="#funCrearClie" text="Crear Socio" />
-                                          <TextField fx:id="numSocioCrearClienteTF" layoutX="14.0" layoutY="157.0" promptText="Num Cliente" />
+                                          <TextField fx:id="edadCrearClienteTF" layoutX="290.0" layoutY="159.0" prefHeight="25.0" prefWidth="554.0" promptText="Edad" />
+                                          <Button layoutX="492.0" layoutY="453.0" mnemonicParsing="false" onAction="#funCrearClie" text="Crear Cliente" />
+                                          <TextField fx:id="numSocioCrearClienteTF" layoutX="288.0" layoutY="385.0" prefWidth="554.0" promptText="Num Cliente" />
+                                          <Text layoutX="170.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
+                                          <Text layoutX="170.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Primer Apellido" />
+                                          <Text layoutX="170.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Segundo Apellido" />
+                                          <Text layoutX="170.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edad" />
+                                          <Text layoutX="170.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sexo" />
+                                          <Text layoutX="170.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Correo Electronico" />
+                                          <Text layoutX="170.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefono" />
+                                          <Text layoutX="170.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Direccion" />
+                                          <Text layoutX="170.0" layoutY="362.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DNI" />
+                                          <Text layoutX="170.0" layoutY="402.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero de cliente" />
                                        </children>
                                     </AnchorPane>
                                  </content>
@@ -98,24 +108,35 @@
                                  <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <TextField fx:id="nombreVerClienteTF1" layoutX="14.0" layoutY="118.0" promptText="Nombre" />
-                                          <TextField fx:id="primerApellidoVerClienteTF1" layoutX="174.0" layoutY="118.0" prefHeight="25.0" prefWidth="163.0" promptText="Primer Apellido" />
-                                          <TextField fx:id="segundoApellidoVerClienteTF1" layoutX="346.0" layoutY="118.0" promptText="Segundo Apellido" />
-                                          <TextField fx:id="direccionVerClienteTF1" layoutX="14.0" layoutY="153.0" prefHeight="25.0" prefWidth="480.0" promptText="Direccion" />
-                                          <TextField fx:id="emailVerClienteTF1" layoutX="15.0" layoutY="189.0" prefHeight="25.0" prefWidth="480.0" promptText="Correo Electronico" />
-                                          <TextField fx:id="telefonoVerClienteTF1" layoutX="15.0" layoutY="224.0" prefHeight="25.0" prefWidth="205.0" promptText="Telefono" />
-                                          <TextField fx:id="dniVerClienteTF1" layoutX="14.0" layoutY="66.0" onAction="#funBuscarClieDNI" promptText="DNI Cliente" />
-                                          <MenuButton fx:id="sexoVerClienteTF1" layoutX="331.0" layoutY="224.0" mnemonicParsing="false" text="Sexo">
+										  <TextField fx:id="nombreVerClienteTF1" layoutX="290.0" layoutY="46.0" prefHeight="25.0" prefWidth="554.0" promptText="Nombre" />
+                                          <TextField fx:id="primerApellidoVerClienteTF1" layoutX="291.0" layoutY="84.0" prefHeight="25.0" prefWidth="554.0" promptText="Primer Apellido" />
+                                          <TextField fx:id="segundoApellidoVerClienteTF1" layoutX="290.0" layoutY="120.0" prefHeight="25.0" prefWidth="554.0" promptText="Segundo Apellido" />
+                                          <TextField fx:id="direccionVerClienteTF1" layoutX="290.0" layoutY="306.0" prefHeight="25.0" prefWidth="554.0" promptText="Direccion" />
+                                          <TextField fx:id="dniVerClienteTF1" layoutX="288.0" layoutY="345.0" prefHeight="25.0" prefWidth="554.0" promptText="DNI" />
+                                          <TextField fx:id="telefonoVerClienteTF1" layoutX="290.0" layoutY="269.0" prefHeight="25.0" prefWidth="554.0" promptText="Telefono" />
+                                          <TextField fx:id="emailVerClienteTF1" layoutX="290.0" layoutY="233.0" prefHeight="25.0" prefWidth="554.0" promptText="Correo Electronico" />
+                                          <MenuButton fx:id="sexoVerClienteTF1" alignment="CENTER" contentDisplay="CENTER" layoutX="293.0" layoutY="196.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="554.0" text="Sexo" textAlignment="CENTER">
                                              <items>
-                                                <MenuItem fx:id="maculinoCrearClienteMI1" mnemonicParsing="false" text="Masculino" />
-                                                <MenuItem fx:id="femeninoCrearClienteMI1" mnemonicParsing="false" text="Feminino" />
+                                                <MenuItem fx:id="maculinoVerClienteMI" mnemonicParsing="false" text="Masculino" />
+                                                <MenuItem fx:id="femeninoVerClienteMI" mnemonicParsing="false" text="Feminino" />
                                              </items>
                                           </MenuButton>
-                                          <TextField fx:id="edadVerClienteTF1" layoutX="257.0" layoutY="224.0" prefHeight="25.0" prefWidth="64.0" promptText="Edad" />
-                                          <Button layoutX="217.0" layoutY="22.0" mnemonicParsing="false" onAction="#funBuscarClie" text="Buscar Num socio" />
-                                          <TextField fx:id="numSocioVerClienteTF1" layoutX="14.0" layoutY="22.0" onAction="#funBuscarClie" promptText="Num Cliente" />
-                                          <Button fx:id="EditarDatosCliente" layoutX="15.0" layoutY="282.0" mnemonicParsing="false" onAction="#funEditClie" text="Editar datos" />
-                                          <Button layoutX="217.0" layoutY="66.0" mnemonicParsing="false" onAction="#funBuscarClieDNI" text="Buscar DNI socio" />
+                                          <TextField fx:id="edadVerClienteTF1" layoutX="290.0" layoutY="159.0" prefHeight="25.0" prefWidth="554.0" promptText="Edad" />
+                                          <TextField fx:id="numSocioVerClienteTF1" layoutX="288.0" layoutY="385.0" prefWidth="554.0" promptText="Num Cliente" />
+                                          <Text layoutX="170.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
+                                          <Text layoutX="170.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Primer Apellido" />
+                                          <Text layoutX="170.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Segundo Apellido" />
+                                          <Text layoutX="170.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edad" />
+                                          <Text layoutX="170.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sexo" />
+                                          <Text layoutX="170.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Correo Electronico" />
+                                          <Text layoutX="170.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefono" />
+                                          <Text layoutX="170.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Direccion" />
+                                          <Text layoutX="170.0" layoutY="362.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DNI" />
+                                          <Text layoutX="170.0" layoutY="402.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero de cliente" />
+                                          <Button layoutX="857.0" layoutY="385.0" mnemonicParsing="false" onAction="#funBuscarClie" text="Buscar Num Cliente" />
+                                          <Button fx:id="EditarDatosCliente" layoutX="422.0" layoutY="441.0" mnemonicParsing="false" onAction="#funEditClie" text="Editar datos" />
+                                          <Button layoutX="860.0" layoutY="345.0" mnemonicParsing="false" onAction="#funBuscarClieDNI" text="Buscar DNI Cliente" />
+                                          <Button fx:id="eliminarClienteBT" layoutX="610.0" layoutY="441.0" mnemonicParsing="false" text="Eliminar Cliente" />
                                        </children>
                                     </AnchorPane>
                                  </content>
@@ -210,7 +231,8 @@
                          </children>
                      </AnchorPane>
                  </content>
-             </Tab><Tab text="Maquinas">
+             </Tab>
+             <Tab text="Maquinas">
              <content>
                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
