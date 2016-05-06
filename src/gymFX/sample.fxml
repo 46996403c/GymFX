@@ -241,22 +241,21 @@
                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                                                  <children>
                                                      <Text fx:id="descripcionPasoMaquina" layoutX="244.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripcion Maquina" />
-                                                     <ImageView fx:id="fotoMaquinaIV" fitHeight="150.0" fitWidth="200.0" layoutX="169.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true" />
-                                                    <TextField fx:id="idMaquinaVer" layoutX="20.0" layoutY="49.0" prefHeight="25.0" prefWidth="201.0" />
-                                                    <TextField fx:id="nombreMaquinaVer" layoutX="20.0" layoutY="189.0" prefHeight="25.0" prefWidth="201.0" />
-                                                    <TextField fx:id="FechaInstMaquinaVer" layoutX="20.0" layoutY="124.0" prefHeight="25.0" prefWidth="199.0" />
+                                                    <TextField fx:id="idMaquinaVer" layoutX="20.0" layoutY="36.0" prefHeight="25.0" prefWidth="201.0" />
+                                                    <TextField fx:id="nombreMaquinaVer" layoutX="21.0" layoutY="140.0" prefHeight="25.0" prefWidth="201.0" />
+                                                    <TextField fx:id="FechaInstMaquinaVer" layoutX="21.0" layoutY="89.0" prefHeight="25.0" prefWidth="199.0" />
                                                     <TextArea fx:id="descMaquinaVer" layoutX="244.0" layoutY="38.0" prefHeight="253.0" prefWidth="605.0" />
                                                     <TextField fx:id="nStepVerStep" layoutX="20.0" layoutY="344.0" prefHeight="25.0" prefWidth="193.0" />
                                                     <TextField fx:id="nombreStepVerStep" layoutX="20.0" layoutY="400.0" prefHeight="25.0" prefWidth="194.0" />
                                                     <TextField fx:id="fotoStepVerStep" layoutX="20.0" layoutY="459.0" prefHeight="25.0" prefWidth="195.0" />
                                                     <TextArea fx:id="descStepVerStep" layoutX="244.0" layoutY="342.0" prefHeight="277.0" prefWidth="602.0" />
                                                     <ImageView fx:id="imVerS" fitHeight="138.0" fitWidth="200.0" layoutX="11.0" layoutY="494.0" pickOnBounds="true" preserveRatio="true" />
-                                                    <Button layoutX="37.0" layoutY="239.0" mnemonicParsing="false" onAction="#funEditMaq" text="Editar Maquina" />
+                                                    <Button layoutX="752.0" layoutY="8.0" mnemonicParsing="false" onAction="#funEditMaq" text="Editar Maquina" />
                                                     <Button layoutX="772.0" layoutY="315.0" mnemonicParsing="false" onAction="#funEditSt" text="Editar Step" />
                                                     <Separator layoutX="128.0" layoutY="302.0" prefHeight="15.0" prefWidth="940.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="302.0" />
                                                     <Text layoutX="24.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID Maquina" />
-                                                    <Text layoutX="24.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha Instalacion Maquina" />
-                                                    <Text layoutX="26.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre Maquina" />
+                                                    <Text layoutX="20.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha Instalacion Maquina" />
+                                                    <Text layoutX="20.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre Maquina" />
                                                     <Text layoutX="25.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nº Step" />
                                                     <Text layoutX="19.0" layoutY="396.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre Step" />
                                                     <Text layoutX="21.0" layoutY="455.0" strokeType="OUTSIDE" strokeWidth="0.0" text="URL Imagen Step" />
@@ -272,22 +271,23 @@
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
-                                          <Button fx:id="Button1" layoutX="419.0" layoutY="437.0" mnemonicParsing="false" onAction="#funGuardarPaso" text="Guardar Step" />
+                                          <Button fx:id="Button1" layoutX="941.0" layoutY="52.0" mnemonicParsing="false" onAction="#funGuardarPaso" text="Guardar Step" />
                                           <TextField fx:id="idmaquina" layoutX="57.0" layoutY="52.0" prefHeight="25.0" prefWidth="326.0" promptText="ID Maquina" />
                                           <TextField fx:id="nombrem" layoutX="57.0" layoutY="112.0" prefHeight="25.0" prefWidth="448.0" promptText="Nombre Maquina" />
-                                          <TextField fx:id="idpaso" layoutX="57.0" layoutY="437.0" prefHeight="25.0" prefWidth="346.0" promptText="ID Step" />
-                                          <TextField fx:id="nombre" layoutX="57.0" layoutY="484.0" prefHeight="25.0" prefWidth="446.0" promptText="Nombre Step" />
+                                          <TextField fx:id="idpaso" layoutX="579.0" layoutY="52.0" prefHeight="25.0" prefWidth="346.0" promptText="ID Step" />
+                                          <TextField fx:id="nombre" layoutX="579.0" layoutY="99.0" prefHeight="25.0" prefWidth="446.0" promptText="Nombre Step" />
                                           <Button fx:id="Button" layoutX="396.0" layoutY="52.0" mnemonicParsing="false" onAction="#funGuardarMaquina" text="Guardar Maquina" />
                                           <Text layoutX="57.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID Maquina" />
                                           <Text layoutX="57.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre Maquina" />
-                                          <Text layoutX="57.0" layoutY="433.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID Step" />
-                                          <Text layoutX="57.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre Step" />
-                                          <TextArea fx:id="descm" layoutX="57.0" layoutY="166.0" prefHeight="195.0" prefWidth="448.0" promptText="Descripcion Maquina" />
+                                          <Text layoutX="579.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID Step" />
+                                          <Text layoutX="579.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre Step" />
+                                          <TextArea fx:id="descm" layoutX="57.0" layoutY="166.0" prefHeight="454.0" prefWidth="448.0" promptText="Descripcion Maquina" />
                                           <Text layoutX="57.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripcion Maquina" />
-                                          <TextArea fx:id="descStep" layoutX="57.0" layoutY="572.0" prefHeight="218.0" prefWidth="447.0" promptText="Descripcion Step" />
-                                          <TextField fx:id="linkStep" layoutX="57.0" layoutY="526.0" prefHeight="25.0" prefWidth="445.0" promptText="URL Imagen Step" />
-                                          <Text layoutX="57.0" layoutY="522.0" strokeType="OUTSIDE" strokeWidth="0.0" text="URL Imagen Step" />
-                                          <Text layoutX="57.0" layoutY="568.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripcion Step" />
+                                          <TextArea fx:id="descStep" layoutX="579.0" layoutY="187.0" prefHeight="426.0" prefWidth="447.0" promptText="Descripcion Step" />
+                                          <TextField fx:id="linkStep" layoutX="579.0" layoutY="141.0" prefHeight="25.0" prefWidth="445.0" promptText="URL Imagen Step" />
+                                          <Text layoutX="579.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="URL Imagen Step" />
+                                          <Text layoutX="579.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripcion Step" />
+                                          <Separator layoutX="537.0" layoutY="166.0" orientation="VERTICAL" prefHeight="646.0" prefWidth="6.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="527.0" AnchorPane.topAnchor="0.0" />
                                        </children>
                                     </AnchorPane>
                               </content>
