@@ -317,6 +317,54 @@
                      </AnchorPane>
                  </content>
              </Tab>
+             <Tab text="Chat">
+                 <content>
+                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                         <children>
+                             <SplitPane dividerPositions="0.29797979797979796" layoutX="530.0" layoutY="258.0" prefHeight="675.0" prefWidth="1060.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <items>
+                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                         <children>
+                                             <Accordion layoutX="55.0" layoutY="149.0" prefHeight="673.0" prefWidth="312.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                 <panes>
+                                                     <TitledPane animated="true" text="Mensajes NO leidos" fx:id="mensajesNOleidos" expanded="true">
+                                                         <content>
+                                                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                                 <children>
+                                                                     <ListView fx:id="mensajesNOleidosChatLV" prefHeight="622.0" prefWidth="310.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                                 </children>
+                                                             </AnchorPane>
+                                                         </content>
+                                                     </TitledPane>
+                                                     <TitledPane animated="false" fx:id="mensajesU"  text="Mensajes Usuario" >
+                                                         <content>
+                                                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                                 <children>
+                                                                     <ListView fx:id="mensajesUsuarioChatLV" layoutX="43.0" layoutY="240.0" prefHeight="622.0" prefWidth="310.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                                 </children>
+                                                             </AnchorPane>
+                                                         </content>
+                                                     </TitledPane>
+                                                 </panes>
+                                             </Accordion>
+                                         </children>
+                                     </AnchorPane>
+                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                         <children>
+                                             <TextArea fx:id="mensajeChatTA" layoutX="18.0" layoutY="31.0" prefHeight="306.0" prefWidth="708.0" />
+                                             <TextArea fx:id="respuestaChatTA" layoutX="18.0" layoutY="388.0" prefHeight="267.0" prefWidth="708.0" />
+                                             <Button fx:id="enviarRespuestaChatBT" layoutX="504.0" layoutY="363.0" mnemonicParsing="false" onAction="#resp" text="Enviar Respuesta" />
+                                             <Button fx:id="borrarRespuestaChatBT" layoutX="620.0" layoutY="363.0" mnemonicParsing="false" text="Borrar Respuesta" />
+                                             <Text layoutX="18.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mensaje Usuario:" />
+                                             <Text layoutX="18.0" layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mensaje Respuesta:" />
+                                         </children>
+                                     </AnchorPane>
+                                 </items>
+                             </SplitPane>
+                         </children>
+                     </AnchorPane>
+                 </content>
+             </Tab>
             <Tab fx:id="InicidenciasTAB" text="Incidencias">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
