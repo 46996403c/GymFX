@@ -63,13 +63,13 @@
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
                                           <TextField fx:id="nombreCrearClienteTF" layoutX="290.0" layoutY="46.0" prefHeight="25.0" prefWidth="554.0" promptText="Nombre" />
-                                          <TextField fx:id="primerApellidoCrearClienteTF" layoutX="291.0" layoutY="84.0" prefHeight="25.0" prefWidth="554.0" promptText="Primer Apellido" />
+                                          <TextField fx:id="primerApellidoCrearClienteTF" layoutX="290.0" layoutY="84.0" prefHeight="25.0" prefWidth="554.0" promptText="Primer Apellido" />
                                           <TextField fx:id="segundoApellidoCrearClienteTF" layoutX="290.0" layoutY="120.0" prefHeight="25.0" prefWidth="554.0" promptText="Segundo Apellido" />
                                           <TextField fx:id="direccionCrearCLienteTF" layoutX="290.0" layoutY="306.0" prefHeight="25.0" prefWidth="554.0" promptText="Direccion" />
-                                          <TextField fx:id="dniCrearClienteTF" layoutX="288.0" layoutY="345.0" prefHeight="25.0" prefWidth="554.0" promptText="DNI" />
+                                          <TextField fx:id="dniCrearClienteTF" layoutX="290.0" layoutY="345.0" prefHeight="25.0" prefWidth="554.0" promptText="DNI" />
                                           <TextField fx:id="telefonoCrearClienteTF" layoutX="290.0" layoutY="269.0" prefHeight="25.0" prefWidth="554.0" promptText="Telefono" />
                                           <TextField fx:id="emailCrearClienteTF" layoutX="290.0" layoutY="233.0" prefHeight="25.0" prefWidth="554.0" promptText="Correo Electronico" />
-                                          <MenuButton fx:id="sexoCrearClienteMB" alignment="CENTER" contentDisplay="CENTER" layoutX="293.0" layoutY="196.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="554.0" text="Sexo" textAlignment="CENTER">
+                                          <MenuButton fx:id="sexoCrearClienteMB" alignment="CENTER" contentDisplay="CENTER" layoutX="290.0" layoutY="196.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="554.0" text="Sexo" textAlignment="CENTER">
                                              <items>
                                                 <MenuItem fx:id="maculinoCrearClienteMI" mnemonicParsing="false" text="Masculino" />
                                                 <MenuItem fx:id="femeninoCrearClienteMI" mnemonicParsing="false" text="Feminino" />
@@ -77,7 +77,7 @@
                                           </MenuButton>
                                           <TextField fx:id="edadCrearClienteTF" layoutX="290.0" layoutY="159.0" prefHeight="25.0" prefWidth="554.0" promptText="Edad" />
                                           <Button layoutX="492.0" layoutY="453.0" mnemonicParsing="false" onAction="#funCrearClie" text="Crear Cliente" />
-                                          <TextField fx:id="numSocioCrearClienteTF" layoutX="288.0" layoutY="385.0" prefWidth="554.0" promptText="Num Cliente" />
+                                          <TextField fx:id="numSocioCrearClienteTF" layoutX="290.0" layoutY="385.0" prefWidth="554.0" promptText="Num Cliente" />
                                           <Text layoutX="170.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
                                           <Text layoutX="170.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Primer Apellido" />
                                           <Text layoutX="170.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Segundo Apellido" />
@@ -97,20 +97,20 @@
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                        <children>
 										  <TextField fx:id="nombreVerClienteTF1" layoutX="290.0" layoutY="46.0" prefHeight="25.0" prefWidth="554.0" promptText="Nombre" />
-                                          <TextField fx:id="primerApellidoVerClienteTF1" layoutX="291.0" layoutY="84.0" prefHeight="25.0" prefWidth="554.0" promptText="Primer Apellido" />
+                                          <TextField fx:id="primerApellidoVerClienteTF1" layoutX="290.0" layoutY="84.0" prefHeight="25.0" prefWidth="554.0" promptText="Primer Apellido" />
                                           <TextField fx:id="segundoApellidoVerClienteTF1" layoutX="290.0" layoutY="120.0" prefHeight="25.0" prefWidth="554.0" promptText="Segundo Apellido" />
                                           <TextField fx:id="direccionVerClienteTF1" layoutX="290.0" layoutY="306.0" prefHeight="25.0" prefWidth="554.0" promptText="Direccion" />
-                                          <TextField fx:id="dniVerClienteTF1" layoutX="288.0" layoutY="345.0" prefHeight="25.0" prefWidth="554.0" promptText="DNI" />
+                                          <TextField fx:id="dniVerClienteTF1" layoutX="290.0" layoutY="345.0" prefHeight="25.0" prefWidth="554.0" promptText="DNI" />
                                           <TextField fx:id="telefonoVerClienteTF1" layoutX="290.0" layoutY="269.0" prefHeight="25.0" prefWidth="554.0" promptText="Telefono" />
                                           <TextField fx:id="emailVerClienteTF1" layoutX="290.0" layoutY="233.0" prefHeight="25.0" prefWidth="554.0" promptText="Correo Electronico" />
-                                          <MenuButton fx:id="sexoVerClienteTF1" alignment="CENTER" contentDisplay="CENTER" layoutX="293.0" layoutY="196.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="554.0" text="Sexo" textAlignment="CENTER">
+                                          <MenuButton fx:id="sexoVerClienteTF1" alignment="CENTER" contentDisplay="CENTER" layoutX="290.0" layoutY="196.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="554.0" text="Sexo" textAlignment="CENTER">
                                              <items>
                                                 <MenuItem fx:id="maculinoVerClienteMI" mnemonicParsing="false" text="Masculino" />
                                                 <MenuItem fx:id="femeninoVerClienteMI" mnemonicParsing="false" text="Feminino" />
                                              </items>
                                           </MenuButton>
                                           <TextField fx:id="edadVerClienteTF1" layoutX="290.0" layoutY="159.0" prefHeight="25.0" prefWidth="554.0" promptText="Edad" />
-                                          <TextField fx:id="numSocioVerClienteTF1" layoutX="288.0" layoutY="385.0" prefWidth="554.0" promptText="Num Cliente" />
+                                          <TextField fx:id="numSocioVerClienteTF1" layoutX="290.0" layoutY="385.0" prefWidth="554.0" promptText="Num Cliente" />
                                           <Text layoutX="170.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
                                           <Text layoutX="170.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Primer Apellido" />
                                           <Text layoutX="170.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Segundo Apellido" />
@@ -146,13 +146,13 @@
                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                  <children>
 													  <TextField fx:id="nombreCrearEmpleadoTF" layoutX="290.0" layoutY="46.0" prefHeight="25.0" prefWidth="554.0" promptText="Nombre" />
-													  <TextField fx:id="primerApellidoCrearEmpleadoTF" layoutX="291.0" layoutY="84.0" prefHeight="25.0" prefWidth="554.0" promptText="Primer Apellido" />
+													  <TextField fx:id="primerApellidoCrearEmpleadoTF" layoutX="290.0" layoutY="84.0" prefHeight="25.0" prefWidth="554.0" promptText="Primer Apellido" />
 													  <TextField fx:id="segundoApellidoCrearEmpleadoTF" layoutX="290.0" layoutY="120.0" prefHeight="25.0" prefWidth="554.0" promptText="Segundo Apellido" />
 													  <TextField fx:id="direccionCrearEmpleadoTF" layoutX="290.0" layoutY="306.0" prefHeight="25.0" prefWidth="554.0" promptText="Direccion" />
-													  <TextField fx:id="dniCrearEmpleadoTF" layoutX="288.0" layoutY="345.0" prefHeight="25.0" prefWidth="554.0" promptText="DNI" />
+													  <TextField fx:id="dniCrearEmpleadoTF" layoutX="290.0" layoutY="345.0" prefHeight="25.0" prefWidth="554.0" promptText="DNI" />
 													  <TextField fx:id="telefonoCrearEmpleadoTF" layoutX="290.0" layoutY="269.0" prefHeight="25.0" prefWidth="554.0" promptText="Telefono" />
 													  <TextField fx:id="emailCrearEmpleadoTF" layoutX="290.0" layoutY="233.0" prefHeight="25.0" prefWidth="554.0" promptText="Correo Electronico" />
-													  <MenuButton fx:id="sexoCrearEmpleadoMB" alignment="CENTER" contentDisplay="CENTER" layoutX="293.0" layoutY="196.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="554.0" text="Sexo" textAlignment="CENTER">
+													  <MenuButton fx:id="sexoCrearEmpleadoMB" alignment="CENTER" contentDisplay="CENTER" layoutX="290.0" layoutY="196.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="554.0" text="Sexo" textAlignment="CENTER">
 														 <items>
 															<MenuItem fx:id="maculinoCrearEmpleadoMI" mnemonicParsing="false" text="Masculino" />
 															<MenuItem fx:id="femeninoCrearEmpleadoMI" mnemonicParsing="false" text="Feminino" />
@@ -160,7 +160,7 @@
 													  </MenuButton>
 													  <TextField fx:id="edadCrearEmpleadoTF" layoutX="290.0" layoutY="159.0" prefHeight="25.0" prefWidth="554.0" promptText="Edad" />
 													  <Button layoutX="492.0" layoutY="453.0" mnemonicParsing="false" onAction="#funCrearEmple" text="Crear Empleado" />
-													  <TextField fx:id="numSocioCrearEmpleadoTF" layoutX="288.0" layoutY="385.0" prefWidth="554.0" promptText="Num Empleado" />
+													  <TextField fx:id="numSocioCrearEmpleadoTF" layoutX="290.0" layoutY="385.0" prefWidth="554.0" promptText="Num Empleado" />
 													  <Text layoutX="170.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
 													  <Text layoutX="170.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Primer Apellido" />
 													  <Text layoutX="170.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Segundo Apellido" />
@@ -170,7 +170,7 @@
 													  <Text layoutX="170.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefono" />
 													  <Text layoutX="170.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Direccion" />
 													  <Text layoutX="170.0" layoutY="362.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DNI" />
-													  <Text layoutX="170.0" layoutY="402.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero de empleado" />
+													  <Text layoutX="170.0" layoutY="402.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero Empleado" />
                                                  </children>
                                              </AnchorPane>
                                          </content>
@@ -180,20 +180,20 @@
                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                  <children>
 													<TextField fx:id="nombreVerEmpleadoTF" layoutX="290.0" layoutY="46.0" prefHeight="25.0" prefWidth="554.0" promptText="Nombre" />
-													<TextField fx:id="primerApellidoVerEmpleadoTF" layoutX="291.0" layoutY="84.0" prefHeight="25.0" prefWidth="554.0" promptText="Primer Apellido" />
+													<TextField fx:id="primerApellidoVerEmpleadoTF" layoutX="290.0" layoutY="84.0" prefHeight="25.0" prefWidth="554.0" promptText="Primer Apellido" />
 													<TextField fx:id="segundoApellidoVerEmpleadoTF" layoutX="290.0" layoutY="120.0" prefHeight="25.0" prefWidth="554.0" promptText="Segundo Apellido" />
 													<TextField fx:id="direccionVerEmpleadoTF" layoutX="290.0" layoutY="306.0" prefHeight="25.0" prefWidth="554.0" promptText="Direccion" />
-													<TextField fx:id="dniVerEmpleadoTF" layoutX="288.0" layoutY="345.0" prefHeight="25.0" prefWidth="554.0" promptText="DNI" />
+													<TextField fx:id="dniVerEmpleadoTF" layoutX="290.0" layoutY="345.0" prefHeight="25.0" prefWidth="554.0" promptText="DNI" />
 													<TextField fx:id="telefonoVerEmpleadoTF" layoutX="290.0" layoutY="269.0" prefHeight="25.0" prefWidth="554.0" promptText="Telefono" />
 													<TextField fx:id="emailVerEmpleadoTF" layoutX="290.0" layoutY="233.0" prefHeight="25.0" prefWidth="554.0" promptText="Correo Electronico" />
-													<MenuButton fx:id="sexoVerEmpleadoTF" alignment="CENTER" contentDisplay="CENTER" layoutX="293.0" layoutY="196.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="554.0" text="Sexo" textAlignment="CENTER">
+													<MenuButton fx:id="sexoVerEmpleadoTF" alignment="CENTER" contentDisplay="CENTER" layoutX="290.0" layoutY="196.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="554.0" text="Sexo" textAlignment="CENTER">
 														<items>
 															<MenuItem fx:id="maculinoVerEmpleadoMI" mnemonicParsing="false" text="Masculino" />
 															<MenuItem fx:id="femeninoVerEmpleadoMI" mnemonicParsing="false" text="Feminino" />
 														</items>
 													</MenuButton>
 													<TextField fx:id="edadVerEmpleadoTF" layoutX="290.0" layoutY="159.0" prefHeight="25.0" prefWidth="554.0" promptText="Edad" />
-													<TextField fx:id="numEmpeladoVerEmpleadoTF" layoutX="288.0" layoutY="385.0" prefWidth="554.0" promptText="Num Empleado" />
+													<TextField fx:id="numEmpeladoVerEmpleadoTF" layoutX="290.0" layoutY="385.0" prefWidth="554.0" promptText="Num Empleado" />
 													<Text layoutX="170.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
 													<Text layoutX="170.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Primer Apellido" />
 													<Text layoutX="170.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Segundo Apellido" />
@@ -217,20 +217,20 @@
                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                  <children>
 														<TextField fx:id="nombreFichaPropiaTF" editable="false" layoutX="290.0" layoutY="46.0" prefHeight="25.0" prefWidth="554.0" promptText="Nombre" />
-														<TextField fx:id="primerApellidoFichaPropiaTF" editable="false" layoutX="291.0" layoutY="84.0" prefHeight="25.0" prefWidth="554.0" promptText="Primer Apellido" />
+														<TextField fx:id="primerApellidoFichaPropiaTF" editable="false" layoutX="290.0" layoutY="84.0" prefHeight="25.0" prefWidth="554.0" promptText="Primer Apellido" />
 														<TextField fx:id="segundoApellidoFichaPropiaTF" editable="false" layoutX="290.0" layoutY="120.0" prefHeight="25.0" prefWidth="554.0" promptText="Segundo Apellido" />
 														<TextField fx:id="direccionFichaPropiaTF" editable="false" layoutX="290.0" layoutY="306.0" prefHeight="25.0" prefWidth="554.0" promptText="Direccion" />
-														<TextField fx:id="dniFichaPropiaTF" editable="false" layoutX="288.0" layoutY="345.0" prefHeight="25.0" prefWidth="554.0" promptText="DNI" />
+														<TextField fx:id="dniFichaPropiaTF" editable="false" layoutX="290.0" layoutY="345.0" prefHeight="25.0" prefWidth="554.0" promptText="DNI" />
 														<TextField fx:id="telefonoFichaPropiaTF" editable="false" layoutX="290.0" layoutY="269.0" prefHeight="25.0" prefWidth="554.0" promptText="Telefono" />
 														<TextField fx:id="emailFichaPropiaTF" editable="false" layoutX="290.0" layoutY="233.0" prefHeight="25.0" prefWidth="554.0" promptText="Correo Electronico" />
-														<MenuButton fx:id="sexoFichaPropiaMB" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="293.0" layoutY="196.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="554.0" text="Sexo" textAlignment="CENTER">
+														<MenuButton fx:id="sexoFichaPropiaMB" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="290.0" layoutY="196.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="554.0" text="Sexo" textAlignment="CENTER">
 															<items>
 																<MenuItem fx:id="maculinoFichaPropiaMI" mnemonicParsing="false" text="Masculino" />
 																<MenuItem fx:id="femeninoFichaPropiaMI" mnemonicParsing="false" text="Feminino" />
 															</items>
 														</MenuButton>
 														<TextField fx:id="edadFichaPropiaTF" editable="false" layoutX="290.0" layoutY="159.0" prefHeight="25.0" prefWidth="554.0" promptText="Edad" />
-														<TextField fx:id="numEmpeladoFichaPropiaTF" editable="false" layoutX="288.0" layoutY="385.0" prefWidth="554.0" promptText="Num Empleado" />
+														<TextField fx:id="numEmpeladoFichaPropiaTF" editable="false" layoutX="290.0" layoutY="385.0" prefWidth="554.0" promptText="Num Empleado" />
 														<Text layoutX="170.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
 														<Text layoutX="170.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Primer Apellido" />
 														<Text layoutX="170.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Segundo Apellido" />
@@ -343,18 +343,25 @@
                  <content>
                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                          <children>
-                             <TextField fx:id="horarioLunesViernesTF" layoutX="37.0" layoutY="124.0" promptText="Horario Lunes a Viernes" />
-                             <TextField fx:id="horarioSabadoTF" layoutX="195.0" layoutY="124.0" promptText="Horario Sabado" />
-                             <TextField fx:id="horarioDomingoTF" layoutX="353.0" layoutY="124.0" promptText="Horario Domingo" />
-                             <Button fx:id="editarInfoGymBT" layoutX="62.0" layoutY="168.0" mnemonicParsing="false" onAction="#funEditGym" text="Subir Info" />
-                             <TextField fx:id="nombreGymTF" layoutX="37.0" layoutY="14.0" prefHeight="25.0" prefWidth="215.0" promptText="Nombre Gym" />
-                             <TextField fx:id="direccionGymTF" layoutX="37.0" layoutY="51.0" prefHeight="25.0" prefWidth="464.0" promptText="Direccion" />
-                             <TextField fx:id="telefonoGymTF" layoutX="269.0" layoutY="14.0" prefHeight="25.0" prefWidth="227.0" promptText="Telefono Gym" />
-                             <TextField fx:id="correoElectronicoGymTF" layoutX="37.0" layoutY="89.0" prefHeight="25.0" prefWidth="465.0" promptText="Correo electronico" />
-                             <ImageView fx:id="logoInfoGymIV" fitHeight="150.0" fitWidth="287.0" layoutX="536.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="https://pbs.twimg.com/profile_images/646190693/BAC_LOGO.JPG" />
-                           </image></ImageView>
+							<TextField fx:id="nombreGymTF" editable="false" layoutX="308.0" layoutY="181.0" prefHeight="25.0" prefWidth="554.0" promptText="Nombre" />
+							<TextField fx:id="direccionGymTF" editable="false" layoutX="308.0" layoutY="250.0" prefHeight="25.0" prefWidth="554.0" promptText="Direccion" />
+							<TextField fx:id="horarioLunesViernesTF" editable="false" layoutX="308.0" layoutY="325.0" prefHeight="25.0" prefWidth="554.0" promptText="Horario Lunes a Viernes" />
+							<TextField fx:id="telefonoGymTF" editable="false" layoutX="308.0" layoutY="213.0" prefHeight="25.0" prefWidth="554.0" promptText="Telefono" />
+							<TextField fx:id="correoElectronicoGymTF" editable="false" layoutX="308.0" layoutY="285.0" prefHeight="25.0" prefWidth="554.0" promptText="Correo Electronico" />
+							<TextField fx:id="horarioSabadoTF" editable="false" layoutX="308.0" layoutY="362.0" prefHeight="25.0" prefWidth="554.0" promptText="Horario Sabado" />
+							<TextField fx:id="horarioDomingoTF" editable="false" layoutX="308.0" layoutY="399.0" prefHeight="25.0" prefWidth="554.0" promptText="Horario Domingo" />
+							<Text layoutX="167.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
+							<Text layoutX="167.0" layoutY="379.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Horario Sabado" />
+							<Text layoutX="167.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Correo Electronico" />
+							<Text layoutX="169.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefono" />
+							<Text layoutX="169.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Direccion" />
+							<Text layoutX="167.0" layoutY="342.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Horario Lunes a Viernes" />
+							<Text layoutX="169.0" layoutY="416.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Horario Domingo" />
+							<Button fx:id="editarInfoGymBT" layoutX="792.0" layoutY="445.0" mnemonicParsing="false" onAction="#funEditGym" text="Subir Info" />
+                            <ImageView fx:id="logoInfoGymIV" fitHeight="136.0" fitWidth="310.0" layoutX="475.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+							<image>
+								<Image url="https://pbs.twimg.com/profile_images/646190693/BAC_LOGO.JPG" />
+							</image></ImageView>
                          </children>
                      </AnchorPane>
                  </content>
