@@ -473,21 +473,51 @@ public class Controller {
         Chat chat = new Chat();
         System.out.println("shedfguy");
 
+        Date date = new Date();
         chat.setAuthor("e");
-        chat.setData("d");
+        chat.setData(date.toString());
         chat.setMessage(respuestaChatTA.getText());
         chat.setUidUser(cl.getUidUser());
         chat.setRevisat(true);
 
         Firebase ref1 = new Firebase("https://testgimmapp.firebaseio.com/");
-        Firebase cref1 = ref1.child("Chat");
-        Firebase editRef = cref.child(snapshot1.getKey());
-        Map<String, Object> m = new HashMap<String, Object>();
-
-
         cl.setRevisat(true);
         cref.push().setValue(chat);
 
+
+        Firebase refd = new Firebase("https://testgimmapp.firebaseio.com/");
+
+
+        Firebase crefd = refd.child("Chat");
+
+        // Attach an listener to read the data at our posts reference
+        crefd.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+
+                for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+                    Chat chat = postSnapshot.getValue(Chat.class);
+
+                    if (chat.getUidUser().equals(cl.getUidUser())) {
+                        Map<String, Object> cl = new HashMap<String, Object>();
+                        Firebase editRef = cref.child(postSnapshot.getKey());
+                        cl.put("revisat", true);
+                        editRef.updateChildren(cl);
+
+
+
+                    } else {
+                    }
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
     }
 
     public void chaat(){
@@ -509,7 +539,7 @@ public class Controller {
                 System.out.println("There are " + snapshot.getChildrenCount() + " blog posts");
                 for (DataSnapshot postSnapshot: snapshot.getChildren()) {
                     Chat chat = postSnapshot.getValue(Chat.class);
-                    System.out.println(chat.getUidUser());
+                    System.out.println(chat.getUidUser()+"------------"+ cl.getUidUser());
                     if (chat.getUidUser().equals(cl.getUidUser())) {
                         items.add(chat);
                         Platform.runLater(new Runnable() {
