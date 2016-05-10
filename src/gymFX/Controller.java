@@ -14,6 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.scene.web.WebEngine;
@@ -22,6 +23,7 @@ import javafx.util.Pair;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.stream.Collector;
 //Firebase pruebas sandra
 //Firebase refw = new Firebase("https://testgimmapp.firebaseio.com/");
 
@@ -39,6 +41,8 @@ public class Controller {
     //*
     public Button Button;
     //*
+
+    public AnchorPane pane;
 
     public TextField nombreCrearClienteTF;
     public TextField primerApellidoCrearClienteTF;
@@ -136,11 +140,24 @@ public class Controller {
     public Tab infoTAB;
     public Tab InicidenciasTAB;
 
+    public ListView<Chat> mensajesNOleidosChatLV;
+    public ListView<Chat> mensajesUsuarioChatLV;
+    public TitledPane mensajesNOleidos;
+    public TitledPane mensajesU;
+    public TextArea mensajeChatTA;
+    public TextArea respuestaChatTA;
+
 
     public Maquina maquina1;
     public int step1;
 
+    public Chat cl;
+    public DataSnapshot dc;
+
     public Incidencia incidencia0;
+
+    ArrayList<Step> aS = new ArrayList<Step>();
+
 
 
 
@@ -165,6 +182,69 @@ public class Controller {
         emailVerEmpleadoTF.setEditable(false);
         telefonoVerEmpleadoTF.setEditable(false);
         edadVerEmpleadoTF.setEditable(false);
+
+       // pane.getStyleClass().add("pane");
+
+
+
+        Firebase reff = new Firebase("https://testgimmapp.firebaseio.com/");
+
+        Firebase creff = reff.child("Chat");
+
+
+
+
+        // Attach an listener to read the data at our posts reference
+        creff.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                final ObservableList<Chat> items = FXCollections.observableArrayList();
+                for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+                    Chat chat = postSnapshot.getValue(Chat.class);
+                    if (chat.isRevisat()==false)
+                        items.add(chat);
+
+                }
+
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        mensajesNOleidosChatLV.setItems(items);
+                    }
+                });
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+
+        });
+
+        mensajesNOleidosChatLV.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                cl = mensajesNOleidosChatLV.getFocusModel().getFocusedItem();
+                mensajesNOleidos.setExpanded(false);
+                mensajesU.setExpanded(true);
+                mensajeChatTA.setText(cl.getMessage());
+                chaat();
+            }
+        });
+
+        mensajesUsuarioChatLV.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                cl = mensajesUsuarioChatLV.getFocusModel().getFocusedItem();
+
+                mensajeChatTA.setText(cl.getMessage());
+            }
+        });
+
+
+
+
+
 
         Firebase refv = new Firebase("https://testgimmapp.firebaseio.com/");
 
@@ -391,6 +471,119 @@ public class Controller {
     }
 
 
+
+
+
+    public void resp() {
+        Firebase ref = new Firebase("https://testgimmapp.firebaseio.com/");
+        Firebase cref = ref.child("Chat");
+        Chat chat = new Chat();
+        System.out.println("shedfguy");
+
+        Date date = new Date();
+        chat.setAuthor("Centro");
+        chat.setData(date.toString());
+        chat.setMessage(respuestaChatTA.getText());
+        chat.setUidUser(cl.getUidUser());
+        chat.setRevisat(true);
+
+        Firebase ref1 = new Firebase("https://testgimmapp.firebaseio.com/");
+        cl.setRevisat(true);
+        cref.push().setValue(chat);
+
+
+        Firebase refd = new Firebase("https://testgimmapp.firebaseio.com/");
+
+
+        Firebase crefd = refd.child("Chat");
+
+        // Attach an listener to read the data at our posts reference
+        crefd.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+
+                for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+                    Chat chat = postSnapshot.getValue(Chat.class);
+
+                    if (chat.getUidUser().equals(cl.getUidUser())) {
+                        Map<String, Object> cl = new HashMap<String, Object>();
+                        Firebase editRef = cref.child(postSnapshot.getKey());
+                        cl.put("revisat", true);
+                        editRef.updateChildren(cl);
+
+
+
+                    } else {
+                    }
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+    }
+
+    public void chaat(){
+
+        System.out.println(cl.getUidUser());
+        Firebase refd = new Firebase("https://testgimmapp.firebaseio.com/");
+
+
+
+        Firebase crefd = refd.child("Chat");
+
+        // Attach an listener to read the data at our posts reference
+        crefd.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                final ObservableList<Chat> items = FXCollections.observableArrayList();
+
+
+                System.out.println("There are " + snapshot.getChildrenCount() + " blog posts");
+                for (DataSnapshot postSnapshot: snapshot.getChildren()) {
+                    Chat chat = postSnapshot.getValue(Chat.class);
+                    System.out.println(chat.getUidUser()+"------------"+ cl.getUidUser());
+                    if (chat.getUidUser().equals(cl.getUidUser())) {
+                        items.add(chat);
+                        Platform.runLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                // InicidenciasTAB.setGraphic(buildImage("https://static-secure.guim.co.uk/sys-images/Guardian/Pix/pictures/2009/4/29/1240996556472/exclamation-001.jpg"));
+
+
+                            }
+                        });
+                    }
+                    else{
+                        // items2.add(incidencia2);
+                    }
+
+                }
+
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        mensajesUsuarioChatLV.setItems(items);
+                        //  incidenciasResueltasListV.setItems(items2);
+                        // if (incidenciasListV.getItems().isEmpty()){
+                        //      InicidenciasTAB.setGraphic(null);
+                        //  }
+
+                    }
+                });
+
+
+            }
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+                System.out.println("The read failed: " + firebaseError.getMessage());
+            }
+        });
+    }
     public void incidencias() throws IllegalStateException{
         Firebase refd = new Firebase("https://testgimmapp.firebaseio.com/");
 
@@ -1082,7 +1275,6 @@ public class Controller {
 
 
 
-    ArrayList<Step> aS = new ArrayList<Step>();
 
 
 
@@ -1165,6 +1357,9 @@ public class Controller {
 
 
     }
+
+
+
 
 
 
