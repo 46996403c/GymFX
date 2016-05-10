@@ -19,8 +19,11 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.util.Pair;
 
+import java.io.*;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Collector;
@@ -37,6 +40,8 @@ public class Controller {
 
     public WebView webView = new WebView();
     public Text Bienvenido;
+
+    public Stage stage;
 
     //*
     public Button Button;
@@ -1358,9 +1363,41 @@ public class Controller {
 
     }
 
+    public void abrirRespuesta() throws Exception {
+        FileChooser abrirArchivo = new FileChooser();
+        extnsionesArchivos(abrirArchivo);
+        abrirArchivo.setTitle("Abrir archivo...");
 
+        File archivoAbierto = abrirArchivo.showOpenDialog(stage);
+        FileReader archivoEditar = new FileReader(archivoAbierto);
+        BufferedReader BrArchivo =  new BufferedReader(archivoEditar);
 
+        String textoDoc;
+        while((textoDoc = BrArchivo.readLine())!=null) {
+            comentarioIncidenciaTA.setText(comentarioIncidenciaTA.getText()+"\n"+textoDoc);
+        }
+        BrArchivo.close();
+    }
+    public void guardarRespuesta() throws IOException {
+        FileChooser guardarArchivo = new FileChooser();
+        extnsionesArchivos(guardarArchivo);
+        guardarArchivo.setTitle("Guardar archivo como...");
 
+        File archivoGuardado = guardarArchivo.showSaveDialog(stage);
+        FileWriter archivoEditado = new FileWriter(archivoGuardado);
+        BufferedWriter BwArchivo = new BufferedWriter(archivoEditado);
+        String docTexto = comentarioIncidenciaTA.getText();
+        BwArchivo.write(docTexto);
+        BwArchivo.close();
+    }
+    private static void extnsionesArchivos(final FileChooser escojerArchivo) {
+        escojerArchivo.setInitialDirectory(new File(System.getProperty("user.home")));
+        escojerArchivo.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Todos", "*.*"),
+                new FileChooser.ExtensionFilter("TXT", "*.txt"),
+                new FileChooser.ExtensionFilter("NFO", "*.nfo")
+        );
+    }
 
 
 

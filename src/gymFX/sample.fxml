@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Accordion?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.web.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ListView?>
@@ -12,308 +17,357 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" stylesheets="" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gymFX.Controller">
-   <children>
-      <TabPane layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0" stylesheets="" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <tabs>
-            <Tab text="Inicio">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <SplitPane dividerPositions="0.07167630057803469" layoutX="132.0" layoutY="57.0" orientation="VERTICAL" prefHeight="404.0" prefWidth="512.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <items>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                                 <children>
-                                    <SplitPane dividerPositions="0.5081453634085213" layoutX="14.0" layoutY="-45.0" prefHeight="69.0" prefWidth="510.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <items>
-                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="67.0" prefWidth="183.0">
-                                             <children>
-                                                <Button layoutX="25.0" layoutY="21.0" mnemonicParsing="false" text="Home" />
-                                                <Button layoutX="83.0" layoutY="21.0" mnemonicParsing="false" text="Atras" />
-                                             </children>
-                                          </AnchorPane>
-                                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="56.0" prefWidth="542.0">
-                                             <children>
-                                                <Button layoutX="30.0" layoutY="15.0" mnemonicParsing="false" onAction="#funLogin" text="Acceder" />
-                                                <Text fx:id="Bienvenido" layoutX="376.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                                             </children>
-                                          </AnchorPane>
-                                       </items>
-                                    </SplitPane>
-                                 </children>
-                              </AnchorPane>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                                 <children>
-                                    <WebView fx:id="webView" layoutX="119.0" layoutY="57.0" prefHeight="327.0" prefWidth="510.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                 </children>
-                              </AnchorPane>
-                           </items>
-                        </SplitPane>
-                     </children>
-                  </AnchorPane>
-               </content>
-            </Tab>
-            <Tab fx:id="clienteTAB" disable="false" text="Cliente">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TabPane prefHeight="404.0" prefWidth="512.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <tabs>
-                              <Tab text="Añadir Cliente">
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                       <children>
-                                          <TextField fx:id="nombreCrearClienteTF" layoutX="14.0" layoutY="14.0" promptText="Nombre" />
-                                          <TextField fx:id="primerApellidoCrearClienteTF" layoutX="174.0" layoutY="14.0" prefHeight="25.0" prefWidth="163.0" promptText="Primer Apellido" />
-                                          <TextField fx:id="segundoApellidoCrearClienteTF" layoutX="346.0" layoutY="14.0" promptText="Segundo Apellido" />
-                                          <TextField fx:id="direccionCrearCLienteTF" layoutX="14.0" layoutY="49.0" prefHeight="25.0" prefWidth="480.0" promptText="Direccion" />
-                                          <TextField fx:id="emailCrearClienteTF" layoutX="15.0" layoutY="85.0" prefHeight="25.0" prefWidth="480.0" promptText="Correo Electronico" />
-                                          <TextField fx:id="telefonoCrearClienteTF" layoutX="180.0" layoutY="120.0" prefHeight="25.0" prefWidth="167.0" promptText="Telefono" />
-                                          <TextField fx:id="dniCrearClienteTF" layoutX="14.0" layoutY="120.0" promptText="DNI" />
-                                          <MenuButton fx:id="sexoCrearClienteMB" layoutX="436.0" layoutY="120.0" mnemonicParsing="false" text="Sexo">
-                                             <items>
-                                                <MenuItem fx:id="maculinoCrearClienteMI" mnemonicParsing="false" text="Masculino" />
-                                                <MenuItem fx:id="femeninoCrearClienteMI" mnemonicParsing="false" text="Feminino" />
-                                             </items>
-                                          </MenuButton>
-                                          <TextField fx:id="edadCrearClienteTF" layoutX="362.0" layoutY="120.0" prefHeight="25.0" prefWidth="64.0" promptText="Edad" />
-                                          <Button layoutX="14.0" layoutY="209.0" mnemonicParsing="false" onAction="#funCrearClie" text="Crear Socio" />
-                                          <TextField fx:id="numSocioCrearClienteTF" layoutX="14.0" layoutY="157.0" promptText="Num Cliente" />
-                                       </children>
-                                    </AnchorPane>
-                                 </content>
-                              </Tab>
-                              <Tab text="Ver Ciente">
-                                 <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                       <children>
-                                          <TextField fx:id="nombreVerClienteTF1" layoutX="14.0" layoutY="118.0" promptText="Nombre" />
-                                          <TextField fx:id="primerApellidoVerClienteTF1" layoutX="174.0" layoutY="118.0" prefHeight="25.0" prefWidth="163.0" promptText="Primer Apellido" />
-                                          <TextField fx:id="segundoApellidoVerClienteTF1" layoutX="346.0" layoutY="118.0" promptText="Segundo Apellido" />
-                                          <TextField fx:id="direccionVerClienteTF1" layoutX="14.0" layoutY="153.0" prefHeight="25.0" prefWidth="480.0" promptText="Direccion" />
-                                          <TextField fx:id="emailVerClienteTF1" layoutX="15.0" layoutY="189.0" prefHeight="25.0" prefWidth="480.0" promptText="Correo Electronico" />
-                                          <TextField fx:id="telefonoVerClienteTF1" layoutX="15.0" layoutY="224.0" prefHeight="25.0" prefWidth="205.0" promptText="Telefono" />
-                                          <TextField fx:id="dniVerClienteTF1" layoutX="14.0" layoutY="66.0" onAction="#funBuscarClieDNI" promptText="DNI Cliente" />
-                                          <MenuButton fx:id="sexoVerClienteTF1" layoutX="331.0" layoutY="224.0" mnemonicParsing="false" text="Sexo">
-                                             <items>
-                                                <MenuItem fx:id="maculinoCrearClienteMI1" mnemonicParsing="false" text="Masculino" />
-                                                <MenuItem fx:id="femeninoCrearClienteMI1" mnemonicParsing="false" text="Feminino" />
-                                             </items>
-                                          </MenuButton>
-                                          <TextField fx:id="edadVerClienteTF1" layoutX="257.0" layoutY="224.0" prefHeight="25.0" prefWidth="64.0" promptText="Edad" />
-                                          <Button layoutX="217.0" layoutY="22.0" mnemonicParsing="false" onAction="#funBuscarClie" text="Buscar Num socio" />
-                                          <TextField fx:id="numSocioVerClienteTF1" layoutX="14.0" layoutY="22.0" onAction="#funBuscarClie" promptText="Num Cliente" />
-                                          <Button fx:id="EditarDatosCliente" layoutX="15.0" layoutY="282.0" mnemonicParsing="false" onAction="#funEditClie" text="Editar datos" />
-                                          <Button layoutX="217.0" layoutY="66.0" mnemonicParsing="false" onAction="#funBuscarClieDNI" text="Buscar DNI socio" />
-                                       </children>
-                                    </AnchorPane>
-                                 </content>
-                              </Tab>
-                           </tabs>
-                        </TabPane>
-                     </children>
-                  </AnchorPane>
-               </content>
-            </Tab>
-             <Tab fx:id="empleadoTAB" disable="false" text="Empleado">
-                 <content>
-                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                         <children>
-                             <TabPane prefHeight="404.0" prefWidth="512.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <tabs>
-                                     <Tab text="Añadir Empleado">
-                                         <content>
-                                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                                 <children>
-                                                     <TextField fx:id="nombreCrearEmpleadoTF" layoutX="14.0" layoutY="14.0" promptText="Nombre" />
-                                                     <TextField fx:id="primerApellidoCrearEmpleadoTF" layoutX="174.0" layoutY="14.0" prefHeight="25.0" prefWidth="163.0" promptText="Primer Apellido" />
-                                                     <TextField fx:id="segundoApellidoCrearEmpleadoTF" layoutX="346.0" layoutY="14.0" promptText="Segundo Apellido" />
-                                                     <TextField fx:id="direccionCrearEmpleadoTF" layoutX="14.0" layoutY="49.0" prefHeight="25.0" prefWidth="480.0" promptText="Direccion" />
-                                                     <TextField fx:id="emailCrearEmpleadoTF" layoutX="15.0" layoutY="85.0" prefHeight="25.0" prefWidth="319.0" promptText="Correo Electronico" />
-                                                     <TextField fx:id="telefonoCrearEmpleadoTF" layoutX="180.0" layoutY="120.0" prefHeight="25.0" prefWidth="167.0" promptText="Telefono" />
-                                                     <TextField fx:id="dniCrearEmpleadoTF" layoutX="14.0" layoutY="120.0" promptText="DNI" />
-                                                     <MenuButton fx:id="sexoCrearEmpleadoTF" layoutX="436.0" layoutY="120.0" mnemonicParsing="false" text="Sexo">
-                                                         <items>
-                                                             <MenuItem fx:id="maculinoCrearEmpleadoMI" mnemonicParsing="false" text="Masculino" />
-                                                             <MenuItem fx:id="femeninoCrearEmpleadoMI" mnemonicParsing="false" text="Feminino" />
-                                                         </items>
-                                                     </MenuButton>
-                                                     <TextField fx:id="edadCrearEmpleadoTF" layoutX="362.0" layoutY="120.0" prefHeight="25.0" prefWidth="64.0" promptText="Edad" />
-                                                     <Button fx:id="crearEmpleado" layoutX="400.0" layoutY="175.0" mnemonicParsing="false" onAction="#funCrearEmple" text="Crear Empleado" />
-                                                     <TextField fx:id="numEmpeladoCrearEmpleadoTF" layoutX="346.0" layoutY="85.0" promptText="Nº Empleado" />
-                                                 </children>
-                                             </AnchorPane>
-                                         </content>
-                                     </Tab>
-                                     <Tab text="Ver Empleado">
-                                         <content>
-                                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                                 <children>
-                                                     <TextField fx:id="nombreVerEmpleadoTF" layoutX="21.0" layoutY="93.0" promptText="Nombre" />
-                                                     <TextField fx:id="primerApellidoVerEmpleadoTF" layoutX="181.0" layoutY="93.0" prefHeight="25.0" prefWidth="163.0" promptText="Primer Apellido" />
-                                                     <TextField fx:id="segundoApellidoVerEmpleadoTF" layoutX="353.0" layoutY="93.0" promptText="Segundo Apellido" />
-                                                     <TextField fx:id="direccionVerEmpleadoTF" layoutX="22.0" layoutY="129.0" prefHeight="25.0" prefWidth="480.0" promptText="Direccion" />
-                                                     <TextField fx:id="emailVerEmpleadoTF" layoutX="22.0" layoutY="165.0" prefHeight="25.0" prefWidth="403.0" promptText="Correo Electronico" />
-                                                     <TextField fx:id="telefonoVerEmpleadoTF" layoutX="22.0" layoutY="203.0" prefHeight="25.0" prefWidth="403.0" promptText="Telefono" />
-                                                     <TextField fx:id="dniVerEmpleadoTF" layoutX="21.0" layoutY="56.0" onAction="#funBuscarEmpleDNI" promptText="DNI" />
-                                                     <MenuButton fx:id="sexoVerEmpleadoTF" layoutX="440.0" layoutY="203.0" mnemonicParsing="false" text="Sexo">
-                                                         <items>
-                                                             <MenuItem fx:id="maculinoVerEmpleadoMI" mnemonicParsing="false" text="Masculino" />
-                                                             <MenuItem fx:id="femeninoVerEmpleadoMI" mnemonicParsing="false" text="Feminino" />
-                                                         </items>
-                                                     </MenuButton>
-                                                     <TextField fx:id="edadVerEmpleadoTF" layoutX="437.0" layoutY="165.0" prefHeight="25.0" prefWidth="64.0" promptText="Edad" />
-                                                     <Button fx:id="EditarDatosEmpleado" layoutX="22.0" layoutY="245.0" mnemonicParsing="false" onAction="#funEditEmple" text="Editar datos" />
-                                                     <TextField fx:id="numEmpeladoVerEmpleadoTF" layoutX="21.0" layoutY="24.0" onAction="#funBuscarEmple" promptText="Nº Empleado" />
-                                                     <Button layoutX="181.0" layoutY="24.0" mnemonicParsing="false" onAction="#funBuscarEmple" text="Buscar Num Empleado" />
-                                                     <Button layoutX="181.0" layoutY="56.0" mnemonicParsing="false" onAction="#funBuscarEmpleDNI" text="Buscar DNI Empleado" />
-                                                 </children>
-                                             </AnchorPane>
-                                         </content>
-                                     </Tab>
-                                     <Tab text="Ver mi ficha">
-                                         <content>
-                                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                                 <children>
-                                                     <TextField fx:id="nombreFichaPropiaTF" editable="false" layoutX="14.0" layoutY="14.0" promptText="Nombre" />
-                                                     <TextField fx:id="primerApellidoFichaPropiaTF" editable="false" layoutX="174.0" layoutY="14.0" prefHeight="25.0" prefWidth="163.0" promptText="Primer Apellido" />
-                                                     <TextField fx:id="segundoApellidoFichaPropiaTF" editable="false" layoutX="346.0" layoutY="14.0" promptText="Segundo Apellido" />
-                                                     <TextField fx:id="direccionFichaPropiaTF" editable="false" layoutX="14.0" layoutY="49.0" prefHeight="25.0" prefWidth="480.0" promptText="Direccion" />
-                                                     <TextField fx:id="emailFichaPropiaTF" editable="false" layoutX="15.0" layoutY="85.0" prefHeight="25.0" prefWidth="319.0" promptText="Correo Electronico" />
-                                                     <TextField fx:id="telefonoFichaPropiaTF" editable="false" layoutX="180.0" layoutY="120.0" prefHeight="25.0" prefWidth="167.0" promptText="Telefono" />
-                                                     <TextField fx:id="dniFichaPropiaTF" editable="false" layoutX="14.0" layoutY="120.0" promptText="DNI" />
-                                                     <MenuButton fx:id="sexoFichaPropiaMB" disable="true" layoutX="436.0" layoutY="120.0" mnemonicParsing="false" text="Sexo">
-                                                         <items>
-                                                             <MenuItem fx:id="maculinoFichaPropiaMI" mnemonicParsing="false" text="Masculino" />
-                                                             <MenuItem fx:id="femeninoFichaPropiaMI" mnemonicParsing="false" text="Feminino" />
-                                                         </items>
-                                                     </MenuButton>
-                                                     <TextField fx:id="edadFichaPropiaTF" editable="false" layoutX="362.0" layoutY="120.0" prefHeight="25.0" prefWidth="64.0" promptText="Edad" />
-                                                     <TextField fx:id="numEmpeladoFichaPropiaTF" editable="false" layoutX="346.0" layoutY="85.0" promptText="Nº Empleado" />
-                                                 </children>
-                                             </AnchorPane>
-                                         </content>
-                                     </Tab>
-                                 </tabs>
-                             </TabPane>
-                         </children>
-                     </AnchorPane>
-                 </content>
-             </Tab><Tab text="Maquinas">
-             <content>
-                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <TabPane prefHeight="867.0" prefWidth="1600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                          <tabs>
-                            <Tab text="Ver Maquina">
-                                 <content>
-                                     <SplitPane dividerPositions="0.11" prefHeight="371.0" prefWidth="600.0">
-                                         <items>
-                                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-                                                 <children>
-                                                     <SplitPane dividerPositions="0.4904632152588556" layoutX="-24.0" layoutY="124.0" orientation="VERTICAL" prefHeight="369.0" prefWidth="111.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                         <items>
-                                                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                                                                 <children>
-                                                                     <ListView fx:id="maquinasLV" layoutX="-27.0" layoutY="32.0" prefHeight="246.0" prefWidth="109.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                                                 </children>
-                                                             </AnchorPane>
-                                                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="139.0" prefWidth="109.0">
-                                                                 <children>
-                                                                     <ListView fx:id="pasosLV" layoutX="-45.0" layoutY="-8.0" prefHeight="184.0" prefWidth="109.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                                                 </children>
-                                                             </AnchorPane>
-                                                         </items>
-                                                     </SplitPane>
-                                                 </children>
-                                             </AnchorPane>
-                                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-                                                 <children>
-                                                     <Text fx:id="descripcionPasoMaquina" layoutX="244.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripcion Maquina" />
-                                                     <ImageView fx:id="fotoMaquinaIV" fitHeight="150.0" fitWidth="200.0" layoutX="169.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true" />
-                                                    <TextField fx:id="idMaquinaVer" layoutX="20.0" layoutY="49.0" />
-                                                    <TextField fx:id="nombreMaquinaVer" layoutX="20.0" layoutY="189.0" />
-                                                    <TextField fx:id="FechaInstMaquinaVer" layoutX="20.0" layoutY="124.0" />
-                                                    <TextArea fx:id="descMaquinaVer" layoutX="240.0" layoutY="41.0" prefHeight="352.0" prefWidth="872.0" />
-                                                    <TextField fx:id="nStepVerStep" layoutX="20.0" layoutY="456.0" />
-                                                    <TextField fx:id="nombreStepVerStep" layoutX="20.0" layoutY="519.0" />
-                                                    <TextField fx:id="fotoStepVerStep" layoutX="20.0" layoutY="577.0" />
-                                                    <TextArea fx:id="descStepVerStep" layoutX="348.0" layoutY="437.0" prefHeight="368.0" prefWidth="762.0" />
-                                                    <ImageView fx:id="imVerS" fitHeight="178.0" fitWidth="316.0" layoutX="20.0" layoutY="617.0" pickOnBounds="true" preserveRatio="true" />
-                                                    <Button layoutX="37.0" layoutY="239.0" mnemonicParsing="false" onAction="#funEditMaq" text="Editar Maquina" />
-                                                    <Button layoutX="232.0" layoutY="519.0" mnemonicParsing="false" onAction="#funEditSt" text="Editar Paso" />
-                                                    <Separator layoutX="128.0" layoutY="420.0" prefHeight="3.0" prefWidth="1421.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="419.5" />
-                                                    <Text layoutX="24.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID Maquina" />
-                                                    <Text layoutX="24.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha Instalacion Maquina" />
-                                                    <Text layoutX="26.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre Maquina" />
-                                                    <Text layoutX="34.0" layoutY="442.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nº Step" />
-                                                    <Text layoutX="37.0" layoutY="506.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre Step" />
-                                                    <Text layoutX="40.0" layoutY="564.0" strokeType="OUTSIDE" strokeWidth="0.0" text="URL Step" />
-                                                    <Text layoutX="233.0" layoutY="450.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripcion Step" />
-                                                 </children>
-                                             </AnchorPane>
-                                         </items>
-                                     </SplitPane>
-                                 </content>
-                            </Tab>
-                            <Tab text="Crear Maquina">
-                              <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                       <children>
-                                          <Button fx:id="Button1" layoutX="419.0" layoutY="437.0" mnemonicParsing="false" onAction="#funGuardarPaso" text="Guardar Step" />
-                                          <TextField fx:id="idmaquina" layoutX="57.0" layoutY="52.0" prefHeight="25.0" prefWidth="326.0" promptText="ID Maquina" />
-                                          <TextField fx:id="nombrem" layoutX="57.0" layoutY="112.0" prefHeight="25.0" prefWidth="448.0" promptText="Nombre Maquina" />
-                                          <TextField fx:id="idpaso" layoutX="57.0" layoutY="437.0" prefHeight="25.0" prefWidth="346.0" promptText="ID Step" />
-                                          <TextField fx:id="nombre" layoutX="57.0" layoutY="484.0" prefHeight="25.0" prefWidth="446.0" promptText="Nombre Step" />
-                                          <Button fx:id="Button" layoutX="396.0" layoutY="52.0" mnemonicParsing="false" onAction="#funGuardarMaquina" text="Guardar Maquina" />
-                                          <Text layoutX="57.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID Maquina" />
-                                          <Text layoutX="57.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre Maquina" />
-                                          <Text layoutX="57.0" layoutY="433.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID Step" />
-                                          <Text layoutX="57.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre Step" />
-                                          <TextArea fx:id="descm" layoutX="57.0" layoutY="166.0" prefHeight="195.0" prefWidth="448.0" promptText="Descripcion Maquina" />
-                                          <Text layoutX="57.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripcion Maquina" />
-                                          <TextArea fx:id="descStep" layoutX="57.0" layoutY="572.0" prefHeight="218.0" prefWidth="447.0" promptText="Descripcion Step" />
-                                          <TextField fx:id="linkStep" layoutX="57.0" layoutY="526.0" prefHeight="25.0" prefWidth="445.0" promptText="URL Imagen Step" />
-                                          <Text layoutX="57.0" layoutY="522.0" strokeType="OUTSIDE" strokeWidth="0.0" text="URL Imagen Step" />
-                                          <Text layoutX="57.0" layoutY="568.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripcion Step" />
-                                       </children>
-                                    </AnchorPane>
-                              </content>
-                            </Tab>
-                          </tabs>
-                        </TabPane>
-                     </children>
-                 </AnchorPane>
-             </content>
-         </Tab>
-             <Tab fx:id="infoTAB" text="InfoGym">
-                 <content>
-                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                         <children>
-                             <TextField fx:id="horarioLunesViernesTF" layoutX="37.0" layoutY="124.0" promptText="Horario Lunes a Viernes" />
-                             <TextField fx:id="horarioSabadoTF" layoutX="195.0" layoutY="124.0" promptText="Horario Sabado" />
-                             <TextField fx:id="horarioDomingoTF" layoutX="353.0" layoutY="124.0" promptText="Horario Domingo" />
-                             <Button fx:id="editarInfoGymBT" layoutX="62.0" layoutY="168.0" mnemonicParsing="false" onAction="#funEditGym" text="Subir Info" />
-                             <TextField fx:id="nombreGymTF" layoutX="37.0" layoutY="14.0" prefHeight="25.0" prefWidth="215.0" promptText="Nombre Gym" />
-                             <TextField fx:id="direccionGymTF" layoutX="37.0" layoutY="51.0" prefHeight="25.0" prefWidth="464.0" promptText="Direccion" />
-                             <TextField fx:id="telefonoGymTF" layoutX="269.0" layoutY="14.0" prefHeight="25.0" prefWidth="227.0" promptText="Telefono Gym" />
-                             <TextField fx:id="correoElectronicoGymTF" layoutX="37.0" layoutY="89.0" prefHeight="25.0" prefWidth="465.0" promptText="Correo electronico" />
-                             <ImageView fx:id="logoInfoGymIV" fitHeight="150.0" fitWidth="287.0" layoutX="536.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="https://pbs.twimg.com/profile_images/646190693/BAC_LOGO.JPG" />
-                           </image></ImageView>
-                         </children>
-                     </AnchorPane>
-                 </content>
-             </Tab>
-             <Tab text="Chat">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="704.0" prefWidth="1060.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gymFX.Controller">
+    <children>
+        <TabPane layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <tabs>
+                <Tab text="Inicio">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <SplitPane dividerPositions="0.10549777117384844" layoutX="132.0" layoutY="57.0" orientation="VERTICAL" prefHeight="404.0" prefWidth="512.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <items>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                            <children>
+                                                <Button layoutX="30.0" layoutY="22.0" mnemonicParsing="false" text="Home" />
+                                                <Button layoutX="934.0" layoutY="22.0" mnemonicParsing="false" text="Cerrar Sesion" />
+                                                <Button layoutX="408.0" layoutY="22.0" mnemonicParsing="false" onAction="#funLogin" text="Acceder" />
+                                                <Text fx:id="Bienvenido" layoutX="529.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="usuario" />
+                                            </children>
+                                        </AnchorPane>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                            <children>
+                                                <WebView fx:id="webView" layoutX="119.0" layoutY="57.0" prefHeight="327.0" prefWidth="510.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                            </children>
+                                        </AnchorPane>
+                                    </items>
+                                </SplitPane>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab fx:id="clienteTAB" disable="false" text="Cliente">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <TabPane prefHeight="404.0" prefWidth="512.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <tabs>
+                                        <Tab text="Añadir Cliente">
+                                            <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                    <children>
+                                                        <TextField fx:id="nombreCrearClienteTF" layoutX="290.0" layoutY="46.0" prefHeight="25.0" prefWidth="554.0" promptText="Nombre" />
+                                                        <TextField fx:id="primerApellidoCrearClienteTF" layoutX="290.0" layoutY="84.0" prefHeight="25.0" prefWidth="554.0" promptText="Primer Apellido" />
+                                                        <TextField fx:id="segundoApellidoCrearClienteTF" layoutX="290.0" layoutY="120.0" prefHeight="25.0" prefWidth="554.0" promptText="Segundo Apellido" />
+                                                        <TextField fx:id="direccionCrearCLienteTF" layoutX="290.0" layoutY="306.0" prefHeight="25.0" prefWidth="554.0" promptText="Direccion" />
+                                                        <TextField fx:id="dniCrearClienteTF" layoutX="290.0" layoutY="345.0" prefHeight="25.0" prefWidth="554.0" promptText="DNI" />
+                                                        <TextField fx:id="telefonoCrearClienteTF" layoutX="290.0" layoutY="269.0" prefHeight="25.0" prefWidth="554.0" promptText="Telefono" />
+                                                        <TextField fx:id="emailCrearClienteTF" layoutX="290.0" layoutY="233.0" prefHeight="25.0" prefWidth="554.0" promptText="Correo Electronico" />
+                                                        <MenuButton fx:id="sexoCrearClienteMB" alignment="CENTER" contentDisplay="CENTER" layoutX="290.0" layoutY="196.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="554.0" text="Sexo" textAlignment="CENTER">
+                                                            <items>
+                                                                <MenuItem fx:id="maculinoCrearClienteMI" mnemonicParsing="false" text="Masculino" />
+                                                                <MenuItem fx:id="femeninoCrearClienteMI" mnemonicParsing="false" text="Feminino" />
+                                                            </items>
+                                                        </MenuButton>
+                                                        <TextField fx:id="edadCrearClienteTF" layoutX="290.0" layoutY="159.0" prefHeight="25.0" prefWidth="554.0" promptText="Edad" />
+                                                        <Button layoutX="492.0" layoutY="453.0" mnemonicParsing="false" onAction="#funCrearClie" text="Crear Cliente" />
+                                                        <TextField fx:id="numSocioCrearClienteTF" layoutX="290.0" layoutY="385.0" prefWidth="554.0" promptText="Num Cliente" />
+                                                        <Text layoutX="170.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
+                                                        <Text layoutX="170.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Primer Apellido" />
+                                                        <Text layoutX="170.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Segundo Apellido" />
+                                                        <Text layoutX="170.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edad" />
+                                                        <Text layoutX="170.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sexo" />
+                                                        <Text layoutX="170.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Correo Electronico" />
+                                                        <Text layoutX="170.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefono" />
+                                                        <Text layoutX="170.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Direccion" />
+                                                        <Text layoutX="170.0" layoutY="362.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DNI" />
+                                                        <Text layoutX="170.0" layoutY="402.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero de cliente" />
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </Tab>
+                                        <Tab text="Ver Ciente">
+                                            <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                    <children>
+                                                        <TextField fx:id="nombreVerClienteTF1" layoutX="290.0" layoutY="46.0" prefHeight="25.0" prefWidth="554.0" promptText="Nombre" />
+                                                        <TextField fx:id="primerApellidoVerClienteTF1" layoutX="290.0" layoutY="84.0" prefHeight="25.0" prefWidth="554.0" promptText="Primer Apellido" />
+                                                        <TextField fx:id="segundoApellidoVerClienteTF1" layoutX="290.0" layoutY="120.0" prefHeight="25.0" prefWidth="554.0" promptText="Segundo Apellido" />
+                                                        <TextField fx:id="direccionVerClienteTF1" layoutX="290.0" layoutY="306.0" prefHeight="25.0" prefWidth="554.0" promptText="Direccion" />
+                                                        <TextField fx:id="dniVerClienteTF1" layoutX="290.0" layoutY="345.0" prefHeight="25.0" prefWidth="554.0" promptText="DNI" />
+                                                        <TextField fx:id="telefonoVerClienteTF1" layoutX="290.0" layoutY="269.0" prefHeight="25.0" prefWidth="554.0" promptText="Telefono" />
+                                                        <TextField fx:id="emailVerClienteTF1" layoutX="290.0" layoutY="233.0" prefHeight="25.0" prefWidth="554.0" promptText="Correo Electronico" />
+                                                        <MenuButton fx:id="sexoVerClienteTF1" alignment="CENTER" contentDisplay="CENTER" layoutX="290.0" layoutY="196.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="554.0" text="Sexo" textAlignment="CENTER">
+                                                            <items>
+                                                                <MenuItem fx:id="maculinoVerClienteMI" mnemonicParsing="false" text="Masculino" />
+                                                                <MenuItem fx:id="femeninoVerClienteMI" mnemonicParsing="false" text="Feminino" />
+                                                            </items>
+                                                        </MenuButton>
+                                                        <TextField fx:id="edadVerClienteTF1" layoutX="290.0" layoutY="159.0" prefHeight="25.0" prefWidth="554.0" promptText="Edad" />
+                                                        <TextField fx:id="numSocioVerClienteTF1" layoutX="290.0" layoutY="385.0" prefWidth="554.0" promptText="Num Cliente" />
+                                                        <Text layoutX="170.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
+                                                        <Text layoutX="170.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Primer Apellido" />
+                                                        <Text layoutX="170.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Segundo Apellido" />
+                                                        <Text layoutX="170.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edad" />
+                                                        <Text layoutX="170.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sexo" />
+                                                        <Text layoutX="170.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Correo Electronico" />
+                                                        <Text layoutX="170.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefono" />
+                                                        <Text layoutX="170.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Direccion" />
+                                                        <Text layoutX="170.0" layoutY="362.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DNI" />
+                                                        <Text layoutX="170.0" layoutY="402.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero de cliente" />
+                                                        <Button layoutX="857.0" layoutY="385.0" mnemonicParsing="false" onAction="#funBuscarClie" text="Buscar Num Cliente" />
+                                                        <Button fx:id="EditarDatosCliente" layoutX="422.0" layoutY="441.0" mnemonicParsing="false" onAction="#funEditClie" text="Editar datos" />
+                                                        <Button layoutX="860.0" layoutY="345.0" mnemonicParsing="false" onAction="#funBuscarClieDNI" text="Buscar DNI Cliente" />
+                                                        <Button fx:id="eliminarClienteBT" layoutX="610.0" layoutY="441.0" mnemonicParsing="false" text="Eliminar Cliente" />
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </Tab>
+                                    </tabs>
+                                </TabPane>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab fx:id="empleadoTAB" disable="false" text="Empleado">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <TabPane prefHeight="404.0" prefWidth="512.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <tabs>
+                                        <Tab text="Añadir Empleado">
+                                            <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                    <children>
+                                                        <TextField fx:id="nombreCrearEmpleadoTF" layoutX="290.0" layoutY="46.0" prefHeight="25.0" prefWidth="554.0" promptText="Nombre" />
+                                                        <TextField fx:id="primerApellidoCrearEmpleadoTF" layoutX="290.0" layoutY="84.0" prefHeight="25.0" prefWidth="554.0" promptText="Primer Apellido" />
+                                                        <TextField fx:id="segundoApellidoCrearEmpleadoTF" layoutX="290.0" layoutY="120.0" prefHeight="25.0" prefWidth="554.0" promptText="Segundo Apellido" />
+                                                        <TextField fx:id="direccionCrearEmpleadoTF" layoutX="290.0" layoutY="306.0" prefHeight="25.0" prefWidth="554.0" promptText="Direccion" />
+                                                        <TextField fx:id="dniCrearEmpleadoTF" layoutX="290.0" layoutY="345.0" prefHeight="25.0" prefWidth="554.0" promptText="DNI" />
+                                                        <TextField fx:id="telefonoCrearEmpleadoTF" layoutX="290.0" layoutY="269.0" prefHeight="25.0" prefWidth="554.0" promptText="Telefono" />
+                                                        <TextField fx:id="emailCrearEmpleadoTF" layoutX="290.0" layoutY="233.0" prefHeight="25.0" prefWidth="554.0" promptText="Correo Electronico" />
+                                                        <MenuButton fx:id="sexoCrearEmpleadoMB" alignment="CENTER" contentDisplay="CENTER" layoutX="290.0" layoutY="196.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="554.0" text="Sexo" textAlignment="CENTER">
+                                                            <items>
+                                                                <MenuItem fx:id="maculinoCrearEmpleadoMI" mnemonicParsing="false" text="Masculino" />
+                                                                <MenuItem fx:id="femeninoCrearEmpleadoMI" mnemonicParsing="false" text="Feminino" />
+                                                            </items>
+                                                        </MenuButton>
+                                                        <TextField fx:id="edadCrearEmpleadoTF" layoutX="290.0" layoutY="159.0" prefHeight="25.0" prefWidth="554.0" promptText="Edad" />
+                                                        <Button layoutX="492.0" layoutY="453.0" mnemonicParsing="false" onAction="#funCrearEmple" text="Crear Empleado" />
+                                                        <TextField fx:id="numSocioCrearEmpleadoTF" layoutX="290.0" layoutY="385.0" prefWidth="554.0" promptText="Num Empleado" />
+                                                        <Text layoutX="170.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
+                                                        <Text layoutX="170.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Primer Apellido" />
+                                                        <Text layoutX="170.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Segundo Apellido" />
+                                                        <Text layoutX="170.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edad" />
+                                                        <Text layoutX="170.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sexo" />
+                                                        <Text layoutX="170.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Correo Electronico" />
+                                                        <Text layoutX="170.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefono" />
+                                                        <Text layoutX="170.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Direccion" />
+                                                        <Text layoutX="170.0" layoutY="362.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DNI" />
+                                                        <Text layoutX="170.0" layoutY="402.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero Empleado" />
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </Tab>
+                                        <Tab text="Ver Empleado">
+                                            <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                    <children>
+                                                        <TextField fx:id="nombreVerEmpleadoTF" layoutX="290.0" layoutY="46.0" prefHeight="25.0" prefWidth="554.0" promptText="Nombre" />
+                                                        <TextField fx:id="primerApellidoVerEmpleadoTF" layoutX="290.0" layoutY="84.0" prefHeight="25.0" prefWidth="554.0" promptText="Primer Apellido" />
+                                                        <TextField fx:id="segundoApellidoVerEmpleadoTF" layoutX="290.0" layoutY="120.0" prefHeight="25.0" prefWidth="554.0" promptText="Segundo Apellido" />
+                                                        <TextField fx:id="direccionVerEmpleadoTF" layoutX="290.0" layoutY="306.0" prefHeight="25.0" prefWidth="554.0" promptText="Direccion" />
+                                                        <TextField fx:id="dniVerEmpleadoTF" layoutX="290.0" layoutY="345.0" prefHeight="25.0" prefWidth="554.0" promptText="DNI" />
+                                                        <TextField fx:id="telefonoVerEmpleadoTF" layoutX="290.0" layoutY="269.0" prefHeight="25.0" prefWidth="554.0" promptText="Telefono" />
+                                                        <TextField fx:id="emailVerEmpleadoTF" layoutX="290.0" layoutY="233.0" prefHeight="25.0" prefWidth="554.0" promptText="Correo Electronico" />
+                                                        <MenuButton fx:id="sexoVerEmpleadoTF" alignment="CENTER" contentDisplay="CENTER" layoutX="290.0" layoutY="196.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="554.0" text="Sexo" textAlignment="CENTER">
+                                                            <items>
+                                                                <MenuItem fx:id="maculinoVerEmpleadoMI" mnemonicParsing="false" text="Masculino" />
+                                                                <MenuItem fx:id="femeninoVerEmpleadoMI" mnemonicParsing="false" text="Feminino" />
+                                                            </items>
+                                                        </MenuButton>
+                                                        <TextField fx:id="edadVerEmpleadoTF" layoutX="290.0" layoutY="159.0" prefHeight="25.0" prefWidth="554.0" promptText="Edad" />
+                                                        <TextField fx:id="numEmpeladoVerEmpleadoTF" layoutX="290.0" layoutY="385.0" prefWidth="554.0" promptText="Num Empleado" />
+                                                        <Text layoutX="170.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
+                                                        <Text layoutX="170.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Primer Apellido" />
+                                                        <Text layoutX="170.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Segundo Apellido" />
+                                                        <Text layoutX="170.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edad" />
+                                                        <Text layoutX="170.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sexo" />
+                                                        <Text layoutX="170.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Correo Electronico" />
+                                                        <Text layoutX="170.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefono" />
+                                                        <Text layoutX="170.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Direccion" />
+                                                        <Text layoutX="170.0" layoutY="362.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DNI" />
+                                                        <Text layoutX="170.0" layoutY="402.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero Empleado" />
+                                                        <Button layoutX="857.0" layoutY="385.0" mnemonicParsing="false" onAction="#funBuscarEmple" text="Buscar Num Empleado" />
+                                                        <Button fx:id="EditarDatosEmpleado" layoutX="422.0" layoutY="441.0" mnemonicParsing="false" onAction="#funEditEmple" text="Editar datos" />
+                                                        <Button layoutX="860.0" layoutY="345.0" mnemonicParsing="false" onAction="#funBuscarEmpleDNI" text="Buscar DNI Empleado" />
+                                                        <Button fx:id="eliminarEmpleadoBT" layoutX="610.0" layoutY="441.0" mnemonicParsing="false" text="Eliminar Empleado" />
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </Tab>
+                                        <Tab text="Ver mi ficha">
+                                            <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                    <children>
+                                                        <TextField fx:id="nombreFichaPropiaTF" editable="false" layoutX="290.0" layoutY="46.0" prefHeight="25.0" prefWidth="554.0" promptText="Nombre" />
+                                                        <TextField fx:id="primerApellidoFichaPropiaTF" editable="false" layoutX="290.0" layoutY="84.0" prefHeight="25.0" prefWidth="554.0" promptText="Primer Apellido" />
+                                                        <TextField fx:id="segundoApellidoFichaPropiaTF" editable="false" layoutX="290.0" layoutY="120.0" prefHeight="25.0" prefWidth="554.0" promptText="Segundo Apellido" />
+                                                        <TextField fx:id="direccionFichaPropiaTF" editable="false" layoutX="290.0" layoutY="306.0" prefHeight="25.0" prefWidth="554.0" promptText="Direccion" />
+                                                        <TextField fx:id="dniFichaPropiaTF" editable="false" layoutX="290.0" layoutY="345.0" prefHeight="25.0" prefWidth="554.0" promptText="DNI" />
+                                                        <TextField fx:id="telefonoFichaPropiaTF" editable="false" layoutX="290.0" layoutY="269.0" prefHeight="25.0" prefWidth="554.0" promptText="Telefono" />
+                                                        <TextField fx:id="emailFichaPropiaTF" editable="false" layoutX="290.0" layoutY="233.0" prefHeight="25.0" prefWidth="554.0" promptText="Correo Electronico" />
+                                                        <MenuButton fx:id="sexoFichaPropiaMB" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="290.0" layoutY="196.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="554.0" text="Sexo" textAlignment="CENTER">
+                                                            <items>
+                                                                <MenuItem fx:id="maculinoFichaPropiaMI" mnemonicParsing="false" text="Masculino" />
+                                                                <MenuItem fx:id="femeninoFichaPropiaMI" mnemonicParsing="false" text="Feminino" />
+                                                            </items>
+                                                        </MenuButton>
+                                                        <TextField fx:id="edadFichaPropiaTF" editable="false" layoutX="290.0" layoutY="159.0" prefHeight="25.0" prefWidth="554.0" promptText="Edad" />
+                                                        <TextField fx:id="numEmpeladoFichaPropiaTF" editable="false" layoutX="290.0" layoutY="385.0" prefWidth="554.0" promptText="Num Empleado" />
+                                                        <Text layoutX="170.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
+                                                        <Text layoutX="170.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Primer Apellido" />
+                                                        <Text layoutX="170.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Segundo Apellido" />
+                                                        <Text layoutX="170.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edad" />
+                                                        <Text layoutX="170.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sexo" />
+                                                        <Text layoutX="170.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Correo Electronico" />
+                                                        <Text layoutX="170.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefono" />
+                                                        <Text layoutX="170.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Direccion" />
+                                                        <Text layoutX="170.0" layoutY="362.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DNI" />
+                                                        <Text layoutX="170.0" layoutY="402.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero Empleado" />
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </Tab>
+                                    </tabs>
+                                </TabPane>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Maquinas">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <TabPane prefHeight="867.0" prefWidth="1600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <tabs>
+                                        <Tab text="Ver Maquina">
+                                            <content>
+                                                <SplitPane dividerPositions="0.16792452830188678" prefHeight="371.0" prefWidth="600.0">
+                                                    <items>
+                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                                            <children>
+                                                                <SplitPane dividerPositions="0.4904632152588556" layoutX="-24.0" layoutY="124.0" orientation="VERTICAL" prefHeight="369.0" prefWidth="111.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                                    <items>
+                                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                                                                            <children>
+                                                                                <ListView fx:id="maquinasLV" layoutX="-27.0" layoutY="32.0" prefHeight="246.0" prefWidth="109.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                                            </children>
+                                                                        </AnchorPane>
+                                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="139.0" prefWidth="109.0">
+                                                                            <children>
+                                                                                <ListView fx:id="pasosLV" layoutX="-45.0" layoutY="-8.0" prefHeight="184.0" prefWidth="109.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                                            </children>
+                                                                        </AnchorPane>
+                                                                    </items>
+                                                                </SplitPane>
+                                                            </children>
+                                                        </AnchorPane>
+                                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                                            <children>
+                                                                <Text fx:id="descripcionPasoMaquina" layoutX="244.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripcion Maquina" />
+                                                                <TextField fx:id="idMaquinaVer" layoutX="20.0" layoutY="36.0" prefHeight="25.0" prefWidth="201.0" />
+                                                                <TextField fx:id="nombreMaquinaVer" layoutX="21.0" layoutY="140.0" prefHeight="25.0" prefWidth="201.0" />
+                                                                <TextField fx:id="FechaInstMaquinaVer" layoutX="21.0" layoutY="89.0" prefHeight="25.0" prefWidth="199.0" />
+                                                                <TextArea fx:id="descMaquinaVer" layoutX="244.0" layoutY="38.0" prefHeight="253.0" prefWidth="605.0" />
+                                                                <TextField fx:id="nStepVerStep" layoutX="20.0" layoutY="344.0" prefHeight="25.0" prefWidth="193.0" />
+                                                                <TextField fx:id="nombreStepVerStep" layoutX="20.0" layoutY="400.0" prefHeight="25.0" prefWidth="194.0" />
+                                                                <TextField fx:id="fotoStepVerStep" layoutX="20.0" layoutY="459.0" prefHeight="25.0" prefWidth="195.0" />
+                                                                <TextArea fx:id="descStepVerStep" layoutX="244.0" layoutY="342.0" prefHeight="277.0" prefWidth="602.0" />
+                                                                <ImageView fx:id="imVerS" fitHeight="138.0" fitWidth="200.0" layoutX="11.0" layoutY="494.0" pickOnBounds="true" preserveRatio="true" />
+                                                                <Button layoutX="752.0" layoutY="8.0" mnemonicParsing="false" onAction="#funEditMaq" text="Editar Maquina" />
+                                                                <Button layoutX="772.0" layoutY="315.0" mnemonicParsing="false" onAction="#funEditSt" text="Editar Step" />
+                                                                <Separator layoutX="128.0" layoutY="302.0" prefHeight="15.0" prefWidth="940.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="302.0" />
+                                                                <Text layoutX="24.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID Maquina" />
+                                                                <Text layoutX="20.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha Instalacion Maquina" />
+                                                                <Text layoutX="20.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre Maquina" />
+                                                                <Text layoutX="25.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nº Step" />
+                                                                <Text layoutX="19.0" layoutY="396.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre Step" />
+                                                                <Text layoutX="21.0" layoutY="455.0" strokeType="OUTSIDE" strokeWidth="0.0" text="URL Imagen Step" />
+                                                                <Text layoutX="244.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripcion Step" />
+                                                                <Button layoutX="634.0" layoutY="315.0" mnemonicParsing="false" text="Actualizar Imagen" />
+                                                            </children>
+                                                        </AnchorPane>
+                                                    </items>
+                                                </SplitPane>
+                                            </content>
+                                        </Tab>
+                                        <Tab text="Crear Maquina">
+                                            <content>
+                                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                    <children>
+                                                        <Button fx:id="Button1" layoutX="941.0" layoutY="52.0" mnemonicParsing="false" onAction="#funGuardarPaso" text="Guardar Step" />
+                                                        <TextField fx:id="idmaquina" layoutX="57.0" layoutY="52.0" prefHeight="25.0" prefWidth="326.0" promptText="ID Maquina" />
+                                                        <TextField fx:id="nombrem" layoutX="57.0" layoutY="112.0" prefHeight="25.0" prefWidth="448.0" promptText="Nombre Maquina" />
+                                                        <TextField fx:id="idpaso" layoutX="579.0" layoutY="52.0" prefHeight="25.0" prefWidth="346.0" promptText="ID Step" />
+                                                        <TextField fx:id="nombre" layoutX="579.0" layoutY="99.0" prefHeight="25.0" prefWidth="446.0" promptText="Nombre Step" />
+                                                        <Button fx:id="Button" layoutX="396.0" layoutY="52.0" mnemonicParsing="false" onAction="#funGuardarMaquina" text="Guardar Maquina" />
+                                                        <Text layoutX="57.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID Maquina" />
+                                                        <Text layoutX="57.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre Maquina" />
+                                                        <Text layoutX="579.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID Step" />
+                                                        <Text layoutX="579.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre Step" />
+                                                        <TextArea fx:id="descm" layoutX="57.0" layoutY="166.0" prefHeight="454.0" prefWidth="448.0" promptText="Descripcion Maquina" />
+                                                        <Text layoutX="57.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripcion Maquina" />
+                                                        <TextArea fx:id="descStep" layoutX="579.0" layoutY="187.0" prefHeight="426.0" prefWidth="447.0" promptText="Descripcion Step" />
+                                                        <TextField fx:id="linkStep" layoutX="579.0" layoutY="141.0" prefHeight="25.0" prefWidth="445.0" promptText="URL Imagen Step" />
+                                                        <Text layoutX="579.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="URL Imagen Step" />
+                                                        <Text layoutX="579.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripcion Step" />
+                                                        <Separator layoutX="537.0" layoutY="166.0" orientation="VERTICAL" prefHeight="646.0" prefWidth="6.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="527.0" AnchorPane.topAnchor="0.0" />
+                                                    </children>
+                                                </AnchorPane>
+                                            </content>
+                                        </Tab>
+                                    </tabs>
+                                </TabPane>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab fx:id="InicidenciasTAB" text="Incidencias">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <ListView fx:id="incidenciasListV" layoutX="1.0" layoutY="28.0" prefHeight="338.0" prefWidth="213.0" />
+                                <TextField fx:id="idMaquinaVerIncidencia" layoutX="863.0" layoutY="39.0" prefHeight="25.0" prefWidth="186.0" />
+                                <TextField fx:id="tipoVerIncidencia" layoutX="654.0" layoutY="40.0" prefHeight="25.0" prefWidth="186.0" />
+                                <TextField fx:id="ususarioVerIncidencia" layoutX="455.0" layoutY="42.0" prefHeight="25.0" prefWidth="178.0" />
+                                <TextField fx:id="fechaVerIncidencia" layoutX="249.0" layoutY="42.0" prefHeight="25.0" prefWidth="189.0" />
+                                <CheckBox fx:id="solucionadaVerIncidencia" layoutX="934.0" layoutY="81.0" mnemonicParsing="false" text="Solucionada" />
+                                <ListView fx:id="incidenciasResueltasListV" layoutX="-2.0" layoutY="520.0" prefHeight="279.0" prefWidth="216.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="-2.0" />
+                                <Text layoutX="58.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NO RESUELTAS" />
+                                <Text layoutX="69.0" layoutY="389.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RESUELTAS" />
+                                <Text layoutX="863.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID Maquina" />
+                                <Text layoutX="656.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo Incidencia" />
+                                <Text layoutX="249.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripcion Incidencia" />
+                                <Text layoutX="455.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario Reporta Incidencia" />
+                                <Text layoutX="249.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha Incidencia" />
+                                <TextArea fx:id="incidenciaVerIncidencia" layoutX="249.0" layoutY="106.0" prefHeight="278.0" prefWidth="797.0" />
+                                <TextArea fx:id="comentarioIncidenciaTA" layoutX="248.0" layoutY="424.0" prefHeight="234.0" prefWidth="797.0" />
+                                <Text layoutX="248.0" layoutY="420.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Comenario Respuesta" />
+                                <Button fx:id="cerrarIncidenciaBT" layoutX="924.0" layoutY="395.0" mnemonicParsing="false" onAction="#funSolInc" text="Cerrar Incidencia" />
+                                <Button layoutX="686.0" layoutY="395.0" mnemonicParsing="false" onAction="#abrirRespuesta" text="Abrir Respuesta" />
+                                <Button layoutX="797.0" layoutY="395.0" mnemonicParsing="false" onAction="#guardarRespuesta" text="Guardar Respuesta" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Chat">
                  <content>
                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                          <children>
@@ -361,33 +415,34 @@
                      </AnchorPane>
                  </content>
              </Tab>
-            <Tab fx:id="InicidenciasTAB" text="Incidencias">
-              <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <ListView fx:id="incidenciasListV" layoutX="1.0" layoutY="28.0" prefHeight="456.0" prefWidth="213.0" />
-                        <TextField fx:id="idMaquinaVerIncidencia" layoutX="863.0" layoutY="39.0" prefHeight="25.0" prefWidth="196.0" />
-                        <TextField fx:id="tipoVerIncidencia" layoutX="654.0" layoutY="40.0" prefHeight="25.0" prefWidth="186.0" />
-                        <TextField fx:id="ususarioVerIncidencia" layoutX="455.0" layoutY="42.0" prefHeight="25.0" prefWidth="178.0" />
-                        <TextField fx:id="fechaVerIncidencia" layoutX="249.0" layoutY="42.0" prefHeight="25.0" prefWidth="189.0" />
-                        <CheckBox fx:id="solucionadaVerIncidencia" layoutX="352.0" layoutY="814.0" mnemonicParsing="false" text="Solucionada" />
-                        <ListView fx:id="incidenciasResueltasListV" layoutX="-2.0" layoutY="520.0" prefHeight="348.0" prefWidth="216.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="-2.0" />
-                        <Text layoutX="58.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NO RESUELTAS" />
-                        <Text layoutX="70.0" layoutY="510.0" strokeType="OUTSIDE" strokeWidth="0.0" text="RESUELTAS" />
-                        <Text layoutX="863.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID Maquina" />
-                        <Text layoutX="656.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo Incidencia" />
-                        <Text layoutX="249.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Descripcion Incidencia" />
-                        <Text layoutX="455.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Usuario Reporta Incidencia" />
-                        <Text layoutX="249.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha Incidencia" />
-                        <TextArea fx:id="incidenciaVerIncidencia" layoutX="249.0" layoutY="106.0" prefHeight="278.0" prefWidth="810.0" />
-                        <TextArea fx:id="comentarioIncidenciaTA" layoutX="248.0" layoutY="424.0" prefHeight="352.0" prefWidth="813.0" />
-                        <Text layoutX="248.0" layoutY="420.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Comenario Respuesta" />
-                        <Button fx:id="cerrarIncidenciaBT" layoutX="500.0" layoutY="810.0" mnemonicParsing="false" onAction="#funSolInc" text="Cerrar Incidencia" />
-                     </children>
-                  </AnchorPane>
-              </content>
-            </Tab>
-         </tabs>
-      </TabPane>
-   </children>
+                <Tab fx:id="infoTAB" text="InfoGym">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <TextField fx:id="nombreGymTF" editable="false" layoutX="308.0" layoutY="181.0" prefHeight="25.0" prefWidth="554.0" promptText="Nombre" />
+                                <TextField fx:id="direccionGymTF" editable="false" layoutX="308.0" layoutY="250.0" prefHeight="25.0" prefWidth="554.0" promptText="Direccion" />
+                                <TextField fx:id="horarioLunesViernesTF" editable="false" layoutX="308.0" layoutY="325.0" prefHeight="25.0" prefWidth="554.0" promptText="Horario Lunes a Viernes" />
+                                <TextField fx:id="telefonoGymTF" editable="false" layoutX="308.0" layoutY="213.0" prefHeight="25.0" prefWidth="554.0" promptText="Telefono" />
+                                <TextField fx:id="correoElectronicoGymTF" editable="false" layoutX="308.0" layoutY="285.0" prefHeight="25.0" prefWidth="554.0" promptText="Correo Electronico" />
+                                <TextField fx:id="horarioSabadoTF" editable="false" layoutX="308.0" layoutY="362.0" prefHeight="25.0" prefWidth="554.0" promptText="Horario Sabado" />
+                                <TextField fx:id="horarioDomingoTF" editable="false" layoutX="308.0" layoutY="399.0" prefHeight="25.0" prefWidth="554.0" promptText="Horario Domingo" />
+                                <Text layoutX="167.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
+                                <Text layoutX="167.0" layoutY="379.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Horario Sabado" />
+                                <Text layoutX="167.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Correo Electronico" />
+                                <Text layoutX="169.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefono" />
+                                <Text layoutX="169.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Direccion" />
+                                <Text layoutX="167.0" layoutY="342.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Horario Lunes a Viernes" />
+                                <Text layoutX="169.0" layoutY="416.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Horario Domingo" />
+                                <Button fx:id="editarInfoGymBT" layoutX="792.0" layoutY="445.0" mnemonicParsing="false" onAction="#funEditGym" text="Subir Info" />
+                                <ImageView fx:id="logoInfoGymIV" fitHeight="136.0" fitWidth="310.0" layoutX="475.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="https://pbs.twimg.com/profile_images/646190693/BAC_LOGO.JPG" />
+                                    </image></ImageView>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
 </AnchorPane>
