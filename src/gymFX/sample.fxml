@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.web.*?>
+<?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ListView?>
@@ -17,13 +12,14 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="704.0" prefWidth="1060.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gymFX.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="704.0" prefWidth="1060.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gymFX.Controller">
     <children>
         <TabPane layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <tabs>
@@ -35,7 +31,7 @@
                                     <items>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                             <children>
-                                                <Button layoutX="30.0" layoutY="22.0" mnemonicParsing="false" text="Home" />
+                                                <Button layoutX="30.0" layoutY="22.0" mnemonicParsing="false" onAction="#home" text="Home" fx:id="home"/>
                                                 <Button layoutX="934.0" layoutY="22.0" mnemonicParsing="false" text="Cerrar Sesion" />
                                                 <Button layoutX="408.0" layoutY="22.0" mnemonicParsing="false" onAction="#funLogin" text="Acceder" />
                                                 <Text fx:id="Bienvenido" layoutX="529.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="usuario" />
@@ -58,7 +54,7 @@
                             <children>
                                 <TabPane prefHeight="404.0" prefWidth="512.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <tabs>
-                                        <Tab text="Añadir Cliente">
+                                        <Tab fx:id="anadirClienteT" text="Añadir Cliente">
                                             <content>
                                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                     <children>
@@ -71,8 +67,8 @@
                                                         <TextField fx:id="emailCrearClienteTF" layoutX="290.0" layoutY="233.0" prefHeight="25.0" prefWidth="554.0" promptText="Correo Electronico" />
                                                         <MenuButton fx:id="sexoCrearClienteMB" alignment="CENTER" contentDisplay="CENTER" layoutX="290.0" layoutY="196.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="554.0" text="Sexo" textAlignment="CENTER">
                                                             <items>
-                                                                <MenuItem fx:id="maculinoCrearClienteMI" mnemonicParsing="false" text="Masculino" />
-                                                                <MenuItem fx:id="femeninoCrearClienteMI" mnemonicParsing="false" text="Feminino" />
+                                                                <MenuItem fx:id="maculinoCrearClienteMI" mnemonicParsing="false" onAction="#selectMasc" text="Masculino" />
+                                                                <MenuItem fx:id="femeninoCrearClienteMI" mnemonicParsing="false" onAction="#selectFeme" text="Feminino" />
                                                             </items>
                                                         </MenuButton>
                                                         <TextField fx:id="edadCrearClienteTF" layoutX="290.0" layoutY="159.0" prefHeight="25.0" prefWidth="554.0" promptText="Edad" />
@@ -154,8 +150,8 @@
                                                         <TextField fx:id="emailCrearEmpleadoTF" layoutX="290.0" layoutY="233.0" prefHeight="25.0" prefWidth="554.0" promptText="Correo Electronico" />
                                                         <MenuButton fx:id="sexoCrearEmpleadoMB" alignment="CENTER" contentDisplay="CENTER" layoutX="290.0" layoutY="196.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="554.0" text="Sexo" textAlignment="CENTER">
                                                             <items>
-                                                                <MenuItem fx:id="maculinoCrearEmpleadoMI" mnemonicParsing="false" text="Masculino" />
-                                                                <MenuItem fx:id="femeninoCrearEmpleadoMI" mnemonicParsing="false" text="Feminino" />
+                                                                <MenuItem fx:id="maculinoCrearEmpleadoMI" mnemonicParsing="false" onAction="#selectMasc" text="Masculino" />
+                                                                <MenuItem fx:id="femeninoCrearEmpleadoMI" mnemonicParsing="false" onAction="#selectFeme" text="Feminino" />
                                                             </items>
                                                         </MenuButton>
                                                         <TextField fx:id="edadCrearEmpleadoTF" layoutX="290.0" layoutY="159.0" prefHeight="25.0" prefWidth="554.0" promptText="Edad" />
@@ -360,9 +356,9 @@
                                 <TextArea fx:id="incidenciaVerIncidencia" layoutX="249.0" layoutY="106.0" prefHeight="278.0" prefWidth="797.0" />
                                 <TextArea fx:id="comentarioIncidenciaTA" layoutX="248.0" layoutY="424.0" prefHeight="234.0" prefWidth="797.0" />
                                 <Text layoutX="248.0" layoutY="420.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Comenario Respuesta" />
-                                <Button fx:id="cerrarIncidenciaBT" layoutX="924.0" layoutY="395.0" mnemonicParsing="false" onAction="#funSolInc" text="Cerrar Incidencia" />
-                                <Button layoutX="686.0" layoutY="395.0" mnemonicParsing="false" onAction="#abrirRespuesta" text="Abrir Respuesta" />
-                                <Button layoutX="797.0" layoutY="395.0" mnemonicParsing="false" onAction="#guardarRespuesta" text="Guardar Respuesta" />
+                                <Button fx:id="cerrarIncidenciaBT" layoutX="908.0" layoutY="395.0" mnemonicParsing="false" onAction="#funSolInc" text="Cerrar Incidencia" />
+                                <Button layoutX="620.0" layoutY="395.0" mnemonicParsing="false" onAction="#abrirRespuesta" text="Abrir Respuesta" />
+                                <Button layoutX="754.0" layoutY="394.0" mnemonicParsing="false" onAction="#guardarRespuesta" text="Guardar Respuesta" />
                             </children>
                         </AnchorPane>
                     </content>
@@ -403,8 +399,8 @@
                                          <children>
                                              <TextArea fx:id="mensajeChatTA" layoutX="18.0" layoutY="31.0" prefHeight="306.0" prefWidth="708.0" />
                                              <TextArea fx:id="respuestaChatTA" layoutX="18.0" layoutY="388.0" prefHeight="267.0" prefWidth="708.0" />
-                                             <Button fx:id="enviarRespuestaChatBT" layoutX="504.0" layoutY="363.0" mnemonicParsing="false" onAction="#resp" text="Enviar Respuesta" />
-                                             <Button fx:id="borrarRespuestaChatBT" layoutX="620.0" layoutY="363.0" mnemonicParsing="false" text="Borrar Respuesta" />
+                                             <Button fx:id="enviarRespuestaChatBT" layoutX="451.0" layoutY="362.0" mnemonicParsing="false" onAction="#resp" text="Enviar Respuesta" />
+                                             <Button  fx:id="borrarRespuestaChatBT" layoutX="593.0" layoutY="362.0" mnemonicParsing="false" text="Borrar Respuesta" />
                                              <Text layoutX="18.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mensaje Usuario:" />
                                              <Text layoutX="18.0" layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mensaje Respuesta:" />
                                          </children>
@@ -419,13 +415,13 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <TextField fx:id="nombreGymTF" editable="false" layoutX="308.0" layoutY="181.0" prefHeight="25.0" prefWidth="554.0" promptText="Nombre" />
-                                <TextField fx:id="direccionGymTF" editable="false" layoutX="308.0" layoutY="250.0" prefHeight="25.0" prefWidth="554.0" promptText="Direccion" />
-                                <TextField fx:id="horarioLunesViernesTF" editable="false" layoutX="308.0" layoutY="325.0" prefHeight="25.0" prefWidth="554.0" promptText="Horario Lunes a Viernes" />
-                                <TextField fx:id="telefonoGymTF" editable="false" layoutX="308.0" layoutY="213.0" prefHeight="25.0" prefWidth="554.0" promptText="Telefono" />
-                                <TextField fx:id="correoElectronicoGymTF" editable="false" layoutX="308.0" layoutY="285.0" prefHeight="25.0" prefWidth="554.0" promptText="Correo Electronico" />
-                                <TextField fx:id="horarioSabadoTF" editable="false" layoutX="308.0" layoutY="362.0" prefHeight="25.0" prefWidth="554.0" promptText="Horario Sabado" />
-                                <TextField fx:id="horarioDomingoTF" editable="false" layoutX="308.0" layoutY="399.0" prefHeight="25.0" prefWidth="554.0" promptText="Horario Domingo" />
+                                <TextField fx:id="nombreGymTF" editable="false" layoutX="332.0" layoutY="183.0" prefHeight="25.0" prefWidth="554.0" promptText="Nombre" />
+                                <TextField fx:id="direccionGymTF" editable="false" layoutX="332.0" layoutY="252.0" prefHeight="25.0" prefWidth="554.0" promptText="Direccion" />
+                                <TextField fx:id="horarioLunesViernesTF" editable="false" layoutX="332.0" layoutY="327.0" prefHeight="25.0" prefWidth="554.0" promptText="Horario Lunes a Viernes" />
+                                <TextField fx:id="telefonoGymTF" editable="false" layoutX="332.0" layoutY="215.0" prefHeight="25.0" prefWidth="554.0" promptText="Telefono" />
+                                <TextField fx:id="correoElectronicoGymTF" editable="false" layoutX="332.0" layoutY="287.0" prefHeight="25.0" prefWidth="554.0" promptText="Correo Electronico" />
+                                <TextField fx:id="horarioSabadoTF" editable="false" layoutX="332.0" layoutY="364.0" prefHeight="25.0" prefWidth="554.0" promptText="Horario Sabado" />
+                                <TextField fx:id="horarioDomingoTF" editable="false" layoutX="332.0" layoutY="401.0" prefHeight="25.0" prefWidth="554.0" promptText="Horario Domingo" />
                                 <Text layoutX="167.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
                                 <Text layoutX="167.0" layoutY="379.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Horario Sabado" />
                                 <Text layoutX="167.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Correo Electronico" />

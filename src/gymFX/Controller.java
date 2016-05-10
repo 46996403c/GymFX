@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.InputMethodEvent;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -24,6 +25,8 @@ import javafx.stage.Stage;
 import javafx.util.Pair;
 
 import java.io.*;
+import java.math.BigInteger;
+import java.security.SecureRandom;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Collector;
@@ -144,6 +147,7 @@ public class Controller {
 
     public Tab infoTAB;
     public Tab InicidenciasTAB;
+    public Tab anadirClienteT;
 
     public ListView<Chat> mensajesNOleidosChatLV;
     public ListView<Chat> mensajesUsuarioChatLV;
@@ -151,6 +155,10 @@ public class Controller {
     public TitledPane mensajesU;
     public TextArea mensajeChatTA;
     public TextArea respuestaChatTA;
+
+    public MenuButton sexoCrearEmpleadoMB;
+    public MenuItem maculinoCrearEmpleadoMI;
+    public MenuItem femeninoCrearEmpleadoMI;
 
 
     public Maquina maquina1;
@@ -164,9 +172,11 @@ public class Controller {
     ArrayList<Step> aS = new ArrayList<Step>();
 
 
+    public Button home;
 
 
     public void initialize(){
+
 
         final WebEngine webEngine = webView.getEngine();
         webEngine.load("http://bacderodasport.com");
@@ -188,7 +198,18 @@ public class Controller {
         telefonoVerEmpleadoTF.setEditable(false);
         edadVerEmpleadoTF.setEditable(false);
 
+
+        home.setGraphic(new ImageView("http://simpleicon.com/wp-content/uploads/home-1.png"));
        // pane.getStyleClass().add("pane");
+
+        respuestaChatTA.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                if (event.getCode() == KeyCode.ENTER){
+                    resp();
+                }
+            }
+        });
 
 
 
@@ -511,10 +532,10 @@ public class Controller {
                     Chat chat = postSnapshot.getValue(Chat.class);
 
                     if (chat.getUidUser().equals(cl.getUidUser())) {
-                        Map<String, Object> cl = new HashMap<String, Object>();
+                        Map<String, Object> cl1 = new HashMap<String, Object>();
                         Firebase editRef = cref.child(postSnapshot.getKey());
-                        cl.put("revisat", true);
-                        editRef.updateChildren(cl);
+                        cl1.put("revisat", true);
+                        editRef.updateChildren(cl1);
 
 
 
@@ -522,6 +543,10 @@ public class Controller {
                     }
 
                 }
+                cl=null;
+                respuestaChatTA.setText("");
+                mensajeChatTA.setText("");
+
 
             }
 
@@ -530,6 +555,8 @@ public class Controller {
 
             }
         });
+        mensajesUsuarioChatLV.setItems(null);
+
     }
 
     public void chaat(){
@@ -551,8 +578,8 @@ public class Controller {
                 System.out.println("There are " + snapshot.getChildrenCount() + " blog posts");
                 for (DataSnapshot postSnapshot: snapshot.getChildren()) {
                     Chat chat = postSnapshot.getValue(Chat.class);
-                    System.out.println(chat.getUidUser()+"------------"+ cl.getUidUser());
                     if (chat.getUidUser().equals(cl.getUidUser())) {
+
                         items.add(chat);
                         Platform.runLater(new Runnable() {
                             @Override
@@ -839,7 +866,8 @@ public class Controller {
                 System.out.println(firebaseError);
             }
         };
-        ref.createUser(emailCrearClienteTF.getText(),"test1", handler);
+        SecureRandom SRandom = new SecureRandom();
+        ref.createUser(emailCrearClienteTF.getText(),new BigInteger(32, SRandom).toString(32), handler);
     }
 
     public void funBuscarClie(){
@@ -1127,6 +1155,7 @@ public class Controller {
                 empleado.setEmail(emailCrearEmpleadoTF.getText());
                 empleado.setTelf(telefonoCrearEmpleadoTF.getText());
                 empleado.setnEmpleado(numEmpeladoCrearEmpleadoTF.getText());
+                empleado.setSexo("");
                 cref.push().setValue(empleado);
             }
             @Override
@@ -1134,7 +1163,8 @@ public class Controller {
                 System.out.println(firebaseError);
             }
         };
-        ref.createUser(emailCrearEmpleadoTF.getText(),"test1", handler);
+        SecureRandom SRandom = new SecureRandom();
+        ref.createUser(emailCrearEmpleadoTF.getText(),new BigInteger(32, SRandom).toString(32), handler);
 
 
 
@@ -1400,6 +1430,56 @@ public class Controller {
     }
 
 
+    public void funBorrarC(){
+        Firebase ref = new Firebase("https://fiery-inferno-9835.firebaseio.com/");
+        Firebase cref = ref.child("Clientes");
+
+        Query queryRef = cref.orderByChild("nombre").equalTo(nombreVerClienteTF1.getText());
+
+        queryRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                String g = dataSnapshot.getKey();
+
+
+                Cliente cliente = dataSnapshot.getValue(Cliente.class);
+                Firebase firebase = new Firebase("https://fiery-inferno-9835.firebaseio.com/Clientes/"+g);
+                firebase.removeValue();
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+    }
+    public void selectMasc(){
+        if (sexoCrearEmpleadoMB.isFocused())
+        sexoCrearEmpleadoMB.setText("Masculino");
+    }
+
+    public void selectFeme(){
+        sexoCrearEmpleadoMB.setText("Femenino");
+    }
+
+    public void home(){
+        webView.getEngine().load("http://bacderodasport.com");
+    }
 
 }
 // PASOS
