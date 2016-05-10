@@ -14,6 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.scene.web.WebEngine;
@@ -40,6 +41,8 @@ public class Controller {
     //*
     public Button Button;
     //*
+
+    public AnchorPane pane;
 
     public TextField nombreCrearClienteTF;
     public TextField primerApellidoCrearClienteTF;
@@ -179,6 +182,10 @@ public class Controller {
         emailVerEmpleadoTF.setEditable(false);
         telefonoVerEmpleadoTF.setEditable(false);
         edadVerEmpleadoTF.setEditable(false);
+
+       // pane.getStyleClass().add("pane");
+
+
 
         Firebase reff = new Firebase("https://testgimmapp.firebaseio.com/");
 
@@ -474,7 +481,7 @@ public class Controller {
         System.out.println("shedfguy");
 
         Date date = new Date();
-        chat.setAuthor("e");
+        chat.setAuthor("Centro");
         chat.setData(date.toString());
         chat.setMessage(respuestaChatTA.getText());
         chat.setUidUser(cl.getUidUser());

@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.web.*?>
+<?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ListView?>
@@ -17,15 +12,16 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gymFX.Controller">
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1600.0" stylesheets="@../s.css" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gymFX.Controller">
    <children>
-      <TabPane layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <TabPane layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0" stylesheets="@../s.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <tabs>
             <Tab text="Inicio">
                <content>
@@ -327,7 +323,7 @@
                                          <children>
                                              <Accordion layoutX="55.0" layoutY="149.0" prefHeight="673.0" prefWidth="312.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                  <panes>
-                                                     <TitledPane animated="true" text="Mensajes NO leidos" fx:id="mensajesNOleidos" expanded="true">
+                                                     <TitledPane fx:id="mensajesNOleidos" animated="true" expanded="true" text="Mensajes NO leidos">
                                                          <content>
                                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                                  <children>
@@ -336,7 +332,7 @@
                                                              </AnchorPane>
                                                          </content>
                                                      </TitledPane>
-                                                     <TitledPane animated="false" fx:id="mensajesU"  text="Mensajes Usuario" >
+                                                     <TitledPane fx:id="mensajesU" animated="false" text="Mensajes Usuario">
                                                          <content>
                                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                                                  <children>
@@ -386,7 +382,7 @@
                         <TextArea fx:id="incidenciaVerIncidencia" layoutX="249.0" layoutY="106.0" prefHeight="278.0" prefWidth="810.0" />
                         <TextArea fx:id="comentarioIncidenciaTA" layoutX="248.0" layoutY="424.0" prefHeight="352.0" prefWidth="813.0" />
                         <Text layoutX="248.0" layoutY="420.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Comenario Respuesta" />
-                        <Button fx:id="cerrarIncidenciaBT" layoutX="500.0" layoutY="810.0" mnemonicParsing="false" text="Cerrar Incidencia" onAction="#funSolInc" />
+                        <Button fx:id="cerrarIncidenciaBT" layoutX="500.0" layoutY="810.0" mnemonicParsing="false" onAction="#funSolInc" text="Cerrar Incidencia" />
                      </children>
                   </AnchorPane>
               </content>
