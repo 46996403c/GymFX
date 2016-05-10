@@ -39,7 +39,7 @@
                                        <items>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="67.0" prefWidth="183.0">
                                              <children>
-                                                <Button layoutX="25.0" layoutY="21.0" mnemonicParsing="false" text="Home" />
+                                                <Button layoutX="25.0" layoutY="21.0" mnemonicParsing="false" text="Home " />
                                                 <Button layoutX="83.0" layoutY="21.0" mnemonicParsing="false" text="Atras" />
                                              </children>
                                           </AnchorPane>
