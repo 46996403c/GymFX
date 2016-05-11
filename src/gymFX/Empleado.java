@@ -18,6 +18,16 @@ public class Empleado{
     private String telf;
     private String sexo;
 
+    public int getCat() {
+        return cat;
+    }
+
+    public void setCat(int cat) {
+        this.cat = cat;
+    }
+
+    private int cat;
+
     public String getSexo() {
         return sexo;
     }

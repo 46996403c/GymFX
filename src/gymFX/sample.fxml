@@ -23,7 +23,7 @@
     <children>
         <TabPane layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <tabs>
-                <Tab text="Inicio">
+                <Tab fx:id="IniTAB" text="Inicio">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
@@ -156,7 +156,7 @@
                                                         </MenuButton>
                                                         <TextField fx:id="edadCrearEmpleadoTF" layoutX="290.0" layoutY="159.0" prefHeight="25.0" prefWidth="554.0" promptText="Edad" />
                                                         <Button layoutX="492.0" layoutY="453.0" mnemonicParsing="false" onAction="#funCrearEmple" text="Crear Empleado" />
-                                                        <TextField fx:id="numSocioCrearEmpleadoTF" layoutX="290.0" layoutY="385.0" prefWidth="554.0" promptText="Num Empleado" />
+                                                        <TextField fx:id="numEmpeladoCrearEmpleadoTF" layoutX="290.0" layoutY="385.0" prefWidth="554.0" promptText="Num Empleado" />
                                                         <Text layoutX="170.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
                                                         <Text layoutX="170.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Primer Apellido" />
                                                         <Text layoutX="170.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Segundo Apellido" />
@@ -184,8 +184,8 @@
                                                         <TextField fx:id="emailVerEmpleadoTF" layoutX="290.0" layoutY="233.0" prefHeight="25.0" prefWidth="554.0" promptText="Correo Electronico" />
                                                         <MenuButton fx:id="sexoVerEmpleadoTF" alignment="CENTER" contentDisplay="CENTER" layoutX="290.0" layoutY="196.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="554.0" text="Sexo" textAlignment="CENTER">
                                                             <items>
-                                                                <MenuItem fx:id="maculinoVerEmpleadoMI" mnemonicParsing="false" text="Masculino" />
-                                                                <MenuItem fx:id="femeninoVerEmpleadoMI" mnemonicParsing="false" text="Feminino" />
+                                                                <MenuItem fx:id="maculinoVerEmpleadoMI" mnemonicParsing="false" onAction="#selectMasc" text="Masculino" />
+                                                                <MenuItem fx:id="femeninoVerEmpleadoMI" mnemonicParsing="false" onAction="#selectFeme" text="Feminino" />
                                                             </items>
                                                         </MenuButton>
                                                         <TextField fx:id="edadVerEmpleadoTF" layoutX="290.0" layoutY="159.0" prefHeight="25.0" prefWidth="554.0" promptText="Edad" />
@@ -221,8 +221,8 @@
                                                         <TextField fx:id="emailFichaPropiaTF" editable="false" layoutX="290.0" layoutY="233.0" prefHeight="25.0" prefWidth="554.0" promptText="Correo Electronico" />
                                                         <MenuButton fx:id="sexoFichaPropiaMB" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="290.0" layoutY="196.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="554.0" text="Sexo" textAlignment="CENTER">
                                                             <items>
-                                                                <MenuItem fx:id="maculinoFichaPropiaMI" mnemonicParsing="false" text="Masculino" />
-                                                                <MenuItem fx:id="femeninoFichaPropiaMI" mnemonicParsing="false" text="Feminino" />
+                                                                <MenuItem fx:id="maculinoFichaPropiaMI" mnemonicParsing="false" onAction="#selectMasc" text="Masculino" />
+                                                                <MenuItem fx:id="femeninoFichaPropiaMI" mnemonicParsing="false" onAction="#selectFeme" text="Feminino" />
                                                             </items>
                                                         </MenuButton>
                                                         <TextField fx:id="edadFichaPropiaTF" editable="false" layoutX="290.0" layoutY="159.0" prefHeight="25.0" prefWidth="554.0" promptText="Edad" />
@@ -247,7 +247,7 @@
                         </AnchorPane>
                     </content>
                 </Tab>
-                <Tab text="Maquinas">
+                <Tab fx:id="maquinasTAB" text="Maquinas">
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
@@ -363,7 +363,7 @@
                         </AnchorPane>
                     </content>
                 </Tab>
-                <Tab text="Chat">
+                <Tab text="Chat" fx:id="ChatTAB1">
                  <content>
                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                          <children>
@@ -432,7 +432,7 @@
                                 <Button fx:id="editarInfoGymBT" layoutX="792.0" layoutY="445.0" mnemonicParsing="false" onAction="#funEditGym" text="Subir Info" />
                                 <ImageView fx:id="logoInfoGymIV" fitHeight="136.0" fitWidth="310.0" layoutX="475.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="https://pbs.twimg.com/profile_images/646190693/BAC_LOGO.JPG" />
+                                        <Image url="https://static.wixstatic.com/media/332836_7b67a10014ce4c9191ebab93ceb87ff9.png/v1/fill/w_397,h_150,al_c,usm_0.66_1.00_0.01/332836_7b67a10014ce4c9191ebab93ceb87ff9.png" />
                                     </image></ImageView>
                             </children>
                         </AnchorPane>

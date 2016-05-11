@@ -40,6 +40,8 @@ public class Controller {
     DataSnapshot snapshot2;
     boolean errorBusqueda = false;
     Alert alertError = new Alert(Alert.AlertType.ERROR);
+    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+
 
     public WebView webView = new WebView();
     public Text Bienvenido;
@@ -148,6 +150,12 @@ public class Controller {
     public Tab infoTAB;
     public Tab InicidenciasTAB;
     public Tab anadirClienteT;
+    public Tab IniTAB;
+    public Tab clienteTAB;
+    public Tab empleadoTAB;
+    public Tab maquinasTAB;
+
+    public Tab ChatTAB1;
 
     public ListView<Chat> mensajesNOleidosChatLV;
     public ListView<Chat> mensajesUsuarioChatLV;
@@ -159,6 +167,13 @@ public class Controller {
     public MenuButton sexoCrearEmpleadoMB;
     public MenuItem maculinoCrearEmpleadoMI;
     public MenuItem femeninoCrearEmpleadoMI;
+    public MenuButton sexoVerClienteTF1;
+    public MenuItem maculinoVerClienteMI;
+    public MenuItem        femeninoVerClienteMI;
+    public MenuButton sexoVerEmpleadoTF;
+    public MenuButton sexoCrearClienteMB;
+    public Button cerrarIncidenciaBT;
+
 
 
     public Maquina maquina1;
@@ -179,8 +194,8 @@ public class Controller {
 
 
         final WebEngine webEngine = webView.getEngine();
-        webEngine.load("http://bacderodasport.com");
-        Bienvenido.setText("Sin Loggear");
+        webEngine.load("http://gymappenjoy.wix.com/homepage");
+        Bienvenido.setText("Sin Logear");
 
         nombreVerClienteTF1.setEditable(false);
         primerApellidoVerClienteTF1.setEditable(false);
@@ -198,8 +213,22 @@ public class Controller {
         telefonoVerEmpleadoTF.setEditable(false);
         edadVerEmpleadoTF.setEditable(false);
 
+        infoTAB.setDisable(false);
+        InicidenciasTAB.setDisable(true);
+        anadirClienteT.setDisable(true);
+        IniTAB.setDisable(false);
+        clienteTAB.setDisable(true);
+        empleadoTAB.setDisable(true);
+        maquinasTAB.setDisable(true);
+        ChatTAB1.setDisable(true);
 
-        home.setGraphic(new ImageView("http://simpleicon.com/wp-content/uploads/home-1.png"));
+
+        IniTAB.setGraphic(buildImage("http://i63.tinypic.com/2vwbd50.png"));
+        clienteTAB.setGraphic(buildImage("http://i64.tinypic.com/1ftxch.png"));
+        empleadoTAB.setGraphic(buildImage("http://i67.tinypic.com/14wzoxs.png"));
+        maquinasTAB.setGraphic(buildImage("http://i67.tinypic.com/r9iwdi.png"));
+        InicidenciasTAB.setGraphic(buildImage("http://i63.tinypic.com/1oau4l.png"));
+        ChatTAB1.setGraphic(buildImage("http://i67.tinypic.com/20f3g4l.png"));
        // pane.getStyleClass().add("pane");
 
         respuestaChatTA.setOnKeyPressed(new EventHandler<KeyEvent>() {
@@ -236,6 +265,15 @@ public class Controller {
                     @Override
                     public void run() {
                         mensajesNOleidosChatLV.setItems(items);
+                        if (!mensajesNOleidosChatLV.getItems().isEmpty()){
+                            ChatTAB1.setGraphic(buildImage("http://i64.tinypic.com/2i067tw.png"));
+                        }
+                        else{
+                            ChatTAB1.setGraphic(buildImage("http://i67.tinypic.com/20f3g4l.png"));
+
+                        }
+
+
                     }
                 });
             }
@@ -373,79 +411,13 @@ public class Controller {
 
 
 
-/*
-
-        Firebase ref3 = new Firebase("https://fiery-inferno-9835.firebaseio.com/");
-        Firebase cref3 = ref3.child("Maquinas");
-        Query queryRef3 = cref3.orderByChild("id").equalTo("s");
-
-
-        queryRef3.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                ms=dataSnapshot;
-                Firebase editRef = cref3.child(ms.getKey());
-                Map<String, Object> cl = new HashMap<String, Object>();
-                cl.put("steps/0/descripcio", "h");
-                editRef.updateChildren(cl);
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-        });
-*/
-
-/*
-        InfoGym infoGym = new InfoGym();
-
-
-        infoGym.setIdGym(1);
-
-        infoGym.setCorreoElectronicoGym("test@gym.es");
-        infoGym.setDireccionGym("C/ falsa 465465");
-        infoGym.setTelefonoGym(936569859);
-        infoGym.setNombreGym("Test");
-        String horario[] = new String[3];
-
-        horario[0]="9:00 - 22:30";
-
-        horario[1]="9:30 - 21:30";
-
-        horario[2]="11:00 - 18:30";
-
-
-        infoGym.setHorarioGym(horario);
-
-
-        Firebase ref = new Firebase("https://fiery-inferno-9835.firebaseio.com/");
-
-        Firebase cref = ref.child("Infogym");
-
-        cref.push().setValue(infoGym);
-*/
 
 
 
 
-        Firebase ref = new Firebase("https://fiery-inferno-9835.firebaseio.com/");
-        Firebase cref = ref.child("Infogym");
+
+        Firebase ref = new Firebase("https://testgimmapp.firebaseio.com/");
+        Firebase cref = ref.child("InfoGym");
         Query queryRef = cref.orderByChild("idGym").equalTo(1);
         queryRef.addChildEventListener(new ChildEventListener() {
             @Override
@@ -578,20 +550,25 @@ public class Controller {
                 System.out.println("There are " + snapshot.getChildrenCount() + " blog posts");
                 for (DataSnapshot postSnapshot: snapshot.getChildren()) {
                     Chat chat = postSnapshot.getValue(Chat.class);
-                    if (chat.getUidUser().equals(cl.getUidUser())) {
-
-                        items.add(chat);
-                        Platform.runLater(new Runnable() {
-                            @Override
-                            public void run() {
-                                // InicidenciasTAB.setGraphic(buildImage("https://static-secure.guim.co.uk/sys-images/Guardian/Pix/pictures/2009/4/29/1240996556472/exclamation-001.jpg"));
+                    try {
 
 
-                            }
-                        });
-                    }
-                    else{
-                        // items2.add(incidencia2);
+                        if (chat.getUidUser().equals(cl.getUidUser())) {
+
+                            items.add(chat);
+                            Platform.runLater(new Runnable() {
+                                @Override
+                                public void run() {
+                                    // InicidenciasTAB.setGraphic(buildImage("https://static-secure.guim.co.uk/sys-images/Guardian/Pix/pictures/2009/4/29/1240996556472/exclamation-001.jpg"));
+
+
+                                }
+                            });
+                        } else {
+                            // items2.add(incidencia2);
+                        }
+                    }catch (Exception d){
+
                     }
 
                 }
@@ -639,7 +616,7 @@ public class Controller {
                         Platform.runLater(new Runnable() {
                             @Override
                             public void run() {
-                                InicidenciasTAB.setGraphic(buildImage("https://static-secure.guim.co.uk/sys-images/Guardian/Pix/pictures/2009/4/29/1240996556472/exclamation-001.jpg"));
+                                InicidenciasTAB.setGraphic(buildImage("http://i65.tinypic.com/339jexi.png"));
 
 
                             }
@@ -657,7 +634,7 @@ public class Controller {
                         incidenciasListV.setItems(items);
                         incidenciasResueltasListV.setItems(items2);
                         if (incidenciasListV.getItems().isEmpty()){
-                            InicidenciasTAB.setGraphic(null);
+                            InicidenciasTAB.setGraphic(buildImage("http://i66.tinypic.com/20zdxzs.png"));
                         }
 
                     }
@@ -683,6 +660,8 @@ public class Controller {
                     fechaVerIncidencia.setText(ia.getData());
                     incidenciaVerIncidencia.setText(ia.getIncidencia());
                     solucionadaVerIncidencia.setSelected(ia.isRevisat());
+                    comentarioIncidenciaTA.setText("");
+                    cerrarIncidenciaBT.setDisable(false);
                     incidencia0 = ia;
                 }
 
@@ -702,6 +681,9 @@ public class Controller {
                     fechaVerIncidencia.setText(ia.getData());
                     incidenciaVerIncidencia.setText(ia.getIncidencia());
                     solucionadaVerIncidencia.setSelected(ia.isRevisat());
+                    comentarioIncidenciaTA.setText("");
+                    cerrarIncidenciaBT.setDisable(true);
+
                     incidencia0 = ia;
 
                 }
@@ -713,7 +695,7 @@ public class Controller {
     }
 
     public void funLogin(){
-        Firebase ref = new Firebase("https://fiery-inferno-9835.firebaseio.com/");
+        Firebase ref = new Firebase("https://testgimmapp.firebaseio.com/");
 
         // Create the custom dialog.
         Dialog<Pair<String, String>> dialog = new Dialog<>();
@@ -824,8 +806,7 @@ public class Controller {
             while (!done2.get());
             if (done2.get()){
                 Bienvenido.setText("Bienvenido, "+ empleado.getNombre());
-
-
+                setPerm(empleado.getCat());
 
                 nombreFichaPropiaTF.setText(empleado.getNombre());
                 primerApellidoFichaPropiaTF.setText(empleado.getApellido());
@@ -838,6 +819,31 @@ public class Controller {
                 numEmpeladoFichaPropiaTF.setText(empleado.getnEmpleado());
             }
         }
+    }
+
+
+    public void setPerm(int a){
+        if (a==1){
+            infoTAB.setDisable(false);
+            InicidenciasTAB.setDisable(false);
+            anadirClienteT.setDisable(false);
+            IniTAB.setDisable(false);
+            clienteTAB.setDisable(false);
+            empleadoTAB.setDisable(false);
+            maquinasTAB.setDisable(false);
+            ChatTAB1.setDisable(false);
+        }
+        if (a==2){
+            infoTAB.setDisable(false);
+            InicidenciasTAB.setDisable(false);
+            anadirClienteT.setDisable(false);
+            IniTAB.setDisable(false);
+            clienteTAB.setDisable(false);
+            empleadoTAB.setDisable(false);
+            maquinasTAB.setDisable(true);
+            ChatTAB1.setDisable(false);
+        }
+
     }
 
     public void funCrearClie(){
@@ -868,13 +874,17 @@ public class Controller {
         };
         SecureRandom SRandom = new SecureRandom();
         ref.createUser(emailCrearClienteTF.getText(),new BigInteger(32, SRandom).toString(32), handler);
+        alert.setTitle("Socio Creado");
+        alert.setHeaderText(null);
+        alert.setContentText("Socio creado de forma correcta.");
+        alert.showAndWait();
     }
 
     public void funBuscarClie(){
 
         AtomicBoolean hechoBCNS = new AtomicBoolean(false);
         errorBusqueda = false;
-        Firebase ref = new Firebase("https://fiery-inferno-9835.firebaseio.com/");
+        Firebase ref = new Firebase("https://testgimmapp.firebaseio.com/");
         Firebase cref = ref.child("Clientes");
         Query queryRef = cref.orderByChild("nSocio").equalTo(numSocioVerClienteTF1.getText());
         queryRef.addValueEventListener(new ValueEventListener() {
@@ -930,7 +940,7 @@ public class Controller {
     public void funBuscarClieDNI(){
         AtomicBoolean hechoBCDNI = new AtomicBoolean(false);
         errorBusqueda = false;
-        Firebase ref = new Firebase("https://fiery-inferno-9835.firebaseio.com/");
+        Firebase ref = new Firebase("https://testgimmapp.firebaseio.com/");
         Firebase cref = ref.child("Clientes");
         Query queryRef = cref.orderByChild("dni").equalTo(dniVerClienteTF1.getText());
         queryRef.addValueEventListener(new ValueEventListener() {
@@ -994,7 +1004,7 @@ public class Controller {
             EditarDatosCliente.setText("Aplicar Cambios");
 
         } else {
-            Firebase ref = new Firebase("https://fiery-inferno-9835.firebaseio.com/");
+            Firebase ref = new Firebase("https://testgimmapp.firebaseio.com/");
             Firebase cref = ref.child("Clientes");
             Firebase editRef = cref.child(snapshot1.getKey());
             Map<String, Object> cl = new HashMap<String, Object>();
@@ -1027,7 +1037,7 @@ public class Controller {
 
         AtomicBoolean hechoBCNS = new AtomicBoolean(false);
         errorBusqueda = false;
-        Firebase ref = new Firebase("https://fiery-inferno-9835.firebaseio.com/");
+        Firebase ref = new Firebase("https://testgimmapp.firebaseio.com/");
         Firebase cref = ref.child("Empleados");
         Query queryRef = cref.orderByChild("nEmpleado").equalTo(numEmpeladoVerEmpleadoTF.getText());
         queryRef.addValueEventListener(new ValueEventListener() {
@@ -1084,7 +1094,7 @@ public class Controller {
     public void funBuscarEmpleDNI(){
         AtomicBoolean hechoBCDNI = new AtomicBoolean(false);
         errorBusqueda = false;
-        Firebase ref = new Firebase("https://fiery-inferno-9835.firebaseio.com/");
+        Firebase ref = new Firebase("https://testgimmapp.firebaseio.com/");
         Firebase cref = ref.child("Empleados");
         Query queryRef = cref.orderByChild("dni").equalTo(dniVerEmpleadoTF.getText());
         queryRef.addValueEventListener(new ValueEventListener() {
@@ -1138,7 +1148,7 @@ public class Controller {
 
     public void funCrearEmple() {
         Empleado empleado = new Empleado();
-        Firebase ref = new Firebase("https://fiery-inferno-9835.firebaseio.com/");
+        Firebase ref = new Firebase("https://testgimmapp.firebaseio.com/");
         Firebase cref = ref.child("Empleados");
         Firebase.ValueResultHandler<Map<String, Object>> handler = new Firebase.ValueResultHandler<Map<String, Object>>() {
             @Override
@@ -1156,6 +1166,7 @@ public class Controller {
                 empleado.setTelf(telefonoCrearEmpleadoTF.getText());
                 empleado.setnEmpleado(numEmpeladoCrearEmpleadoTF.getText());
                 empleado.setSexo("");
+                empleado.setCat(1);
                 cref.push().setValue(empleado);
             }
             @Override
@@ -1164,7 +1175,13 @@ public class Controller {
             }
         };
         SecureRandom SRandom = new SecureRandom();
-        ref.createUser(emailCrearEmpleadoTF.getText(),new BigInteger(32, SRandom).toString(32), handler);
+       // ref.createUser(emailCrearEmpleadoTF.getText(),new BigInteger(32, SRandom).toString(32), handler);
+        ref.createUser(emailCrearEmpleadoTF.getText(),"test1", handler);
+        alert.setTitle("Empleado creado");
+        alert.setHeaderText(null);
+        alert.setContentText("Se ha creado el empleado");
+        alert.showAndWait();
+
 
 
 
@@ -1182,7 +1199,7 @@ public class Controller {
             EditarDatosEmpleado.setText("Aplicar Cambios");
 
         } else {
-            Firebase ref = new Firebase("https://fiery-inferno-9835.firebaseio.com/");
+            Firebase ref = new Firebase("https://testgimmapp.firebaseio.com/");
             Firebase cref = ref.child("Empleados");
             Firebase editRef = cref.child(snapshot1.getKey());
             Map<String, Object> cl = new HashMap<String, Object>();
@@ -1212,8 +1229,8 @@ public class Controller {
     }
 
     public void funEditGym(){
-        Firebase ref = new Firebase("https://fiery-inferno-9835.firebaseio.com/");
-        Firebase cref = ref.child("Infogym");
+        Firebase ref = new Firebase("https://testgimmapp.firebaseio.com/");
+        Firebase cref = ref.child("InfoGym");
         Firebase editRef = cref.child(snapshot2.getKey());
         Map<String, Object> cl = new HashMap<String, Object>();
         cl.put("telefonoGym", telefonoGymTF.getText());
@@ -1221,8 +1238,8 @@ public class Controller {
         cl.put("direccionGym", direccionGymTF.getText());
         cl.put("correoElectronicoGym", correoElectronicoGymTF.getText());
         cl.put("horarioGym/0", horarioLunesViernesTF.getText());
-        cl.put("horarioGym/0", horarioLunesViernesTF.getText());
-        cl.put("horarioGym/0", horarioLunesViernesTF.getText());
+        cl.put("horarioGym/1", horarioLunesViernesTF.getText());
+        cl.put("horarioGym/2", horarioLunesViernesTF.getText());
 
         editRef.updateChildren(cl);
 
@@ -1337,9 +1354,9 @@ public class Controller {
         Maquina maquina = new Maquina();
 
         Date date = new Date();
-        Firebase ref = new Firebase("https://fiery-inferno-9835.firebaseio.com/");
+        Firebase ref = new Firebase("https://testgimmapp.firebaseio.com/");
 
-        Firebase cref = ref.child("Maquinas");
+        Firebase cref = ref.child("Maquines");
         maquina.setNom(nombrem.getText());
         maquina.setDescripcio(descm.getText());
         maquina.setId(idmaquina.getText());
@@ -1431,7 +1448,7 @@ public class Controller {
 
 
     public void funBorrarC(){
-        Firebase ref = new Firebase("https://fiery-inferno-9835.firebaseio.com/");
+        Firebase ref = new Firebase("https://testgimmapp.firebaseio.com/");
         Firebase cref = ref.child("Clientes");
 
         Query queryRef = cref.orderByChild("nombre").equalTo(nombreVerClienteTF1.getText());
@@ -1443,7 +1460,7 @@ public class Controller {
 
 
                 Cliente cliente = dataSnapshot.getValue(Cliente.class);
-                Firebase firebase = new Firebase("https://fiery-inferno-9835.firebaseio.com/Clientes/"+g);
+                Firebase firebase = new Firebase("https://testgimmapp.firebaseio.com/"+g);
                 firebase.removeValue();
             }
 
@@ -1468,17 +1485,35 @@ public class Controller {
             }
         });
     }
+
     public void selectMasc(){
         if (sexoCrearEmpleadoMB.isFocused())
-        sexoCrearEmpleadoMB.setText("Masculino");
+            sexoCrearEmpleadoMB.setText("Masculino");
+        if (sexoVerClienteTF1.isFocused())
+            sexoVerClienteTF1.setText("Masculino");
+        if (sexoVerEmpleadoTF.isFocused())
+            sexoVerEmpleadoTF.setText("Masculino");
+        if (sexoCrearClienteMB.isFocused())
+            sexoCrearClienteMB.setText("Masculino");
+
+
+
     }
 
     public void selectFeme(){
-        sexoCrearEmpleadoMB.setText("Femenino");
+        //sexoCrearEmpleadoMB.setText("Femenino");
+        if (sexoCrearEmpleadoMB.isFocused())
+            sexoCrearEmpleadoMB.setText("Femenino");
+        if (sexoVerClienteTF1.isFocused())
+            sexoVerClienteTF1.setText("Femeniino");
+        if (sexoVerEmpleadoTF.isFocused())
+            sexoVerEmpleadoTF.setText("Femenino");
+        if (sexoCrearClienteMB.isFocused())
+            sexoCrearClienteMB.setText("Femenino");
     }
 
     public void home(){
-        webView.getEngine().load("http://bacderodasport.com");
+        webView.getEngine().load("http://gymappenjoy.wix.com/homepage");
     }
 
 }
