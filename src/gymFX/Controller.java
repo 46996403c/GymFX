@@ -1210,10 +1210,7 @@ public class Controller {
             String pass = new BigInteger(32, SRandom).toString(32);
             ref.createUser(emailCrearEmpleadoTF.getText(), pass, handler);
             enviarEmailPass(emailCrearEmpleadoTF.getText(), pass);
-            alert.setTitle("Empleado creado");
-            alert.setHeaderText(null);
-            alert.setContentText("Se ha creado el empleado");
-            alert.showAndWait();
+
 
 
     }
