@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.web.*?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
@@ -19,7 +25,7 @@
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="704.0" prefWidth="1060.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gymFX.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="704.0" prefWidth="1060.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gymFX.Controller">
     <children>
         <TabPane layoutX="10.0" layoutY="10.0" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <tabs>
@@ -31,7 +37,7 @@
                                     <items>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                                             <children>
-                                                <Button layoutX="30.0" layoutY="22.0" mnemonicParsing="false" onAction="#home" text="Home" fx:id="home"/>
+                                                <Button fx:id="home" layoutX="30.0" layoutY="22.0" mnemonicParsing="false" onAction="#home" text="Home" />
                                                 <Button layoutX="934.0" layoutY="22.0" mnemonicParsing="false" text="Cerrar Sesion" />
                                                 <Button layoutX="408.0" layoutY="22.0" mnemonicParsing="false" onAction="#funLogin" text="Acceder" />
                                                 <Text fx:id="Bienvenido" layoutX="529.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="usuario" />
@@ -52,7 +58,7 @@
                     <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                             <children>
-                                <TabPane prefHeight="404.0" prefWidth="512.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <TabPane layoutX="6.0" prefHeight="404.0" prefWidth="512.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="-6.0" AnchorPane.topAnchor="0.0">
                                     <tabs>
                                         <Tab fx:id="anadirClienteT" text="Añadir Cliente">
                                             <content>
@@ -120,7 +126,7 @@
                                                         <Button layoutX="857.0" layoutY="385.0" mnemonicParsing="false" onAction="#funBuscarClie" text="Buscar Num Cliente" />
                                                         <Button fx:id="EditarDatosCliente" layoutX="422.0" layoutY="441.0" mnemonicParsing="false" onAction="#funEditClie" text="Editar datos" />
                                                         <Button layoutX="860.0" layoutY="345.0" mnemonicParsing="false" onAction="#funBuscarClieDNI" text="Buscar DNI Cliente" />
-                                                        <Button fx:id="eliminarClienteBT" layoutX="610.0" layoutY="441.0" mnemonicParsing="false" text="Eliminar Cliente" />
+                                                        <Button fx:id="eliminarClienteBT" layoutX="610.0" layoutY="441.0" mnemonicParsing="false" onAction="#funBorrarC" text="Eliminar Cliente" />
                                                     </children>
                                                 </AnchorPane>
                                             </content>
@@ -155,7 +161,7 @@
                                                             </items>
                                                         </MenuButton>
                                                         <TextField fx:id="edadCrearEmpleadoTF" layoutX="290.0" layoutY="159.0" prefHeight="25.0" prefWidth="554.0" promptText="Edad" />
-                                                        <Button layoutX="492.0" layoutY="453.0" mnemonicParsing="false" onAction="#funCrearEmple" text="Crear Empleado" />
+                                                        <Button layoutX="489.0" layoutY="479.0" mnemonicParsing="false" onAction="#funCrearEmple" text="Crear Empleado" />
                                                         <TextField fx:id="numEmpeladoCrearEmpleadoTF" layoutX="290.0" layoutY="385.0" prefWidth="554.0" promptText="Num Empleado" />
                                                         <Text layoutX="170.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre" />
                                                         <Text layoutX="170.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Primer Apellido" />
@@ -167,6 +173,8 @@
                                                         <Text layoutX="170.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Direccion" />
                                                         <Text layoutX="170.0" layoutY="362.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DNI" />
                                                         <Text layoutX="170.0" layoutY="402.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero Empleado" />
+                                          <Text layoutX="170.0" layoutY="445.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Categoria" />
+                                          <TextField fx:id="categoria" layoutX="290.0" layoutY="428.0" prefWidth="554.0" promptText="Categoria (1-2)" />
                                                     </children>
                                                 </AnchorPane>
                                             </content>
@@ -203,7 +211,7 @@
                                                         <Button layoutX="857.0" layoutY="385.0" mnemonicParsing="false" onAction="#funBuscarEmple" text="Buscar Num Empleado" />
                                                         <Button fx:id="EditarDatosEmpleado" layoutX="422.0" layoutY="441.0" mnemonicParsing="false" onAction="#funEditEmple" text="Editar datos" />
                                                         <Button layoutX="860.0" layoutY="345.0" mnemonicParsing="false" onAction="#funBuscarEmpleDNI" text="Buscar DNI Empleado" />
-                                                        <Button fx:id="eliminarEmpleadoBT" layoutX="610.0" layoutY="441.0" mnemonicParsing="false" text="Eliminar Empleado" />
+                                                        <Button fx:id="eliminarEmpleadoBT" layoutX="610.0" layoutY="441.0" mnemonicParsing="false" onAction="#funBorrarE" text="Eliminar Empleado" />
                                                     </children>
                                                 </AnchorPane>
                                             </content>
@@ -363,7 +371,7 @@
                         </AnchorPane>
                     </content>
                 </Tab>
-                <Tab text="Chat" fx:id="ChatTAB1">
+                <Tab fx:id="ChatTAB1" text="Chat">
                  <content>
                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                          <children>
@@ -400,7 +408,7 @@
                                              <TextArea fx:id="mensajeChatTA" layoutX="18.0" layoutY="31.0" prefHeight="306.0" prefWidth="708.0" />
                                              <TextArea fx:id="respuestaChatTA" layoutX="18.0" layoutY="388.0" prefHeight="267.0" prefWidth="708.0" />
                                              <Button fx:id="enviarRespuestaChatBT" layoutX="451.0" layoutY="362.0" mnemonicParsing="false" onAction="#resp" text="Enviar Respuesta" />
-                                             <Button  fx:id="borrarRespuestaChatBT" layoutX="593.0" layoutY="362.0" mnemonicParsing="false" text="Borrar Respuesta" />
+                                             <Button fx:id="borrarRespuestaChatBT" layoutX="593.0" layoutY="362.0" mnemonicParsing="false" text="Borrar Respuesta" />
                                              <Text layoutX="18.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mensaje Usuario:" />
                                              <Text layoutX="18.0" layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mensaje Respuesta:" />
                                          </children>

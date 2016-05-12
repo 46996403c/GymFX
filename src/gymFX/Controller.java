@@ -24,14 +24,15 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import java.io.*;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.Collector;
-//Firebase pruebas sandra
-//Firebase refw = new Firebase("https://testgimmapp.firebaseio.com/");
 
 public class Controller {
     Empleado empleado;
@@ -42,17 +43,12 @@ public class Controller {
     Alert alertError = new Alert(Alert.AlertType.ERROR);
     Alert alert = new Alert(Alert.AlertType.INFORMATION);
 
-
     public WebView webView = new WebView();
     public Text Bienvenido;
 
     public Stage stage;
 
-    //*
-    public Button Button;
-    //*
-
-    public AnchorPane pane;
+    //public AnchorPane pane;
 
     public TextField nombreCrearClienteTF;
     public TextField primerApellidoCrearClienteTF;
@@ -94,6 +90,7 @@ public class Controller {
     public TextField dniVerEmpleadoTF;
     public TextField edadVerEmpleadoTF;
     public TextField numEmpeladoVerEmpleadoTF;
+    public TextField categoria;
     public Button EditarDatosEmpleado;
 
     public TextField nombreFichaPropiaTF;
@@ -174,8 +171,6 @@ public class Controller {
     public MenuButton sexoCrearClienteMB;
     public Button cerrarIncidenciaBT;
 
-
-
     public Maquina maquina1;
     public int step1;
 
@@ -184,11 +179,9 @@ public class Controller {
 
     public Incidencia incidencia0;
 
-    ArrayList<Step> aS = new ArrayList<Step>();
-
+    ArrayList<Step> aS = new ArrayList<>();
 
     public Button home;
-
 
     public void initialize(){
 
@@ -229,7 +222,6 @@ public class Controller {
         maquinasTAB.setGraphic(buildImage("http://i67.tinypic.com/r9iwdi.png"));
         InicidenciasTAB.setGraphic(buildImage("http://i63.tinypic.com/1oau4l.png"));
         ChatTAB1.setGraphic(buildImage("http://i67.tinypic.com/20f3g4l.png"));
-       // pane.getStyleClass().add("pane");
 
         respuestaChatTA.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
@@ -240,14 +232,9 @@ public class Controller {
             }
         });
 
-
-
         Firebase reff = new Firebase("https://testgimmapp.firebaseio.com/");
 
         Firebase creff = reff.child("Chat");
-
-
-
 
         // Attach an listener to read the data at our posts reference
         creff.addValueEventListener(new ValueEventListener() {
@@ -272,8 +259,6 @@ public class Controller {
                             ChatTAB1.setGraphic(buildImage("http://i67.tinypic.com/20f3g4l.png"));
 
                         }
-
-
                     }
                 });
             }
@@ -282,7 +267,6 @@ public class Controller {
             public void onCancelled(FirebaseError firebaseError) {
 
             }
-
         });
 
         mensajesNOleidosChatLV.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -305,120 +289,13 @@ public class Controller {
             }
         });
 
-
-
-
-
-
-        Firebase refv = new Firebase("https://testgimmapp.firebaseio.com/");
-
-        Firebase crefv = refv.child("Maquines");
-
-        // Attach an listener to read the data at our posts reference
-        crefv.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                ObservableList<Maquina> items = FXCollections.observableArrayList();
-
-                System.out.println("There are " + snapshot.getChildrenCount() + " blog posts");
-                for (DataSnapshot postSnapshot: snapshot.getChildren()) {
-                    Maquina maquina = postSnapshot.getValue(Maquina.class);
-                    System.out.println(maquina.getDescripcio() + " - " + maquina.getNom());
-                    items.add(maquina);
-
-                }
-
-
-                    Platform.runLater(new Runnable() {
-                        @Override
-                        public void run() {
-                            maquinasLV.setItems(items);
-                        }
-                    });
-
-
-            }
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-                System.out.println("The read failed: " + firebaseError.getMessage());
-            }
-        });
-
-
-
-
-        maquinasLV.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                if (event.getClickCount() == 2){
-                    Maquina m=  maquinasLV.getFocusModel().getFocusedItem();
-                    System.out.println(maquinasLV.getFocusModel().getFocusedIndex());
-                    ObservableList<Step> items2 = FXCollections.observableArrayList();
-                    nombreMaquinaVer.setText(m.getNom());
-                    descMaquinaVer.setText(m.getDescripcio());
-                    idMaquinaVer.setText(m.getId());
-                    descMaquinaVer.setWrapText(true);
-
-                    FechaInstMaquinaVer.setText(m.getDataInstalacio());
-                    maquina1 = m;
-
-
-                    for (int i = 0; i < m.getSteps().size(); i++){
-                        items2.add(m.getSteps().get(i));
-                    }
-
-                    pasosLV.setItems(items2);
-
-
-
-
-                }
-
-
-            }
-        });
-
-        pasosLV.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                if (event.getClickCount()==2){
-                    Step s = pasosLV.getFocusModel().getFocusedItem();
-                    nStepVerStep.setText(String.valueOf(s.getnStep()));
-                    fotoStepVerStep.setText(s.getFoto());
-                    nombreStepVerStep.setText(s.getAnotacio());
-                    descStepVerStep.setText(s.getDescripcio());
-                    descStepVerStep.setWrapText(true);
-                    imVerS.setImage(new Image(s.getFoto()));
-                    step1 = pasosLV.getFocusModel().getFocusedIndex();
-                }
-
-            }
-        });
-
-
-
-
-
-
-
+        maquinas();
         incidencias();
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         Firebase ref = new Firebase("https://testgimmapp.firebaseio.com/");
         Firebase cref = ref.child("InfoGym");
         Query queryRef = cref.orderByChild("idGym").equalTo(1);
+
         queryRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
@@ -458,6 +335,86 @@ public class Controller {
 
     }
 
+
+    public void maquinas(){
+        Firebase refv = new Firebase("https://testgimmapp.firebaseio.com/");
+
+        Firebase crefv = refv.child("Maquines");
+
+        // Attach an listener to read the data at our posts reference
+        crefv.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                ObservableList<Maquina> items = FXCollections.observableArrayList();
+
+                for (DataSnapshot postSnapshot: snapshot.getChildren()) {
+                    Maquina maquina = postSnapshot.getValue(Maquina.class);
+                    items.add(maquina);
+                }
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        maquinasLV.setItems(items);
+                    }
+                });
+
+            }
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+            }
+        });
+
+        maquinasLV.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (event.getClickCount() == 2){
+                    Maquina m=  maquinasLV.getFocusModel().getFocusedItem();
+                    System.out.println(maquinasLV.getFocusModel().getFocusedIndex());
+                    ObservableList<Step> items2 = FXCollections.observableArrayList();
+                    nombreMaquinaVer.setText(m.getNom());
+                    descMaquinaVer.setText(m.getDescripcio());
+                    idMaquinaVer.setText(m.getId());
+                    descMaquinaVer.setWrapText(true);
+
+                    FechaInstMaquinaVer.setText(m.getDataInstalacio());
+                    maquina1 = m;
+
+                    for (int i = 0; i < m.getSteps().size(); i++){
+                        items2.add(m.getSteps().get(i));
+                    }
+
+                    pasosLV.setItems(items2);
+
+                }
+
+            }
+        });
+
+        pasosLV.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if (event.getClickCount()==2){
+                    Step s = pasosLV.getFocusModel().getFocusedItem();
+                    nStepVerStep.setText(String.valueOf(s.getnStep()));
+                    fotoStepVerStep.setText(s.getFoto());
+                    nombreStepVerStep.setText(s.getAnotacio());
+                    descStepVerStep.setText(s.getDescripcio());
+                    descStepVerStep.setWrapText(true);
+                    try {
+
+
+                        imVerS.setImage(new Image(s.getFoto()));
+                    }catch (Exception e){
+                        imVerS.setImage(null);
+                    }
+
+                    step1 = pasosLV.getFocusModel().getFocusedIndex();
+                }
+
+            }
+        });
+    }
+
     private static ImageView buildImage(String imgPatch) {
         Image i = new Image(imgPatch);
         ImageView imageView = new ImageView();
@@ -468,15 +425,10 @@ public class Controller {
         return imageView;
     }
 
-
-
-
-
     public void resp() {
         Firebase ref = new Firebase("https://testgimmapp.firebaseio.com/");
         Firebase cref = ref.child("Chat");
         Chat chat = new Chat();
-        System.out.println("shedfguy");
 
         Date date = new Date();
         chat.setAuthor("Centro");
@@ -485,13 +437,10 @@ public class Controller {
         chat.setUidUser(cl.getUidUser());
         chat.setRevisat(true);
 
-        Firebase ref1 = new Firebase("https://testgimmapp.firebaseio.com/");
         cl.setRevisat(true);
         cref.push().setValue(chat);
 
-
         Firebase refd = new Firebase("https://testgimmapp.firebaseio.com/");
-
 
         Firebase crefd = refd.child("Chat");
 
@@ -504,14 +453,12 @@ public class Controller {
                     Chat chat = postSnapshot.getValue(Chat.class);
 
                     if (chat.getUidUser().equals(cl.getUidUser())) {
-                        Map<String, Object> cl1 = new HashMap<String, Object>();
+                        Map<String, Object> cl1 = new HashMap<>();
                         Firebase editRef = cref.child(postSnapshot.getKey());
                         cl1.put("revisat", true);
                         editRef.updateChildren(cl1);
 
 
-
-                    } else {
                     }
 
                 }
@@ -519,24 +466,18 @@ public class Controller {
                 respuestaChatTA.setText("");
                 mensajeChatTA.setText("");
 
-
             }
 
             @Override
             public void onCancelled(FirebaseError firebaseError) {
-
             }
         });
         mensajesUsuarioChatLV.setItems(null);
-
     }
 
     public void chaat(){
 
-        System.out.println(cl.getUidUser());
         Firebase refd = new Firebase("https://testgimmapp.firebaseio.com/");
-
-
 
         Firebase crefd = refd.child("Chat");
 
@@ -546,26 +487,13 @@ public class Controller {
             public void onDataChange(DataSnapshot snapshot) {
                 final ObservableList<Chat> items = FXCollections.observableArrayList();
 
-
-                System.out.println("There are " + snapshot.getChildrenCount() + " blog posts");
                 for (DataSnapshot postSnapshot: snapshot.getChildren()) {
                     Chat chat = postSnapshot.getValue(Chat.class);
                     try {
-
-
                         if (chat.getUidUser().equals(cl.getUidUser())) {
 
                             items.add(chat);
-                            Platform.runLater(new Runnable() {
-                                @Override
-                                public void run() {
-                                    // InicidenciasTAB.setGraphic(buildImage("https://static-secure.guim.co.uk/sys-images/Guardian/Pix/pictures/2009/4/29/1240996556472/exclamation-001.jpg"));
 
-
-                                }
-                            });
-                        } else {
-                            // items2.add(incidencia2);
                         }
                     }catch (Exception d){
 
@@ -577,11 +505,6 @@ public class Controller {
                     @Override
                     public void run() {
                         mensajesUsuarioChatLV.setItems(items);
-                        //  incidenciasResueltasListV.setItems(items2);
-                        // if (incidenciasListV.getItems().isEmpty()){
-                        //      InicidenciasTAB.setGraphic(null);
-                        //  }
-
                     }
                 });
 
@@ -589,14 +512,12 @@ public class Controller {
             }
             @Override
             public void onCancelled(FirebaseError firebaseError) {
-                System.out.println("The read failed: " + firebaseError.getMessage());
             }
         });
     }
+
     public void incidencias() throws IllegalStateException{
         Firebase refd = new Firebase("https://testgimmapp.firebaseio.com/");
-
-
 
         Firebase crefd = refd.child("Incidencias");
 
@@ -607,8 +528,6 @@ public class Controller {
                 ObservableList<Incidencia> items = FXCollections.observableArrayList();
                 ObservableList<Incidencia> items2 = FXCollections.observableArrayList();
 
-
-                System.out.println("There are " + snapshot.getChildrenCount() + " blog posts");
                 for (DataSnapshot postSnapshot: snapshot.getChildren()) {
                     Incidencia incidencia2 = postSnapshot.getValue(Incidencia.class);
                     if (!incidencia2.isRevisat()) {
@@ -617,7 +536,6 @@ public class Controller {
                             @Override
                             public void run() {
                                 InicidenciasTAB.setGraphic(buildImage("http://i65.tinypic.com/339jexi.png"));
-
 
                             }
                         });
@@ -640,11 +558,9 @@ public class Controller {
                     }
                 });
 
-
             }
             @Override
             public void onCancelled(FirebaseError firebaseError) {
-                System.out.println("The read failed: " + firebaseError.getMessage());
             }
         });
 
@@ -674,7 +590,6 @@ public class Controller {
             public void handle(MouseEvent event) {
                 if (event.getClickCount() == 2){
                     Incidencia ia=  incidenciasResueltasListV.getFocusModel().getFocusedItem();
-                    ObservableList<Step> items2 = FXCollections.observableArrayList();
                     idMaquinaVerIncidencia.setText(ia.getIdMaquina());
                     ususarioVerIncidencia.setText(ia.getUser());
                     tipoVerIncidencia.setText(ia.getTipusIncidencia());
@@ -759,7 +674,6 @@ public class Controller {
             ref.authWithPassword(username.getText(), password.getText(), new Firebase.AuthResultHandler() {
                 @Override
                 public void onAuthenticated(AuthData authData) {
-                    System.out.println("User ID: " + authData.getUid() + ", Provider: " + authData.getProvider());
                     userid[0] = authData.getUid();
                     done.set(true);
                     done1.set(true);
@@ -787,7 +701,6 @@ public class Controller {
                 @Override
                 public void onChildAdded(DataSnapshot snapshot, String previousChild) {
                     empleado = snapshot.getValue(Empleado.class);
-                    System.out.println(empleado.getNombre());
                     done2.set(true);
                 }
 
@@ -830,7 +743,7 @@ public class Controller {
             IniTAB.setDisable(false);
             clienteTAB.setDisable(false);
             empleadoTAB.setDisable(false);
-            maquinasTAB.setDisable(false);
+            maquinasTAB.setDisable(true);
             ChatTAB1.setDisable(false);
         }
         if (a==2){
@@ -840,7 +753,7 @@ public class Controller {
             IniTAB.setDisable(false);
             clienteTAB.setDisable(false);
             empleadoTAB.setDisable(false);
-            maquinasTAB.setDisable(true);
+            maquinasTAB.setDisable(false);
             ChatTAB1.setDisable(false);
         }
 
@@ -853,7 +766,6 @@ public class Controller {
         Firebase.ValueResultHandler<Map<String, Object>> handler = new Firebase.ValueResultHandler<Map<String, Object>>() {
             @Override
             public void onSuccess(Map<String, Object> result) {
-                System.out.println("Successfully created user account with uid: " + result.get("uid"));
                 String a = (String) result.get("uid");
                 cliente.setUID(a);
                 cliente.setNombre(nombreCrearClienteTF.getText());
@@ -865,15 +777,17 @@ public class Controller {
                 cliente.setEmail(emailCrearClienteTF.getText());
                 cliente.setTelf(telefonoCrearClienteTF.getText());
                 cliente.setnSocio(numSocioCrearClienteTF.getText());
+                cliente.setSexo(sexoCrearClienteMB.getText());
                 cref.push().setValue(cliente);
             }
             @Override
             public void onError(FirebaseError firebaseError) {
-                System.out.println(firebaseError);
             }
         };
         SecureRandom SRandom = new SecureRandom();
-        ref.createUser(emailCrearClienteTF.getText(),new BigInteger(32, SRandom).toString(32), handler);
+        String pass = new BigInteger(32, SRandom).toString(32);
+        ref.createUser(emailCrearClienteTF.getText(),pass, handler);
+        enviarEmailPass(emailCrearClienteTF.getText(), pass);
         alert.setTitle("Socio Creado");
         alert.setHeaderText(null);
         alert.setContentText("Socio creado de forma correcta.");
@@ -913,6 +827,7 @@ public class Controller {
                 dniVerClienteTF1.setText(cliente.getDni());
                 telefonoVerClienteTF1.setText(cliente.getTelf());
                 edadVerClienteTF1.setText(String.valueOf(cliente.getEdad()));
+                sexoVerClienteTF1.setText(cliente.getSexo());
                 hechoBCNS.set(true);
             }
 
@@ -968,6 +883,7 @@ public class Controller {
                 telefonoVerClienteTF1.setText(cliente.getTelf());
                 edadVerClienteTF1.setText(String.valueOf(cliente.getEdad()));
                 numSocioVerClienteTF1.setText(cliente.getnSocio());
+                sexoVerClienteTF1.setText(cliente.getSexo());
                 hechoBCDNI.set(true);
             }
 
@@ -1016,9 +932,7 @@ public class Controller {
             cl.put("email", emailVerClienteTF1.getText());
             cl.put("dni", dniVerClienteTF1.getText());
             cl.put("telf", telefonoVerClienteTF1.getText());
-
-
-
+            cl.put("sexo", sexoVerClienteTF1.getText());
 
             editRef.updateChildren(cl);
             funBuscarClie();
@@ -1057,16 +971,22 @@ public class Controller {
             @Override
             public void onChildAdded(DataSnapshot snapshot, String previousChild) {
                 snapshot1=snapshot;                                                                             //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
-                Empleado empleado = snapshot.getValue(Empleado.class);
-                nombreVerEmpleadoTF.setText(empleado.getNombre());
-                primerApellidoVerEmpleadoTF.setText(empleado.getApellido());
-                segundoApellidoVerEmpleadoTF.setText(empleado.getApellido2());
-                direccionVerEmpleadoTF.setText(empleado.getDireccion());
-                emailVerEmpleadoTF.setText(empleado.getEmail());
-                dniVerEmpleadoTF.setText(empleado.getDni());
-                telefonoVerEmpleadoTF.setText(empleado.getTelf());
-                edadVerEmpleadoTF.setText(String.valueOf(empleado.getEdad()));
-                hechoBCNS.set(true);
+                try {
+                    Empleado empleado = snapshot.getValue(Empleado.class);
+                    nombreVerEmpleadoTF.setText(empleado.getNombre());
+                    primerApellidoVerEmpleadoTF.setText(empleado.getApellido());
+                    segundoApellidoVerEmpleadoTF.setText(empleado.getApellido2());
+                    direccionVerEmpleadoTF.setText(empleado.getDireccion());
+                    emailVerEmpleadoTF.setText(empleado.getEmail());
+                    dniVerEmpleadoTF.setText(empleado.getDni());
+                    telefonoVerEmpleadoTF.setText(empleado.getTelf());
+                    edadVerEmpleadoTF.setText(String.valueOf(empleado.getEdad()));
+                    sexoVerEmpleadoTF.setText(empleado.getSexo());
+                    hechoBCNS.set(true);
+                }catch (Exception e){
+
+                }
+
             }
 
             @Override
@@ -1122,6 +1042,7 @@ public class Controller {
                 telefonoVerEmpleadoTF.setText(empleado.getTelf());
                 edadVerEmpleadoTF.setText(String.valueOf(empleado.getEdad()));
                 numEmpeladoVerEmpleadoTF.setText(empleado.getnEmpleado());
+                sexoVerEmpleadoTF.setText(empleado.getSexo());
                 hechoBCDNI.set(true);
             }
 
@@ -1147,42 +1068,50 @@ public class Controller {
     }
 
     public void funCrearEmple() {
-        Empleado empleado = new Empleado();
+        Empleado empleado1 = new Empleado();
         Firebase ref = new Firebase("https://testgimmapp.firebaseio.com/");
         Firebase cref = ref.child("Empleados");
+        AtomicBoolean crear = null;
         Firebase.ValueResultHandler<Map<String, Object>> handler = new Firebase.ValueResultHandler<Map<String, Object>>() {
             @Override
             public void onSuccess(Map<String, Object> result) {
-                System.out.println("Successfully created user account with uid: " + result.get("uid"));
                 String a = (String) result.get("uid");
-                empleado.setUID(a);
-                empleado.setNombre(nombreCrearEmpleadoTF.getText());
-                empleado.setApellido(primerApellidoCrearEmpleadoTF.getText());
-                empleado.setApellido2(segundoApellidoCrearEmpleadoTF.getText());
-                empleado.setDni(dniCrearEmpleadoTF.getText());
-                empleado.setDireccion(direccionCrearEmpleadoTF.getText());
-                empleado.setEdad(Integer.parseInt(edadCrearEmpleadoTF.getText()));
-                empleado.setEmail(emailCrearEmpleadoTF.getText());
-                empleado.setTelf(telefonoCrearEmpleadoTF.getText());
-                empleado.setnEmpleado(numEmpeladoCrearEmpleadoTF.getText());
-                empleado.setSexo("");
-                empleado.setCat(1);
-                cref.push().setValue(empleado);
+                empleado1.setUID(a);
+                empleado1.setNombre(nombreCrearEmpleadoTF.getText());
+                empleado1.setApellido(primerApellidoCrearEmpleadoTF.getText());
+                empleado1.setApellido2(segundoApellidoCrearEmpleadoTF.getText());
+                empleado1.setDni(dniCrearEmpleadoTF.getText());
+                empleado1.setDireccion(direccionCrearEmpleadoTF.getText());
+                empleado1.setEdad(Integer.parseInt(edadCrearEmpleadoTF.getText()));
+                empleado1.setEmail(emailCrearEmpleadoTF.getText());
+                empleado1.setTelf(telefonoCrearEmpleadoTF.getText());
+                empleado1.setnEmpleado(numEmpeladoCrearEmpleadoTF.getText());
+                empleado1.setSexo(sexoCrearEmpleadoMB.getText());
+                if (empleado.getCat()==1){
+                    categoria.setText("1");
+                }
+                empleado1.setCat(Integer.parseInt(categoria.getText()));
+
+
+                    cref.push().setValue(empleado1);
+
             }
             @Override
             public void onError(FirebaseError firebaseError) {
-                System.out.println(firebaseError);
             }
         };
-        SecureRandom SRandom = new SecureRandom();
-       // ref.createUser(emailCrearEmpleadoTF.getText(),new BigInteger(32, SRandom).toString(32), handler);
-        ref.createUser(emailCrearEmpleadoTF.getText(),"test1", handler);
-        alert.setTitle("Empleado creado");
-        alert.setHeaderText(null);
-        alert.setContentText("Se ha creado el empleado");
-        alert.showAndWait();
 
 
+
+
+            SecureRandom SRandom = new SecureRandom();
+            String pass = new BigInteger(32, SRandom).toString(32);
+            ref.createUser(emailCrearEmpleadoTF.getText(), pass, handler);
+            enviarEmailPass(emailCrearEmpleadoTF.getText(), pass);
+            alert.setTitle("Empleado creado");
+            alert.setHeaderText(null);
+            alert.setContentText("Se ha creado el empleado");
+            alert.showAndWait();
 
 
     }
@@ -1211,8 +1140,7 @@ public class Controller {
             cl.put("email", emailVerEmpleadoTF.getText());
             cl.put("dni", dniVerEmpleadoTF.getText());
             cl.put("telf", telefonoVerEmpleadoTF.getText());
-
-
+            cl.put("sexo", sexoVerEmpleadoTF.getText());
 
 
             editRef.updateChildren(cl);
@@ -1225,6 +1153,67 @@ public class Controller {
             telefonoVerEmpleadoTF.setEditable(false);
             edadVerEmpleadoTF.setEditable(false);
             EditarDatosEmpleado.setText("Editar datos");
+        }
+    }
+
+
+    public static void enviarEmailPass(String Destinatario, String pass){
+        String cuerpoMensaje = "Tu contraseña es la siguiente: "+pass+"\nSi tienes algun problema ponte en contacto con el administrador del centro.";
+        String asuntoMensaje = "Cuenta creada";
+
+        //usuario del servidor
+        final String usernameServer = "gym.app.enjoy@gmail.com";
+
+        //Contraseña servidor
+        final String passwordServer = "oscareselputoamo";
+
+        //Host servidor
+        String host = "smtp.gmail.com";
+
+        //Propiedades servidor
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", host);
+        props.put("mail.smtp.port", "587");
+
+        // Get the Session object.
+        Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(usernameServer, passwordServer);
+            }
+        });
+
+        // Sender's email ID needs to be mentioned
+        //Correo origen
+        String from = "gym.app.enjoy@gmail.com";
+
+        // Recipient's email ID needs to be mentioned.
+        //Correo destino
+        String to = Destinatario; //---------------------> Pillar campo de texto del correo.
+
+        try {
+            // Create a default MimeMessage object.
+            Message message = new MimeMessage(session);
+
+            // Set From: header field of the header.
+            message.setFrom(new InternetAddress(from));
+
+            // Set To: header field of the header.
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
+
+            // Set Subject: header field
+            message.setSubject(asuntoMensaje);
+
+            // Now set the actual message
+            message.setText(cuerpoMensaje);
+
+            // Send message
+            Transport.send(message);
+
+
+        } catch (MessagingException e) {
+
         }
     }
 
@@ -1259,6 +1248,8 @@ public class Controller {
                 cl.put("nom", nombreMaquinaVer.getText());
                 cl.put("dataInstalacio", FechaInstMaquinaVer.getText());
                 editRef.updateChildren(cl);
+                maquinas();
+
             }
 
             @Override
@@ -1294,8 +1285,12 @@ public class Controller {
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Firebase editRef = cref3.child(dataSnapshot.getKey());
                 Map<String, Object> cl = new HashMap<String, Object>();
-                cl.put("steps/"+step1+"/descripcio", "h");
+                cl.put("steps/"+step1+"/descripcio",descStepVerStep.getText());
+                cl.put("steps/"+step1+"/anotacio", nombreStepVerStep.getText());
+                cl.put("steps/"+step1+"/foto", fotoStepVerStep.getText());
+                cl.put("steps/"+step1+"/nStep", nStepVerStep.getText());
                 editRef.updateChildren(cl);
+                maquinas();
             }
 
             @Override
@@ -1332,13 +1327,7 @@ public class Controller {
 
     public void funGuardarPaso(){
 
-       // Maquina maquina = new Maquina();
         Step step = new Step();
-
-
-
-
-       // ArrayList<Step> aS = new ArrayList<Step>();
 
         step.setnStep(Integer.parseInt(idpaso.getText()));
         step.setDescripcio(descStep.getText());
@@ -1346,6 +1335,11 @@ public class Controller {
         step.setFoto(linkStep.getText());
 
         aS.add(step);
+
+        alert.setTitle("Paso añadido");
+        alert.setHeaderText("");
+        alert.setContentText("El paso ha sido añadido");
+        alert.showAndWait();
 
     }
 
@@ -1361,7 +1355,6 @@ public class Controller {
         maquina.setDescripcio(descm.getText());
         maquina.setId(idmaquina.getText());
         maquina.setDataInstalacio(date.toString());
-
 
         maquina.setSteps(aS);
 
@@ -1451,17 +1444,38 @@ public class Controller {
         Firebase ref = new Firebase("https://testgimmapp.firebaseio.com/");
         Firebase cref = ref.child("Clientes");
 
-        Query queryRef = cref.orderByChild("nombre").equalTo(nombreVerClienteTF1.getText());
+        Query queryRef = cref.orderByChild("nSocio").equalTo(numSocioVerClienteTF1.getText());
 
         queryRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 String g = dataSnapshot.getKey();
+                Platform.runLater(new Runnable() {
+                                      @Override
+                                      public void run() {
+                                          Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                                          alert.setTitle("Confirmación Eliminar");
+                                          alert.setContentText("Estas seguro de querer eliminar a este cliente?");
+
+                                          alert.showAndWait();
+                                          //System.out.println(b[0]);
+                                          if (alert.getResult().equals(ButtonType.CANCEL)){
+
+                                          }
+                                          else {
+                                              Firebase firebase = new Firebase("https://testgimmapp.firebaseio.com/Clientes/" + g);
+                                              firebase.removeValue();
+
+                                          }
+                                      }
+                                  });
 
 
-                Cliente cliente = dataSnapshot.getValue(Cliente.class);
-                Firebase firebase = new Firebase("https://testgimmapp.firebaseio.com/"+g);
-                firebase.removeValue();
+
+
+
+
+
             }
 
             @Override
@@ -1486,6 +1500,61 @@ public class Controller {
         });
     }
 
+    public void funBorrarE(){
+        Firebase ref = new Firebase("https://testgimmapp.firebaseio.com/");
+        Firebase cref = ref.child("Empleados");
+
+        Query queryRef = cref.orderByChild("nEmpleado").equalTo(numEmpeladoVerEmpleadoTF.getText());
+
+        queryRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                String g = dataSnapshot.getKey();
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                        alert.setTitle("Confirmación Eliminar");
+                        alert.setContentText("Estas seguro de querer eliminar a este empleado?");
+
+                        alert.showAndWait();
+                        //System.out.println(b[0]);
+                        if (alert.getResult().equals(ButtonType.CANCEL)){
+
+                        }
+                        else {
+                            Firebase firebase = new Firebase("https://testgimmapp.firebaseio.com/Empleados/"+g);
+                            firebase.removeValue();
+
+                        }
+                    }
+                });
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+    }
+
+
     public void selectMasc(){
         if (sexoCrearEmpleadoMB.isFocused())
             sexoCrearEmpleadoMB.setText("Masculino");
@@ -1501,7 +1570,6 @@ public class Controller {
     }
 
     public void selectFeme(){
-        //sexoCrearEmpleadoMB.setText("Femenino");
         if (sexoCrearEmpleadoMB.isFocused())
             sexoCrearEmpleadoMB.setText("Femenino");
         if (sexoVerClienteTF1.isFocused())
@@ -1517,4 +1585,3 @@ public class Controller {
     }
 
 }
-// PASOS

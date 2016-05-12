@@ -14,9 +14,9 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        primaryStage.setTitle("Gym Desk, Gimnasios 2.0");
+        primaryStage.setTitle("Gym Desk, Gimnasios 2.0 (ver0.9)");
         primaryStage.setScene(new Scene(root, 1060, 704));
-        primaryStage.getIcons().add(new Image("http://i64.tinypic.com/1ftxch.png"));
+        primaryStage.getIcons().add(new Image("http://i66.tinypic.com/207qbg7.jpg"));
         primaryStage.show();
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
             @Override
