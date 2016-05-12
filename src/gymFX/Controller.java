@@ -187,7 +187,7 @@ public class Controller {
 
 
         final WebEngine webEngine = webView.getEngine();
-        webEngine.load("http://gymappenjoy.wix.com/homepage");
+        webEngine.load("http://bacderodasport.com");
         Bienvenido.setText("Sin Logear");
 
         nombreVerClienteTF1.setEditable(false);
@@ -335,7 +335,9 @@ public class Controller {
 
     }
 
-
+    /**
+     * Metodo para rellenar las maquinas
+     */
     public void maquinas(){
         Firebase refv = new Firebase("https://testgimmapp.firebaseio.com/");
 
@@ -415,6 +417,9 @@ public class Controller {
         });
     }
 
+    /*
+     * Metodo para crear una imagen de ImageView
+     */
     private static ImageView buildImage(String imgPatch) {
         Image i = new Image(imgPatch);
         ImageView imageView = new ImageView();
@@ -425,6 +430,53 @@ public class Controller {
         return imageView;
     }
 
+    /*
+    * Metodo para rellenar el chat
+     */
+    public void chaat(){
+
+        Firebase refd = new Firebase("https://testgimmapp.firebaseio.com/");
+
+        Firebase crefd = refd.child("Chat");
+
+        // Attach an listener to read the data at our posts reference
+        crefd.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                final ObservableList<Chat> items = FXCollections.observableArrayList();
+
+                for (DataSnapshot postSnapshot: snapshot.getChildren()) {
+                    Chat chat = postSnapshot.getValue(Chat.class);
+                    try {
+                        if (chat.getUidUser().equals(cl.getUidUser())) {
+
+                            items.add(chat);
+
+                        }
+                    }catch (Exception d){
+
+                    }
+
+                }
+
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        mensajesUsuarioChatLV.setItems(items);
+                    }
+                });
+
+
+            }
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+            }
+        });
+    }
+
+    /*
+       * Metodo usado para dar respuesta al chat
+       */
     public void resp() {
         Firebase ref = new Firebase("https://testgimmapp.firebaseio.com/");
         Firebase cref = ref.child("Chat");
@@ -475,47 +527,9 @@ public class Controller {
         mensajesUsuarioChatLV.setItems(null);
     }
 
-    public void chaat(){
-
-        Firebase refd = new Firebase("https://testgimmapp.firebaseio.com/");
-
-        Firebase crefd = refd.child("Chat");
-
-        // Attach an listener to read the data at our posts reference
-        crefd.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                final ObservableList<Chat> items = FXCollections.observableArrayList();
-
-                for (DataSnapshot postSnapshot: snapshot.getChildren()) {
-                    Chat chat = postSnapshot.getValue(Chat.class);
-                    try {
-                        if (chat.getUidUser().equals(cl.getUidUser())) {
-
-                            items.add(chat);
-
-                        }
-                    }catch (Exception d){
-
-                    }
-
-                }
-
-                Platform.runLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        mensajesUsuarioChatLV.setItems(items);
-                    }
-                });
-
-
-            }
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-            }
-        });
-    }
-
+    /*
+     * Metodo para rellenar las incidencias
+     */
     public void incidencias() throws IllegalStateException{
         Firebase refd = new Firebase("https://testgimmapp.firebaseio.com/");
 
@@ -609,6 +623,9 @@ public class Controller {
 
     }
 
+    /*
+     * Metodo para login
+     */
     public void funLogin(){
         Firebase ref = new Firebase("https://testgimmapp.firebaseio.com/");
 
@@ -735,6 +752,9 @@ public class Controller {
     }
 
 
+    /*
+     * Metodo para asignar poermisos
+     */
     public void setPerm(int a){
         if (a==1){
             infoTAB.setDisable(false);
@@ -745,6 +765,8 @@ public class Controller {
             empleadoTAB.setDisable(false);
             maquinasTAB.setDisable(true);
             ChatTAB1.setDisable(false);
+
+            //logoInfoGymIV;
         }
         if (a==2){
             infoTAB.setDisable(false);
@@ -755,14 +777,25 @@ public class Controller {
             empleadoTAB.setDisable(false);
             maquinasTAB.setDisable(false);
             ChatTAB1.setDisable(false);
+            horarioLunesViernesTF.setEditable(true);
+            horarioSabadoTF.setEditable(true);
+            horarioDomingoTF.setEditable(true);
+            nombreGymTF.setEditable(true);
+            direccionGymTF.setEditable(true);
+            telefonoGymTF.setEditable(true);
+            correoElectronicoGymTF.setEditable(true);
         }
 
     }
 
+    /*
+     * Metodo para crear socio
+     */
     public void funCrearClie(){
         Cliente cliente = new Cliente();
         Firebase ref = new Firebase("https://testgimmapp.firebaseio.com/");
         Firebase cref = ref.child("Clientes");
+        Boolean cr=null;
         Firebase.ValueResultHandler<Map<String, Object>> handler = new Firebase.ValueResultHandler<Map<String, Object>>() {
             @Override
             public void onSuccess(Map<String, Object> result) {
@@ -779,9 +812,29 @@ public class Controller {
                 cliente.setnSocio(numSocioCrearClienteTF.getText());
                 cliente.setSexo(sexoCrearClienteMB.getText());
                 cref.push().setValue(cliente);
+                alert.setTitle("Socio Creado");
+                alert.setHeaderText(null);
+                alert.setContentText("Socio creado de forma correcta.");
+                Platform.runLater(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        alert.showAndWait();
+
+                    }
+
+                });
             }
             @Override
             public void onError(FirebaseError firebaseError) {
+                alertError.setTitle("Error");
+                alertError.setContentText("Error en la creacion de socio");
+                System.out.println(firebaseError);
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        alertError.showAndWait();
+                    }});
             }
         };
         SecureRandom SRandom = new SecureRandom();
@@ -794,6 +847,9 @@ public class Controller {
         alert.showAndWait();
     }
 
+    /*
+     * Metodo para bsucar socio
+     */
     public void funBuscarClie(){
 
         AtomicBoolean hechoBCNS = new AtomicBoolean(false);
@@ -827,7 +883,12 @@ public class Controller {
                 dniVerClienteTF1.setText(cliente.getDni());
                 telefonoVerClienteTF1.setText(cliente.getTelf());
                 edadVerClienteTF1.setText(String.valueOf(cliente.getEdad()));
-                sexoVerClienteTF1.setText(cliente.getSexo());
+                Platform.runLater(new Runnable() {
+                                      @Override
+                                      public void run() {
+                                          sexoVerClienteTF1.setText(cliente.getSexo());
+                                      }
+                                  });
                 hechoBCNS.set(true);
             }
 
@@ -852,6 +913,9 @@ public class Controller {
         }
     }
 
+    /*
+     * Metodo que busca socio por DNI
+     */
     public void funBuscarClieDNI(){
         AtomicBoolean hechoBCDNI = new AtomicBoolean(false);
         errorBusqueda = false;
@@ -883,7 +947,11 @@ public class Controller {
                 telefonoVerClienteTF1.setText(cliente.getTelf());
                 edadVerClienteTF1.setText(String.valueOf(cliente.getEdad()));
                 numSocioVerClienteTF1.setText(cliente.getnSocio());
-                sexoVerClienteTF1.setText(cliente.getSexo());
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        sexoVerClienteTF1.setText(cliente.getSexo());
+                    }});
                 hechoBCDNI.set(true);
             }
 
@@ -908,6 +976,9 @@ public class Controller {
         }
     }
 
+    /*
+     * Metodo pàra editar socio
+     */
     public void funEditClie(){
         if (EditarDatosCliente.getText().equals("Editar datos")) {
             nombreVerClienteTF1.setEditable(true);
@@ -947,6 +1018,9 @@ public class Controller {
         }
     }
 
+    /*
+     *Funcion para buscar Empleados
+     */
     public void funBuscarEmple(){
 
         AtomicBoolean hechoBCNS = new AtomicBoolean(false);
@@ -981,7 +1055,11 @@ public class Controller {
                     dniVerEmpleadoTF.setText(empleado.getDni());
                     telefonoVerEmpleadoTF.setText(empleado.getTelf());
                     edadVerEmpleadoTF.setText(String.valueOf(empleado.getEdad()));
-                    sexoVerEmpleadoTF.setText(empleado.getSexo());
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            sexoVerEmpleadoTF.setText(empleado.getSexo());
+                        }});
                     hechoBCNS.set(true);
                 }catch (Exception e){
 
@@ -1011,6 +1089,9 @@ public class Controller {
         }
     }
 
+/*
+ * Funcion para buscar empleado por DNI
+ */
     public void funBuscarEmpleDNI(){
         AtomicBoolean hechoBCDNI = new AtomicBoolean(false);
         errorBusqueda = false;
@@ -1042,7 +1123,12 @@ public class Controller {
                 telefonoVerEmpleadoTF.setText(empleado.getTelf());
                 edadVerEmpleadoTF.setText(String.valueOf(empleado.getEdad()));
                 numEmpeladoVerEmpleadoTF.setText(empleado.getnEmpleado());
-                sexoVerEmpleadoTF.setText(empleado.getSexo());
+                Platform.runLater(new Runnable() {
+                                      @Override
+                                      public void run(){
+
+                                      sexoVerEmpleadoTF.setText(empleado.getSexo());
+                                  }});
                 hechoBCDNI.set(true);
             }
 
@@ -1067,6 +1153,9 @@ public class Controller {
         }
     }
 
+    /*
+     * Funcion para crear EMpleado
+     */
     public void funCrearEmple() {
         Empleado empleado1 = new Empleado();
         Firebase ref = new Firebase("https://testgimmapp.firebaseio.com/");
@@ -1087,17 +1176,30 @@ public class Controller {
                 empleado1.setTelf(telefonoCrearEmpleadoTF.getText());
                 empleado1.setnEmpleado(numEmpeladoCrearEmpleadoTF.getText());
                 empleado1.setSexo(sexoCrearEmpleadoMB.getText());
-                if (empleado.getCat()==1){
+                if (empleado.getCat() == 1) {
                     categoria.setText("1");
                 }
                 empleado1.setCat(Integer.parseInt(categoria.getText()));
 
 
-                    cref.push().setValue(empleado1);
+                cref.push().setValue(empleado1);
 
             }
+
             @Override
             public void onError(FirebaseError firebaseError) {
+                alertError.setTitle("Error!");
+                alertError.setContentText("Error al crear empleado");
+                Platform.runLater(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        alertError.showAndWait();
+
+                    }
+
+
+                });
             }
         };
 
@@ -1116,6 +1218,9 @@ public class Controller {
 
     }
 
+    /*
+     * Funcion para editar empleado
+     */
     public void funEditEmple(){
         if (EditarDatosEmpleado.getText().equals("Editar datos")) {
             nombreVerEmpleadoTF.setEditable(true);
@@ -1157,6 +1262,11 @@ public class Controller {
     }
 
 
+    /**
+     * Funcion para enviar mail registro
+     * @param Destinatario
+     * @param pass
+     */
     public static void enviarEmailPass(String Destinatario, String pass){
         String cuerpoMensaje = "Tu contraseña es la siguiente: "+pass+"\nSi tienes algun problema ponte en contacto con el administrador del centro.";
         String asuntoMensaje = "Cuenta creada";
@@ -1217,6 +1327,9 @@ public class Controller {
         }
     }
 
+    /*
+    * Funcion para editar gimansio
+     */
     public void funEditGym(){
         Firebase ref = new Firebase("https://testgimmapp.firebaseio.com/");
         Firebase cref = ref.child("InfoGym");
@@ -1227,13 +1340,16 @@ public class Controller {
         cl.put("direccionGym", direccionGymTF.getText());
         cl.put("correoElectronicoGym", correoElectronicoGymTF.getText());
         cl.put("horarioGym/0", horarioLunesViernesTF.getText());
-        cl.put("horarioGym/1", horarioLunesViernesTF.getText());
-        cl.put("horarioGym/2", horarioLunesViernesTF.getText());
+        cl.put("horarioGym/1", horarioSabadoTF.getText());
+        cl.put("horarioGym/2", horarioDomingoTF.getText());
 
         editRef.updateChildren(cl);
 
     }
 
+    /*
+     * Funcion para editar maquina
+     */
     public void funEditMaq(){
 
         Firebase ref3 = new Firebase("https://testgimmapp.firebaseio.com/");
@@ -1275,6 +1391,9 @@ public class Controller {
 
     }
 
+    /*
+     * Funcion para editar step .
+     */
     public void funEditSt(){
 
         Firebase ref3 = new Firebase("https://testgimmapp.firebaseio.com/");
@@ -1319,12 +1438,9 @@ public class Controller {
     }
 
 
-
-
-
-
-
-
+    /*
+     * Funcion de creacion de maquina que gusrda el paso
+     */
     public void funGuardarPaso(){
 
         Step step = new Step();
@@ -1344,6 +1460,9 @@ public class Controller {
     }
 
 
+    /*
+     * Funcion para huardar  maquina
+     */
     public void funGuardarMaquina(){
         Maquina maquina = new Maquina();
 
@@ -1364,6 +1483,9 @@ public class Controller {
 
     }
 
+    /*
+     * Funcion de solucion de inicidencia
+     */
     public void funSolInc(){
         Firebase ref3 = new Firebase("https://testgimmapp.firebaseio.com/");
         Firebase cref3 = ref3.child("Incidencias");
@@ -1403,6 +1525,18 @@ public class Controller {
 
     }
 
+    /*
+     * Actualizar imagenb de step
+     */
+    public void actuImagen1()
+    {
+        imVerS.setImage(new Image(fotoStepVerStep.getText()));
+    }
+
+
+    /*
+     * Funcion que abre respuesta predefinida
+     */
     public void abrirRespuesta() throws Exception {
         FileChooser abrirArchivo = new FileChooser();
         extnsionesArchivos(abrirArchivo);
@@ -1418,6 +1552,10 @@ public class Controller {
         }
         BrArchivo.close();
     }
+
+    /*
+     * Guardar respuesta predefinida
+     */
     public void guardarRespuesta() throws IOException {
         FileChooser guardarArchivo = new FileChooser();
         extnsionesArchivos(guardarArchivo);
@@ -1430,6 +1568,10 @@ public class Controller {
         BwArchivo.write(docTexto);
         BwArchivo.close();
     }
+
+    /*
+     * Funcion de apoyo
+     */
     private static void extnsionesArchivos(final FileChooser escojerArchivo) {
         escojerArchivo.setInitialDirectory(new File(System.getProperty("user.home")));
         escojerArchivo.getExtensionFilters().addAll(
@@ -1440,6 +1582,9 @@ public class Controller {
     }
 
 
+    /*
+     * MEtodo de borrar cliente
+     */
     public void funBorrarC(){
         Firebase ref = new Firebase("https://testgimmapp.firebaseio.com/");
         Firebase cref = ref.child("Clientes");
@@ -1500,6 +1645,9 @@ public class Controller {
         });
     }
 
+    /*
+     * MEtodo de borrar empleado
+     */
     public void funBorrarE(){
         Firebase ref = new Firebase("https://testgimmapp.firebaseio.com/");
         Firebase cref = ref.child("Empleados");
@@ -1555,6 +1703,9 @@ public class Controller {
     }
 
 
+    /*
+     * Metodos para escriubir en el MB el sexo clickado
+     */
     public void selectMasc(){
         if (sexoCrearEmpleadoMB.isFocused())
             sexoCrearEmpleadoMB.setText("Masculino");
@@ -1580,8 +1731,48 @@ public class Controller {
             sexoCrearClienteMB.setText("Femenino");
     }
 
+    /*
+     * Metodo de home del webBrowser
+     */
     public void home(){
-        webView.getEngine().load("http://gymappenjoy.wix.com/homepage");
+        webView.getEngine().load("http://bacderodasport.com");
+    }
+
+    public void logOut(){
+
+        Bienvenido.setText("Sin Logear");
+        horarioLunesViernesTF.setEditable(false);
+        horarioSabadoTF.setEditable(false);
+        horarioDomingoTF.setEditable(false);
+        nombreGymTF.setEditable(false);
+        direccionGymTF.setEditable(false);
+        telefonoGymTF.setEditable(false);
+        correoElectronicoGymTF.setEditable(false);
+
+        nombreVerClienteTF1.setEditable(false);
+        primerApellidoVerClienteTF1.setEditable(false);
+        segundoApellidoVerClienteTF1.setEditable(false);
+        direccionVerClienteTF1.setEditable(false);
+        emailVerClienteTF1.setEditable(false);
+        telefonoVerClienteTF1.setEditable(false);
+        edadVerClienteTF1.setEditable(false);
+
+        nombreVerEmpleadoTF.setEditable(false);
+        primerApellidoVerEmpleadoTF.setEditable(false);
+        segundoApellidoVerEmpleadoTF.setEditable(false);
+        direccionVerEmpleadoTF.setEditable(false);
+        emailVerEmpleadoTF.setEditable(false);
+        telefonoVerEmpleadoTF.setEditable(false);
+        edadVerEmpleadoTF.setEditable(false);
+
+        infoTAB.setDisable(false);
+        InicidenciasTAB.setDisable(true);
+        anadirClienteT.setDisable(true);
+        IniTAB.setDisable(false);
+        clienteTAB.setDisable(true);
+        empleadoTAB.setDisable(true);
+        maquinasTAB.setDisable(true);
+        ChatTAB1.setDisable(true);
     }
 
 }

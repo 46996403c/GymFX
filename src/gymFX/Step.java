@@ -45,6 +45,6 @@ public class Step {
 
 
     public String toString(){
-        return String.valueOf(getnStep());
+        return "paso #"+String.valueOf(getnStep());
     }
 }
